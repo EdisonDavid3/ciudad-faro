@@ -92,7 +92,7 @@ Se incluyen en «La primera luz» **solo en versión mínima**, después de los 
 
 | Sistema | En el primer hito | Después (fuera del hito) |
 |---|---|---|
-| **Mascota** (Issue #5) | Una mascota base de diseño propio (nombre provisional «Núli»): acompaña, ataca sola, gasta energía, se cansa, se retira y descansa; IA básica robusta, animaciones legibles, guardado, celular y 60 FPS | Evoluciones, colección, selección entre varias mascotas, habilidades de exploración |
+| **Mascota** (Issue #5) | Una mascota base de diseño propio: **Núli**, de la especie Fanal (nombre y aspecto aprobados; diseño en `docs/design/ISSUE-5_MASCOTAS_EVOLUTIVAS.md`): acompaña, ataca sola, gasta energía, se cansa, se retira y descansa; IA básica robusta, animaciones legibles, guardado, celular y 60 FPS | Ocho formas desbloqueables que se alternan en relés (opción A aprobada; no hay colección), núcleos de afinidad, habilidades de exploración opcionales |
 | **Tienda** (Issue #6) | Puesto de emergencia en `city/M1`, accesible desde la introducción en cualquier orden: 3–4 artículos (botiquín, mejora sencilla equilibrada, artículo para mascota, accesorio cosmético) | Mercado mayor, varias tiendas, moneda definitiva, inventario avanzado, taberna |
 | **Personalidad del piloto** (Issue #7) | Humor seco, sarcasmo y relación problemática con el alcohol, moderados, en diálogos, descansos y ambientación, según GAME_BIBLE §4 (ficha y reglas) y §9 (escenas 1, 2, 3 y 5). Sin comando ni mecánica jugable de consumo; la petaca es solo un detalle visual | Taberna, alcohol como objeto del mundo, escenas opcionales completas |
 
@@ -111,7 +111,7 @@ Se incluyen en «La primera luz» **solo en versión mínima**, después de los 
 | Sable (retrato + sprite básico) | 1 hoja | Media |
 | Robot farolero (NPC de las cámaras) | 1 hoja corta | Media |
 | Lila, Nox, Dante y Silas (sprites de NPC; Lila según la descripción aprobada en GAME_BIBLE §4) | 4 hojas cortas | Media |
-| Mascota base (seguir, atacar, cansarse, dormir, reactivarse) | 1 hoja | Alta |
+| Núli, forma base (≈ 55 cuadros: reposo, caminar, correr, saltar, atacar, cansarse, subir a la mochila, dormir), según la lámina aprobada | 1 hoja | Alta |
 | Puesto de emergencia y sus 3–4 artículos (iconos) | 1 hoja corta | Media |
 | Retratos de diálogo (Piloto, Lila, Nox, Dante, Silas, Sable, Heliostato) | 7–10 | Media |
 | Objetos (cápsulas, núcleo, fragmento, espejos, puertas) | 1 hoja | Media |
