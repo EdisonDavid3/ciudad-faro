@@ -1,0 +1,30 @@
+{
+  "project": "Ciudad Faro",
+  "character": "piloto",
+  "status": "IN_PROGRESS_NOT_APPROVED",
+  "reference": "reference/piloto_canon_original.jpg",
+  "reference_uploaded": false,
+  "frame_size_working": [
+    160,
+    160
+  ],
+  "frame_size_confirmed_by_engine": false,
+  "approved_frames": 0,
+  "blocked_animations": [
+    "fall",
+    "death"
+  ],
+  "states": {
+    "idle": 8,
+    "walk": 8,
+    "run": 8,
+    "jump": 8,
+    "fall": 6,
+    "death": 8
+  },
+  "rules": [
+    "approved-only atlas",
+    "preserve canonical appearance",
+    "no merge without user approval"
+  ]
+}
