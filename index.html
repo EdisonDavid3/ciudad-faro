@@ -126,7 +126,7 @@ dd{margin:0}
 <div class="wrap">
   <header class="top">
     <div>
-      <p class="eyebrow">Ocho estaciones · un núcleo inmune</p>
+      <p class="eyebrow">Ocho estaciones · una armadura inmune</p>
       <h1>Ciudad Faro</h1>
     </div>
     <div class="tools">
@@ -141,7 +141,7 @@ dd{margin:0}
 
     <form class="overlay" id="ov-title">
       <p class="kicker">Ciudad Faro</p>
-      <h2>Ponle nombre a tu robot</h2>
+      <h2>Ponle nombre a tu piloto</h2>
       <div class="field">
         <label for="hero-name">Nombre</label>
         <input id="hero-name" maxlength="10" autocomplete="off" spellcheck="false" value="Nova">
@@ -220,8 +220,8 @@ dd{margin:0}
     <article>
       <h3>La historia</h3>
       <p>Hace 90 años el mar se tragó los continentes. Ciudad Faro flota gracias a ocho estaciones de energía, cada una cuidada por un guardián robot.</p>
-      <p>Una señal desconocida, el Eco, apagó la obediencia de los guardianes. Tú eres el último prototipo de la antigua ingeniera de la ciudad, y tu núcleo es el único que el Eco no puede tocar.</p>
-      <p>Cada guardián que vences le entrega su energía a tu núcleo: así ganas armas nuevas. La ingeniera también escondió mejoras para ti en las estaciones.</p>
+      <p>Una señal desconocida, el Eco, apagó la obediencia de los guardianes. Tú llevas la armadura que dejó la antigua ingeniera de la ciudad. Su núcleo, la linterna que cargas en la espalda, es lo único que el Eco no puede tocar.</p>
+      <p>Cada guardián que vences le entrega su energía a la linterna de tu armadura: así ganas armas nuevas. La ingeniera también escondió mejoras para ti en las estaciones.</p>
     </article>
     <article>
       <h3>Controles</h3>
@@ -253,6 +253,25 @@ const cv = document.getElementById('game');
 cv.width = W * SCALE; cv.height = H * SCALE;
 const ctx = cv.getContext('2d');
 
+const SPR = {"frames":{"stand":["...........KKKKKK.......","..........KCCwcccK......",".........KCCCccccqK.....",".........KqqqqqqqqK.....","........KrrRRRRrrrK.....",".......KdrrRRRrrrrrK....",".......KdrrrrhhHhHhK....",".......KdbgbrhffKwfK....","...KKK.KdgGgrhffKffK....","..KbbbKKdbgbrFffffFK....",".KgGgggKKddddFffFFK.....",".KbCcqbKooOOOOooooK.....",".KbCcqbpoggggopppK......",".KgggggsgGGGggRRrK......",".KbccqbsggGbGgRrrK......",".KbccqbsbbbbbbrcrK......",".KbccqbsSbbbbrrrrK......",".KgggggsSsssgGgggK......",".KbbbbbsSsssxsxssK......","..KxKxKnNNNNnggnnK......","...K.KKnnnnnnbbnnK......",".......KKxsxsSssK.......","........KxsxsSssK.......","........KxsxsSssK.......","........KxsxsSssK.......","........KbgbgGggK.......","........KdddrrrrK.......","........KdrdrRrrK.......","........KdrdrRrcK.......","........KbbbgggggK......","........KdddrrrrRK......","........KxxxxxxxxK......"],"run1":["...........KKKKKK.......","..........KCCwcccK......",".........KCCCccccqK.....",".........KqqqqqqqqK.....","........KrrRRRRrrrK.....",".......KdrrRRRrrrrrK....",".......KdrrrrhhHhHhK....",".......KdbgbrhffKwfK....","...KKK.KdgGgrhffKffK....","..KbbbKKdbgbrFffffFK....",".KgGgggKKddddFffFFK.....",".KbCcqbKooOOOOooooK.....",".KbCcqbpoggggopppK......",".KgggggsgGGGggRRrK......",".KbccqbsggGbGgRrrK......",".KbccqbsbbbbbbrcrK......",".KbccqbsSbbbbrrrrK......",".KgggggsSsssgGgggK......",".KbbbbbsSsssxsxssK......","..KxKxKnNNNNnggnnK......","...K.KKnnnnnnbbnnK......",".......KKKxsSssKK.......","........KxssSssK........","........KxsxsSssK.......","........KxsxsSssK.......","........KbgbgGggK.......","........KdddrrrrKK......",".......KdrddKKrRrrK.....","......KKdrdcKKrRrcKK....",".....KbbbbbK..KgggggK...",".....KddddrK..KrrrrRK...",".....KxxxxxK..KxxxxxK..."],"run2":["..........KCCwcccK......",".........KCCCccccqK.....",".........KqqqqqqqqK.....","........KrrRRRRrrrK.....",".......KdrrRRRrrrrrK....",".......KdrrrrhhHhHhK....",".......KdbgbrhffKwfK....","...KKK.KdgGgrhffKffK....","..KbbbKKdbgbrFffffFK....",".KgGgggKKddddFffFFK.....",".KbCcqbKooOOOOooooK.....",".KbCcqbpoggggopppK......",".KgggggsgGGGggRRrK......",".KbccqbsggGbGgRrrK......",".KbccqbsbbbbbbrcrK......",".KbccqbsSbbbbrrrrK......",".KgggggsSsssgGgggK......",".KbbbbbsSsssxsxssK......","..KxKxKnNNNNnggnnK......","...K.KKnnnnnnbbnnK......",".......KKKKKKKKKK.......",".........KxsSssK........",".........KxsgGggK.......",".........KxsrrrrK.......",".........KbgsrRrrK......",".........KdddrRrcK......",".........KdrgggggK......",".........KdrrrrrRK......",".........KbbxxxxxK......",".........KddddrKK.......",".........KxxxxxK........","..........KKKKK........."],"run3":["...........KKKKKK.......","..........KCCwcccK......",".........KCCCccccqK.....",".........KqqqqqqqqK.....","........KrrRRRRrrrK.....",".......KdrrRRRrrrrrK....",".......KdrrrrhhHhHhK....",".......KdbgbrhffKwfK....","...KKK.KdgGgrhffKffK....","..KbbbKKdbgbrFffffFK....",".KgGgggKKddddFffFFK.....",".KbCcqbKooOOOOooooK.....",".KbCcqbpoggggopppK......",".KgggggsgGGGggRRrK......",".KbccqbsggGbGgRrrK......",".KbccqbsbbbbbbrcrK......",".KbccqbsSbbbbrrrrK......",".KgggggsSsssgGgggK......",".KbbbbbsSsssxsxssK......","..KxKxKnNNNNnggnnK......","...K.KKnnnnnnbbnnK......",".......KKKxsSssKK.......",".........KsSssK.........",".........KsSssxK........",".........KsSssxK........",".........KgGggbK........",".........KrrrrdKK.......","........KrRrrdrddK......",".......KKrRrcdrdcKK.....","......KgggggKKbbbbbK....","......KrrrrRKKddddrK....","......KxxxxxKKxxxxxK...."],"run4":["..........KCCwcccK......",".........KCCCccccqK.....",".........KqqqqqqqqK.....","........KrrRRRRrrrK.....",".......KdrrRRRrrrrrK....",".......KdrrrrhhHhHhK....",".......KdbgbrhffKwfK....","...KKK.KdgGgrhffKffK....","..KbbbKKdbgbrFffffFK....",".KgGgggKKddddFffFFK.....",".KbCcqbKooOOOOooooK.....",".KbCcqbpoggggopppK......",".KgggggsgGGGggRRrK......",".KbccqbsggGbGgRrrK......",".KbccqbsbbbbbbrcrK......",".KbccqbsSbbbbrrrrK......",".KgggggsSsssgGgggK......",".KbbbbbsSsssxsxssK......","..KxKxKnNNNNnggnnK......","...K.KKnnnnnnbbnnK......",".......KKKKKKKKKK.......",".........KxsSssK........",".........KxsSssK........",".........KxsSssK........","..........KgGggdK.......","..........KrrrrcK.......","..........KrRrrbK.......","..........KrRrcrK.......","..........KgggggK.......","..........KrrrrRK.......","..........KxxxxxK.......","...........KKKKK........"],"jump":["...........KKKKKK.......","..........KCCwcccK......",".........KCCCccccqK.....",".........KqqqqqqqqK.....","........KrrRRRRrrrK.....",".......KdrrRRRrrrrrK....",".......KdrrrrhhHhHhK....",".......KdbgbrhffKwfK....","...KKK.KdgGgrhffKffK....","..KbbbKKdbgbrFffffFK....",".KgGgggKKddddFffFFK.....",".KbCcqbKooOOOOooooK.....",".KbCcqbpoggggopppK......",".KgggggsgGGGggRRrK......",".KbccqbsggGbGgRrrK......",".KbccqbsbbbbbbrcrK......",".KbccqbsSbbbbrrrrK......",".KgggggsSsssgGgggK......",".KbbbbbsSsssxsxssK......","..KxKxKnNNNNnggnnK......","...K.KKnnnnnnbbnnK......",".......KKxsxsgGggK......",".......KxsxxsrrrrKK.....",".......KxsxxKsSrRrrK....",".......KbgbbKsSrRrcK....",".......KddddKKgggggK....",".......KdrddKKrrrrRK....",".......KdrdcKKxxxxxK....","......KbbbbbK.KKKKK.....","......KddddrK...........","......KxxxxxK...........",".......KKKKK............"],"dash":["........................","........................","...........KKKKKK.......","..........KCCwcccK......",".........KCCCccccqK.....",".........KqqqqqqqqK.....","........KrrRRRRrrrK.....",".......KdrrRRRrrrrrK....",".......KdrrrrhhHhHhK....",".......KdbgbrhffKwfK....","...KKK.KdgGgrhffKffK....","..KbbbKKdbgbrFffffFK....",".KgGgggKKddddFffFFK.....",".KbCcqbKooOOOOooooK.....",".KbCcqbpoggggopppK......",".KgggggsgGGGggRRrK......",".KbccqbsggGbGgRrrK......",".KbccqbsbbbbbbrcrK......",".KbccqbsSbbbbrrrrK......",".KgggggsSsssgGgggK......",".KbbbbbsSsssxsxssK......","..KxKxKnNNNNnggnnK......","...K.KKnnnnnnbbnnK......","......KbgbbKKsgGggK.....",".....KKddddK.KrrrrKK....","....KdrddKK...KKrRrrK...","..KKKdrdcK.....KrRrcKKK.",".KbbbbbKK.......KKgggggK",".KddddrK.........KrrrrRK",".KxxxxxK.........KxxxxxK","..KKKKK...........KKKKK.","........................"],"wall":["...........KKKKKK.......","..........KCCwcccK......",".........KCCCccccqK.....",".........KqqqqqqqqK.....","........KrrRRRRrrrK.....",".......KdrrRRRrrrrrK....",".......KdrrrrhhHhHhK....",".......KdbgbrhffKwfK....","...KKK.KdgGgrhffKffK....","..KbbbKKdbgbrFffffFK....",".KgGgggKKddddFffFFK.....",".KbCcqbKooOOOOooooK.....",".KbCcqbpoggggopppK......",".KgggggsgGGGggRRrK......",".KbccqbsggGbGgRrrK......",".KbccqbsbbbbbbrcrK......",".KbccqbsSbbbbrrrrK......",".KgggggsSsssgGgggK......",".KbbbbbsSsssxsxssK......","..KxKxKnNNNNnggnnK......","...K.KKnnnnnnbbnnK......",".......KKKxssSssK.......",".........KxbsSssK.......",".........KxdsSssK.......","..........KxdgGggK......","...........KdrrrrK......","...........KbbrRrrK.....","...........KddrRrcKK....","...........KxxxgggggK...","............KKKrrrrRK...","..............KxxxxxK...","...............KKKKK...."]},"arms":{"down":["........................","........................","........................","........................","........................","........................","........................","........................","........................","........................","........................","........................","........................","........................","........................",".........KKK............","........KSssK...........","........KsssK...........","........KrRrK...........","........KrRrK...........","........KrrrK...........","........KgggK...........","........KxxxK...........",".........KKK............","........................","........................","........................","........................","........................","........................","........................","........................"],"shoot":["........................","........................","........................","........................","........................","........................","........................","........................","........................","........................","........................","........................","........................","...........KKKKKKKKKKK..","..........KsSssRRrrgxCK.","..........KssssrrrrgxcK.","..........KxxxxddddgxqK.","...........KKKKKKKKKKK..","........................","........................","........................","........................","........................","........................","........................","........................","........................","........................","........................","........................","........................","........................"]},"bob":{"stand":0,"run1":0,"run2":-1,"run3":0,"run4":-1,"jump":0,"dash":2,"wall":0},"pal":{"K":"#1A1220","r":"#C8283A","R":"#EE5260","d":"#82182A","g":"#E3A93A","G":"#FFE08A","b":"#9A6424","s":"#4A4F5E","S":"#6A7186","x":"#2C2F3A","f":"#F2B88E","F":"#C98962","h":"#2A1C18","H":"#4E3428","c":"#3CE6D2","C":"#C8FFF8","q":"#1E8F8A","o":"#FF8C1A","O":"#FFC066","p":"#B85A10","n":"#6B4426","N":"#93653A","w":"#FFFFFF"}};
+const SOLAR_PAL = { c:'#FFB347', C:'#FFF2C2', q:'#C9741C' };
+const SPRC = {};
+function buildSprites(){
+  for (const w of ['base', 'solar']) for (const fr in SPR.frames) for (const a of ['down', 'shoot']) for (const flash of [false, true]) for (const dir of [1, -1]){
+    const cvs = document.createElement('canvas'); cvs.width = 24; cvs.height = 32;
+    const c2 = cvs.getContext('2d'), rows = SPR.frames[fr], arm = SPR.arms[a], bob = SPR.bob[fr];
+    const paint = (ch, x, y) => {
+      if (ch === '.') return;
+      let col = (w === 'solar' && SOLAR_PAL[ch]) || SPR.pal[ch];
+      if (flash) col = ch === 'K' ? '#FFFFFF' : '#FFF6F0';
+      c2.fillStyle = col; c2.fillRect(dir > 0 ? x : 23 - x, y, 1, 1);
+    };
+    rows.forEach((row, y) => { for (let x = 0; x < 24; x++) paint(row[x], x, y); });
+    arm.forEach((row, y) => { const yy = y + bob; if (yy < 0 || yy > 31) return; for (let x = 0; x < 24; x++) paint(row[x], x, yy); });
+    SPRC[`${w}|${fr}|${a}|${flash ? 1 : 0}|${dir}`] = cvs;
+  }
+}
+buildSprites();
 let map = [], spawns = [], items = [];
 let p, enemies = [], bullets = [], ebullets = [], parts = [], pickups = [], boss = null, banner = null;
 let camX = 0, cam = 0, cpIdx = 0, lives = 2, bossPhase = 0, frame = 0, shake = 0, deadT = 0;
@@ -348,7 +367,7 @@ function makeEnemy(s){
 const makePickup = (x, y, temp, kind = 'hp') => ({x, y, w:8, h:8, vx:0, vy:temp ? -2 : 0, life:temp ? 480 : Infinity, kind});
 function makePlayer(c){
   const m = maxHp();
-  return {x:c*T+3,y:10*T-18,w:10,h:18,vx:0,vy:0,face:1,ground:false,hp:m,max:m,inv:0,hurt:0,
+  return {x:c*T+2,y:10*T-26,w:12,h:26,vx:0,vy:0,face:1,ground:false,hp:m,max:m,inv:0,hurt:0,
     dash:0,air:false,airUsed:false,fast:false,kick:0,wall:0,charge:0,shootT:0,anim:0,dead:false};
 }
 function resetStage(){
@@ -515,12 +534,12 @@ function fire(l){
   if (curWeapon() === 'solar'){ fireSolar(l >= 2); return; }
   if (l === 1 && bullets.filter(b => b.kind === 'buster' && b.l === 1).length >= 3) return;
   const d = p.face, s = [null, {w:6,h:4,v:4.5,dmg:1}, {w:12,h:8,v:5,dmg:2}, {w:20,h:14,v:5.5,dmg:4}][l];
-  const bx = d > 0 ? p.x + p.w + 2 : p.x - 2 - s.w;
-  bullets.push({kind:'buster', x:bx, y:p.y + 8 - s.h/2, w:s.w, h:s.h, vx:d*s.v, vy:0, dmg:s.dmg, l, pierce:l === 3, t:0, life:999, hits:new Set()});
+  const bx = d > 0 ? p.x + p.w + 4 : p.x - 4 - s.w;
+  bullets.push({kind:'buster', x:bx, y:p.y + 9 - s.h/2, w:s.w, h:s.h, vx:d*s.v, vy:0, dmg:s.dmg, l, pierce:l === 3, t:0, life:999, hits:new Set()});
   p.shootT = 14; sfx(l === 1 ? 'shot' : 'big');
 }
 function fireSolar(big){
-  const cx = p.x + p.w/2 + p.face * 6, cy = p.y + 8;
+  const cx = p.x + p.w/2 + p.face * 10, cy = p.y + 9;
   const disc = (vx, vy, dmg, life) => bullets.push({kind:'disc', x:cx - 4, y:cy - 4, w:8, h:8, vx, vy, dmg, pierce:true, t:0, life, hits:new Set()});
   if (big){
     if (wEnergy.solar < 4){ sfx('tink'); return; }
@@ -546,7 +565,7 @@ function killPlayer(){
   if (p.dead) return;
   p.dead = true; p.hp = 0; deadT = 110; deaths++; sfx('die');
   for (let i = 0; i < 16; i++){ const a = i / 16 * Math.PI * 2;
-    parts.push({x:p.x+5, y:p.y+9, vx:Math.cos(a)*1.6, vy:Math.sin(a)*1.6, g:0, life:60, max:60, c:i%2 ? C.red : C.gold, s:3}); }
+    parts.push({x:p.x+6, y:p.y+13, vx:Math.cos(a)*1.6, vy:Math.sin(a)*1.6, g:0, life:60, max:60, c:i%2 ? C.red : C.gold, s:3}); }
 }
 function afterDeath(){
   if (lives > 0){ lives--; resetStage(); playMusic('stage'); }
@@ -606,8 +625,8 @@ function updateItems(){
     } else {
       say([
         {who:'INGENIERA (grabación)',c:C.gold,text:'Si estás escuchando esto, el Eco ya despertó y yo ya no estoy para ayudarte.'},
-        {who:'INGENIERA (grabación)',c:C.gold,text:'Te dejo las Botas de impulso. Pulsa Dash en el aire para avanzar sin caer.'},
-        {who:'INGENIERA (grabación)',c:C.gold,text:`Tu núcleo es distinto a todos, ${heroName}. Algún día sabrás por qué.`}
+        {who:'INGENIERA (grabación)',c:C.gold,text:'Te dejo unas Botas de impulso para la armadura. Pulsa Dash en el aire para avanzar sin caer.'},
+        {who:'INGENIERA (grabación)',c:C.gold,text:`La armadura solo responde a ti, ${heroName}. Algún día sabrás por qué.`}
       ], () => { save.boots = true; persist(); showBanner('BOTAS DE IMPULSO', 'Dash en el aire desbloqueado'); });
     }
   }
@@ -731,7 +750,7 @@ function updateBoss(){
       if (b.ground){ shake = 20; sfx('land'); b.st = 'talk';
         say([
           {who:'HELIOSTATO',c:C.orange,text:'ORDEN ANTIGUA ACTIVA. PROTEGER LA CIUDAD A CUALQUIER COSTO.'},
-          {who:'HELIOSTATO',c:C.orange,text:'NÚCLEO DESCONOCIDO DETECTADO. ELIMINAR.'},
+          {who:'HELIOSTATO',c:C.orange,text:'HUMANO CON NÚCLEO DESCONOCIDO. ELIMINAR.'},
           {who:'LIRA',c:C.cyan,text:`¡${heroName}, está fuera de control! Detenlo antes de que apague la estación.`}
         ], () => { b.st = 'fill'; b.t = 0; });
       }
@@ -785,7 +804,7 @@ function updateBoss(){
       if (b.t === 160) say([
         {who:'HELIOSTATO',c:C.orange,text:'...la señal... se apaga... ¿quién... eres...?'},
         {who:'LIRA',c:C.cyan,text:'¡Lo lograste! La Estación Solar vuelve a encender.'},
-        {who:'LIRA',c:C.cyan,text:'Tu núcleo absorbió la energía de Heliostato. Ahora puedes usar su Rayo Solar.'},
+        {who:'LIRA',c:C.cyan,text:'La linterna de tu armadura absorbió la energía de Heliostato. Ahora puedes usar su Rayo Solar.'},
         {who:'LIRA',c:C.cyan,text:`Quedan siete estaciones, ${heroName}. Cada guardián te hará más fuerte.`}
       ], win);
       break;
@@ -966,39 +985,29 @@ function drawBoss(){
 function drawPlayer(){
   if (p.dead) return;
   if (p.inv > 0 && p.hurt <= 0 && (frame >> 2) % 2) return;
-  const f = p.face, sx = Math.round(p.x - cam) - 3, sy = Math.round(p.y) - 2;
-  const R = (dx, dy, w, h, c) => { ctx.fillStyle = c; ctx.fillRect(f > 0 ? sx + dx : sx + 16 - dx - w, sy + dy, w, h); };
-  let pose = 'idle';
-  if (p.hurt > 0) pose = 'hurt'; else if (p.dash > 0) pose = 'dash'; else if (p.wall) pose = 'wall'; else if (!p.ground) pose = 'jump'; else if (p.vx !== 0) pose = 'run';
-  const ph = (p.anim >> 2) % 4;
-  const oy = pose === 'dash' ? 2 : (pose === 'run' && ph % 2 === 1 ? 1 : 0);
-  const D = C.dark, Rr = C.red, G = C.gold, wc = weaponColor();
-  if (pose === 'run'){
-    if (ph === 0){ R(3,14,3,4,D); R(1,17,4,2,Rr); R(1,17,4,1,G); R(10,14,3,4,D); R(11,18,4,2,Rr); R(11,18,4,1,G); }
-    else if (ph === 2){ R(4,14,3,4,D); R(3,18,4,2,Rr); R(3,18,4,1,G); R(9,14,3,4,D); R(9,18,4,2,Rr); R(9,18,4,1,G); }
-    else { R(5,14,3,4,D); R(4,18,4,2,Rr); R(4,18,4,1,G); R(9,14,3,3,D); R(10,16,4,2,Rr); R(10,16,4,1,G); }
-  } else if (pose === 'dash'){ R(1,16,5,2,D); R(-2,15,3,3,Rr); R(-2,15,1,3,G); R(9,16,3,2,D); R(10,18,5,2,Rr); R(10,18,5,1,G); }
-  else if (pose === 'idle'){ R(5,14,3,4,D); R(4,18,4,2,Rr); R(4,18,4,1,G); R(9,14,3,4,D); R(9,18,4,2,Rr); R(9,18,4,1,G); }
-  else { R(4,14,3,3,D); R(3,16,4,2,Rr); R(3,16,4,1,G); R(9,14,3,4,D); R(10,17,4,2,Rr); R(10,17,4,1,G); }
-  const flow = pose !== 'idle', wv = (frame >> 3) % 2;
-  R(flow ? -1 : 1, 7 + oy, 4, 2, C.orangeD);
-  R(flow ? -4 : -1, 8 + oy + (flow && wv ? 1 : 0), 4, 2, C.orange);
-  if (flow) R(-6, 9 + oy + (wv ? 0 : 1), 3, 1, C.orange);
-  R(3, 9 + oy, 2, 4, C.redD); R(3, 8 + oy, 3, 2, C.goldD);
-  R(4, 8 + oy, 8, 6, D); R(5, 8 + oy, 6, 4, Rr); R(6, 8 + oy, 2, 1, C.redL); R(7, 10 + oy, 2, 2, wc);
-  R(4, 13 + oy, 8, 1, G);
-  R(4, 6 + oy, 8, 2, C.orange); R(4, 7 + oy, 8, 1, C.orangeD);
-  R(5, 0 + oy, 6, 1, Rr); R(4, 1 + oy, 8, 5, Rr); R(5, 1 + oy, 3, 1, C.redL);
-  R(7, 3 + oy, 6, 2, wc); R(11, 3 + oy, 2, 1, '#FFFFFF');
-  R(5, 5 + oy, 7, 1, C.redD);
-  R(2, 0 + oy, 2, 1, G); R(3, 1 + oy, 1, 3, G);
-  if (p.shootT > 0 || p.charge > 12){ R(10, 9 + oy, 5, 3, Rr); R(10, 8 + oy, 3, 1, G); R(15, 9 + oy, 2, 3, D); R(17, 10 + oy, 1, 1, wc); }
-  else { R(11, 9 + oy, 2, 5, Rr); R(10, 8 + oy, 3, 2, G); }
-  if (p.hurt > 0 && (frame >> 1) % 2){ ctx.globalAlpha = .6; ctx.fillStyle = '#FFFFFF'; ctx.fillRect(sx + 2, sy, 13, 20); ctx.globalAlpha = 1; }
+  const f = p.face, sx = Math.round(p.x - cam) - 6, sy = Math.round(p.y) - 6;
+  let pose = 'stand';
+  if (p.dash > 0) pose = 'dash'; else if (p.wall) pose = 'wall'; else if (!p.ground || p.hurt > 0) pose = 'jump'; else if (p.vx !== 0) pose = 'run' + (((p.anim >> 3) % 4) + 1);
+  const bob = SPR.bob[pose], moving = pose !== 'stand';
+  const X = (dx) => f > 0 ? sx + dx : sx + 23 - dx;
+  const px = (dx, dy, c) => { ctx.fillStyle = c; ctx.fillRect(X(dx), sy + dy + bob, 1, 1); };
+  const len = moving ? 9 : 4, wv = frame / (moving ? 4 : 9);
+  for (let i = 0; i < len; i++){
+    const yy = 11 + Math.round(Math.sin(wv - i * .7) * (moving ? 1.2 : .6)) + (moving ? 0 : Math.floor(i / 2));
+    px(6 - i, yy, i % 3 === 0 ? C.orangeD : C.orange); px(6 - i, yy + 1, C.orangeD);
+  }
+  if (p.dash > 0 || (!p.ground && p.vy < 0) || p.air){
+    const fl = 1 + ((frame >> 1) % 3), col = curWeapon() === 'solar' ? '#FFB347' : C.cyan;
+    for (let i = 0; i < fl; i++){ px(3, 20 + i, i ? col : '#FFFFFF'); px(5, 20 + i, i ? col : '#FFFFFF'); }
+  }
+  const flash = p.hurt > 0 && (frame >> 1) % 2;
+  const arm = (p.shootT > 0 || p.charge > 12) ? 'shoot' : 'down';
+  const key = `${curWeapon() === 'solar' ? 'solar' : 'base'}|${pose}|${arm}|${flash ? 1 : 0}|${f > 0 ? 1 : -1}`;
+  const img = SPRC[key]; if (img) ctx.drawImage(img, sx, sy);
   if (p.charge >= 45){
     const hi = p.charge >= 100, solarW = curWeapon() === 'solar';
-    for (let i = 0; i < 4; i++){ ctx.fillStyle = solarW || hi ? (i % 2 ? '#FFB347' : '#FFF2C2') : (i % 2 ? C.cyan : '#E8FFFC');
-      ctx.fillRect((sx + rnd(-3, 18)) | 0, (sy + rnd(-2, 21)) | 0, 2, 2); }
+    for (let i = 0; i < 5; i++){ ctx.fillStyle = solarW || hi ? (i % 2 ? '#FFB347' : '#FFF2C2') : (i % 2 ? C.cyan : '#E8FFFC');
+      ctx.fillRect((sx + rnd(-2, 26)) | 0, (sy + rnd(0, 32)) | 0, 2, 2); }
   }
 }
 function ell(cx, cy, rx, ry, c){ ctx.fillStyle = c; ctx.beginPath(); ctx.ellipse(cx, cy, rx, ry, 0, 0, Math.PI * 2); ctx.fill(); }
