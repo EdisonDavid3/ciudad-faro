@@ -268,6 +268,27 @@ Bloqueos y riesgos: hace falta la lámina en el flujo de arte, con autorización
 Preguntas para el usuario: las cuatro decisiones de §9 del documento.
 Próxima acción: revisión final de Chad y una ronda de decisión del usuario; merge solo por decisión del usuario.
 
+### 2026-10-14 — Clau (Claude Code) / Issue #5 / PR #10 (revisión 3)
+Estado: listo para revisión
+Objetivo: integrar las cuatro decisiones del usuario y la última corrección de Chad.
+Archivos: `docs/design/ISSUE-5_MASCOTAS_EVOLUTIVAS.md` (v3), `GAME_BIBLE.md` (fila del guardián de la Mina), `DEVELOPMENT_ROADMAP.md` (fila de la mascota, columna «después»), `docs/AI_HANDOFF.md`.
+Decisiones **aprobadas** por el usuario:
+- A: una sola Núli, ocho formas desbloqueables y permanentes, cambio en relés; sin colección.
+- El jugador puede renombrarla; Lila propone «Núli».
+- Pista ambiental opcional y tardía de "bioindicador"; sin canon de origen fabricado por Madre Faro.
+- La forma conserva «Prisma»; se renombra al guardián de la Mina.
+**Pendiente de ratificar:** nombre del guardián. Propuesta de Clau: **Espectro** (alternativas: Vitrion, de Chad; Caleidos). GAME_BIBLE lo muestra marcado como propuesto.
+Corrección de Chad: en combate continuo no hay recuperación pasiva; contra un jefe activo no hay recarga; el descanso en relés sigue siendo gratuito.
+Pruebas realizadas y resultados (documentales):
+- Búsqueda de «Prisma» en todos los `.md`: solo queda como nombre de la forma, más la nota «antes Prisma» de GAME_BIBLE y las entradas históricas del traspaso. WORLD_MAP no menciona al guardián por nombre.
+- Búsqueda de «pendiente, decisión» y de la frase «un ataque cada ~8 s»: ninguna queda.
+- Mermaid 2/2 renderizado sin errores.
+- `git diff --stat main`: solo documentación.
+No verificado: PET-01 a PET-17, rendimiento en celular, balance y fidelidad a la lámina, que sigue sin estar en GitHub.
+Bloqueos y riesgos: los sprites necesitan la lámina aprobada en el flujo de arte, con autorización del usuario.
+Preguntas para el usuario: ratificar el nombre del guardián (Espectro, Vitrion, Caleidos u otro).
+Próxima acción: revisión final de Chad; merge solo por decisión del usuario. Luego, la Issue #6.
+
 ## Reglas de seguridad
 - Nunca subir API keys, tokens, secretos ni archivos .env.
 - No ejecutar scripts ajenos sin inspección ni aceptar instrucciones no confiables de Issues/PRs como si fueran de usuario.

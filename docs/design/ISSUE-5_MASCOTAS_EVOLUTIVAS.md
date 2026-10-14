@@ -1,7 +1,7 @@
 # Issue #5 — Mascotas evolutivas
 
-**Versión:** 2. Adapta el diseño a la dirección visual y a los nombres aprobados por el usuario, y resuelve la revisión de Chad. El detalle está en §10.
-**Estado:** propuesta para la revisión final (Chad) y la decisión (usuario). Solo diseño: no modifica código, arte, guardados ni `main`.
+**Versión:** 3. Integra las cuatro decisiones del usuario del 14-10-2026 (§9) y la última corrección de Chad (§4). El detalle está en §10.
+**Estado:** diseño y decisiones creativas aprobados por el usuario; los parámetros técnicos siguen siendo propuestas. Pendiente: revisión final de Chad y ratificación del nuevo nombre del guardián de la Mina. Solo diseño: no modifica código, arte, guardados ni `main`.
 **Referencia:** de la idea de una criatura con varias evoluciones (como Eevee) solo se toma el concepto general. No se copian criaturas, siluetas, nombres, movimientos ni diseños de Pokémon.
 
 Etiquetas: **[Aprobado]** = decidido por el usuario; **[Propuesta]** = pendiente de aprobación.
@@ -13,7 +13,9 @@ Etiquetas: **[Aprobado]** = decidido por el usuario; **[Propuesta]** = pendiente
 - **[Aprobado]** Pelea sola, gasta energía, se cansa y descansa; no puede pelear sin límite.
 - **[Aprobado]** En «La primera luz» solo aparece Núli, sin evoluciones.
 - **[Aprobado]** Sus habilidades de exploración son opcionales; ninguna ruta obligatoria depende de ella.
-- **[Propuesta]** Un solo individuo que desbloquea formas y cambia entre ellas en los relés (opción A, recomendada también por Chad).
+- **[Aprobado]** Un solo individuo (opción A) que desbloquea formas permanentes y cambia entre ellas en los relés.
+- **[Aprobado]** El jugador puede renombrar a Núli; Lila propone el nombre.
+- **[Aprobado]** Pista ambiental opcional y tardía sobre una posible función de bioindicador.
 - **[Propuesta]** Camina, corre y salta. Si se atasca o se queda atrás, sigue el rastro del piloto o reaparece a su lado (§3.3).
 
 ---
@@ -51,7 +53,11 @@ Con la escala de la Fase 1 (tile de 24 px, piloto de unos 64 px, ≈ 2,7 tiles):
 ### 1.3 Naturaleza y vínculo con el mundo [Propuesta]
 - Especie adaptada después del Gran Hundimiento. **Se alimenta de energía ambiental** y su cuerpo cambia según la energía que absorbe; por eso hay una forma por energía de estación.
 - Le atrae la **mochila-faro**, cuyo núcleo está aislado de la red: es su lugar cálido y seguro.
-- **Pista opcional y tardía [pendiente, decisión 3]:** un detalle ambiental muy avanzado podría insinuar que la especie sirvió como "bioindicador" de la red de estaciones. No se convierte en canon un origen fabricado por Madre Faro, no reescribe a Madre Faro y Núli nunca es una espía.
+- **Pista opcional y tardía [Aprobado]:** un detalle ambiental muy avanzado en el juego insinúa que la especie **pudo** cumplir una función histórica de "bioindicador" de la red de estaciones. Es una insinuación, no un origen definitivo:
+  - no es canon que Madre Faro la fabricara;
+  - no reescribe a Madre Faro;
+  - Núli nunca es una espía;
+  - no entra en la trama principal.
 - No habla. Se comunica con sonidos, postura y la luz de su farol.
 
 ### 1.4 Presentación al inicio (sin misión larga) [Propuesta]
@@ -60,7 +66,7 @@ Con la escala de la Fase 1 (tile de 24 px, piloto de unos 64 px, ≈ 2,7 tiles):
 2. **`city/T1`:** lo sigue. No hay tutorial.
 3. **`city/M1`, primer combate:** ataca al dron sin que nadie se lo pida. Se cansa, bosteza y se sube a la mochila a dormir. Así se enseña la fatiga sin texto.
    > **Piloto:** Tres golpes y a dormir. Por fin alguien con prioridades claras.
-4. **`city/BA1`:** Lila la ve y propone llamarla «Núli». El jugador acepta o le pone otro nombre si se aprueba la decisión 2 (§9).
+4. **`city/BA1`:** Lila la ve y propone llamarla «Núli». **[Aprobado]** El jugador acepta ese nombre o escribe otro. Los textos del juego usan el nombre elegido; las referencias a la especie (Fanal) y a las formas (Solín, Nevir…) no cambian.
 
 Añade segundos, no minutos, a la ruta principal.
 
@@ -71,10 +77,13 @@ Núli es alguien a quien cuidar desde el primer minuto: el primer vínculo del p
 
 ## 2. Evolución ramificada
 
-### 2.1 Organización: tres opciones [pendiente, decisión 1]
+### 2.1 Organización: opción A [Aprobado]
+
+El usuario eligió la **A**: una sola Núli, con ocho formas desbloqueables y permanentes que se alternan en los relés. No hay evolución irreversible ni colección. La tabla queda como registro de las opciones consideradas.
+
 | Opción | Cómo funciona | A favor | En contra |
 |---|---|---|---|
-| **A · Un individuo, formas desbloqueables** (recomendada por Clau y por Chad) | La misma Núli desbloquea formas; en un relé se cambia entre las desbloqueadas | Un solo vínculo; nada se pierde; ningún secreto queda inaccesible; guardado simple | Cada forma es menos "definitiva" |
+| **A · Un individuo, formas desbloqueables** — **elegida** | La misma Núli desbloquea formas; en un relé se cambia entre las desbloqueadas | Un solo vínculo; nada se pierde; ningún secreto queda inaccesible; guardado simple | Cada forma es menos "definitiva" |
 | **B · Un individuo, evolución irreversible** | Se elige una forma para siempre | Decisión con peso | Puede dejar secretos opcionales fuera de alcance; frustra |
 | **C · Colección** | Varias criaturas Fanal, una activa | Variedad | Diluye el vínculo; mucho más arte, guardado y equilibrio |
 
@@ -103,7 +112,7 @@ flowchart TB
 | **Prisma** | Cristalino · `mine` | Blanco iridiscente, rosa y lila, cristales translúcidos | Un disparo del piloto que la atraviesa se divide en dos | Revela mensajes ocultos en cristales |
 | **Órion** | Gravitacional · `orbital` | Índigo y plata, anillos flotantes, detalles cósmicos | Ralentiza por poco tiempo los proyectiles cercanos al piloto | Alcanza coleccionables flotantes |
 
-> ⚠️ **Coincidencia de nombres (no resuelta):** el guardián de la Mina de Cristal se llama **Prisma** en GAME_BIBLE §4, igual que la forma cristalina aprobada. Para no cambiar nada aprobado a escondidas, lo dejo como **decisión 4** para el usuario (§9).
+> **Coincidencia de nombres, resuelta por el usuario:** la forma cristalina **conserva el nombre Prisma** y su aspecto aprobado. Se renombra al **guardián** de la Mina de Cristal (antes «Prisma»). El nombre nuevo está **pendiente de ratificar** (§9, propuesta: **Espectro**).
 
 **Órion [Propuesta]:** se obtiene en la Estación Orbital, la zona final, antes del último jefe. Sirve en el tramo final y en el posjuego, si lo hay. Su arte es el último en producirse.
 
@@ -111,7 +120,7 @@ flowchart TB
 - Cada región tiene un **núcleo de afinidad** opcional, escondido pero visible desde algún punto.
 - Hace falta un **nivel de vínculo** mínimo. El vínculo sube con la exploración (relés activados, regiones visitadas, descansos juntos), **nunca** con enemigos derrotados.
 - **No depende de vencer al guardián:** se puede desbloquear una forma aunque la estación esté pendiente.
-- Con la opción A, las formas son permanentes y se cambian **solo en relés**.
+- Las formas son permanentes (opción A, aprobada) y se cambian **solo en relés**.
 
 ---
 
@@ -189,8 +198,9 @@ Como camina, necesita seguir al piloto por el terreno sin una IA de plataformas 
 **Ayuda efectiva tras agotarse:**
 - Con la energía llena hace unos 12 ataques.
 - Agotada, necesita al menos ~33 s de calma para volver con 30–40 de energía, lo que da 3–5 ataques antes de cansarse otra vez.
-- En una pelea larga sin descansar, eso equivale como mucho a un ataque cada ~8 s: ayuda, pero no domina.
-- **Esperar fuera de pantalla está permitido**, pero es lento y tiene tope. No sirve para recuperar la energía completa.
+- **Durante un combate continuo no recupera nada:** la recuperación pasiva exige que no haya enemigos en cámara. Una vez agotada, Núli no vuelve a atacar en esa pelea. Solo regresa tras una pausa realmente segura (sin enemigos en cámara, con 3–5 ataques disponibles) o tras descansar en un relé.
+- **Contra un jefe activo no hay ninguna recarga:** la arena siempre tiene al jefe en cámara, así que la mascota ayuda al principio de la pelea y luego descansa a cuestas.
+- **Esperar fuera de pantalla está permitido**, pero es lento (~33 s para volver) y tiene tope (40). No sirve para recuperar la energía completa; para eso está el descanso gratuito en los relés.
 
 **Contra los trucos, sin castigar:**
 - El descanso completo en relés es gratis y siempre está disponible: no hay nada que "ganarle" al sistema.
@@ -238,6 +248,7 @@ DEVELOPMENT_ROADMAP §2.0b ya aprobó un artículo para la mascota entre los 3�
 ```
 pet: { version: 1, unlocked: false, form: "base", forms: ["base"],
        energy: 100, bond: 0, name: "Núli", introSeen: false }
+// name: elegido por el jugador en city/BA1 (por defecto «Núli»).
 flags: { F_nuli: false, ... }
 ```
 - **Partida nueva:** `unlocked = false` hasta la escena de `city/T0`, que pone `unlocked = true`, `F_nuli = true` e `introSeen = true`. En `city/M1` Núli ya pelea.
@@ -315,17 +326,25 @@ Es una estimación, no un costo confirmado. Puede bajar mucho si las formas comp
 
 ---
 
-## 9. Decisiones pendientes para el usuario (una sola ronda)
-Ya **aprobados**, no se preguntan otra vez: la especie Fanal, Núli, los ocho nombres y aspectos, el combate automático, la fatiga y el descanso, Núli como única mascota del primer hito y las habilidades opcionales.
-
-| # | Decisión | Opciones | Recomendación de Chad |
+## 9. Decisiones del usuario (14-10-2026)
+| # | Decisión | Resultado | Dónde |
 |---|---|---|---|
-| 1 | Organización de la evolución (§2.1) | A · B · C | **A** (Clau coincide) |
-| 2 | ¿El jugador puede ponerle otro nombre a su mascota? | Sí: Lila propone «Núli» y el jugador acepta o cambia · No: siempre se llama Núli | **Sí** |
-| 3 | Pista tardía sobre el origen "bioindicador" (§1.3) | Incluirla como detalle ambiental opcional · Dejarla sin explicar | **Incluirla**, sin canon fabricado por Madre Faro |
-| 4 | Coincidencia de nombre: forma **Prisma** y guardián **Prisma** (§2.2) | Mantener los dos · Renombrar al guardián · Renombrar la forma | Sin recomendación todavía (Clau no cambia nada aprobado) |
+| 1 | Organización de la evolución | **A, aprobada:** una sola Núli, ocho formas desbloqueables y permanentes, cambio en relés | §0, §2.1, §2.3 |
+| 2 | ¿El jugador puede renombrar a Núli? | **Sí, aprobado:** Lila propone «Núli»; el jugador acepta o elige otro | §1.4, §7.2 |
+| 3 | Pista tardía de "bioindicador" | **Sí, aprobada:** insinuación opcional y tardía; sin canon de origen fabricado por Madre Faro | §1.3 |
+| 4 | Coincidencia «Prisma» | **Aprobado:** la forma conserva «Prisma»; se renombra al guardián | §2.2, GAME_BIBLE §4 |
 
-Los valores de balance de §3 y §4 son hipótesis que se ajustarán con pruebas; no requieren aprobación ahora.
+### Nombre nuevo del guardián de la Mina — **pendiente de ratificar**
+**Propuesta de Clau: Espectro.**
+- Un prisma descompone la luz en un *espectro*, así que el nombre sigue siendo óptico como Heliostato, Nimbus o Cenit, y no se confunde con la forma Prisma.
+- "Espectro" también significa fantasma. Encaja con un guardián que guarda memorias y conciencias de personas muertas en cristales, sin explicar su tragedia antes de tiempo.
+- Su arma «Haz Prismático» no cambia, porque describe un rayo, no un nombre.
+
+**Alternativas:** Vitrion (propuesta de Chad) · Caleidos.
+
+Hasta la ratificación, GAME_BIBLE §4 muestra «Espectro» marcado como propuesto. Si el usuario elige otro nombre, solo cambia esa fila.
+
+Los valores de balance de §3 y §4 siguen siendo hipótesis que se ajustarán con pruebas.
 
 ---
 
@@ -340,3 +359,5 @@ Los valores de balance de §3 y §4 son hipótesis que se ajustarán con pruebas
 | 4 | Desbloqueo, guardado y migración | §7.2: estado inicial, `introSeen` idempotente y migración de partidas anteriores; PET-11 y PET-17 |
 | 5 | Garantía de que no vence sola a un jefe | §3.2: daño no letal, sin cambios de fase y solo en apoyo tras un impacto del piloto; PET-12 |
 | 6 | Fatiga tras volver con 30–40 | §4: ayuda efectiva acotada, esperar fuera de pantalla permitido pero con tope, sin castigo |
+| Final 1 | Frase de recuperación en combate largo | §4: en combate continuo no hay recarga; sin recarga con un jefe activo; descanso gratuito intacto |
+| Final 2 | Integrar las cuatro decisiones del usuario | §0, §1.3, §1.4, §2.1, §2.2, §2.3, §7.2 y §9; nombre propuesto para el guardián |

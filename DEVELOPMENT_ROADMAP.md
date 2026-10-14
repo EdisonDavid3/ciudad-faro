@@ -92,7 +92,7 @@ Se incluyen en «La primera luz» **solo en versión mínima**, después de los 
 
 | Sistema | En el primer hito | Después (fuera del hito) |
 |---|---|---|
-| **Mascota** (Issue #5) | Una mascota base de diseño propio: **Núli**, de la especie Fanal (nombre y aspecto aprobados; diseño en `docs/design/ISSUE-5_MASCOTAS_EVOLUTIVAS.md`): acompaña, ataca sola, gasta energía, se cansa, se retira y descansa; IA básica robusta, animaciones legibles, guardado, celular y 60 FPS | Evoluciones, colección, selección entre varias mascotas, habilidades de exploración |
+| **Mascota** (Issue #5) | Una mascota base de diseño propio: **Núli**, de la especie Fanal (nombre y aspecto aprobados; diseño en `docs/design/ISSUE-5_MASCOTAS_EVOLUTIVAS.md`): acompaña, ataca sola, gasta energía, se cansa, se retira y descansa; IA básica robusta, animaciones legibles, guardado, celular y 60 FPS | Ocho formas desbloqueables que se alternan en relés (opción A aprobada; no hay colección), núcleos de afinidad, habilidades de exploración opcionales |
 | **Tienda** (Issue #6) | Puesto de emergencia en `city/M1`, accesible desde la introducción en cualquier orden: 3–4 artículos (botiquín, mejora sencilla equilibrada, artículo para mascota, accesorio cosmético) | Mercado mayor, varias tiendas, moneda definitiva, inventario avanzado, taberna |
 | **Personalidad del piloto** (Issue #7) | Humor seco, sarcasmo y relación problemática con el alcohol, moderados, en diálogos, descansos y ambientación, según GAME_BIBLE §4 (ficha y reglas) y §9 (escenas 1, 2, 3 y 5). Sin comando ni mecánica jugable de consumo; la petaca es solo un detalle visual | Taberna, alcohol como objeto del mundo, escenas opcionales completas |
 

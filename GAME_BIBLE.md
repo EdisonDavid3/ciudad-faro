@@ -140,7 +140,7 @@ Ninguno contradice a Madre Faro, Sable ni la ingeniera: ninguno conoce toda la v
 | 4 | Invernadero Biomecánico | **Vesper** | Fusionó plantas y máquinas buscando comida ilimitada; todo organismo es reutilizable. | Raíz Viva | Proyectil que crea anclajes de movimiento |
 | 5 | Fábrica de Engranajes | **Horologio** | Fabrica prótesis para ciudadanos muertos hace décadas; no acepta que sus encargos terminaron. | Pulso Magnético | Mueve mecanismos, atrae metal, desactiva defensas |
 | 6 | Torre de Tormentas | **Nimbus** | Desvió tormentas a asentamientos pequeños para salvar la ciudad; guarda el registro de cada víctima. | Arco Voltaico | Alimenta circuitos, abre rutas de alta tensión |
-| 7 | Mina de Cristal | **Prisma** | Guarda memorias humanas en cristales; cree que conservar una conciencia es salvar una vida. | Haz Prismático | Rebota en superficies, resuelve rompecabezas |
+| 7 | Mina de Cristal | **Espectro** *(nombre propuesto, pendiente de ratificar; antes «Prisma», nombre que pasa a la forma cristalina de Núli)* | Guarda memorias humanas en cristales; cree que conservar una conciencia es salvar una vida. | Haz Prismático | Rebota en superficies, resuelve rompecabezas |
 | 8 | Estación Orbital | **Cenit** | Lleva décadas evaluando si la humanidad merece recuperar el control de sus sistemas. | Campo Gravitacional | Altera trayectorias de enemigos, objetos y del piloto |
 
 **Regla de armas:** tienen ventajas y debilidades, pero ningún jefe exige su debilidad. Un jugador hábil puede vencer a cualquiera con el disparo base.
