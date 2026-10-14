@@ -153,6 +153,7 @@ No verificado:
 Bloqueos y riesgos:
 - Datos repetidos entre WORLD_MAP y el documento de diseño (mitigado con la regla de prioridad).
 Preguntas para el usuario: los cuatro puntos nuevos de la PR, después de la revisión de Chad.
+Decisión del usuario (14-10-2026): **el juego es para público adulto.** Aplica a la Issue #7 (tratamiento del alcohol) y a la #6 (taberna). Sigue vigente: sin beneficios jugables por beber, nunca obligatorio y sin romantizar la dependencia.
 Próxima acción: revisión de Chad; merge solo por decisión del usuario. Después, enviar a Chad la recomendación sobre el orden de las Issues #5, #6 y #7.
 
 ## Reglas de seguridad
