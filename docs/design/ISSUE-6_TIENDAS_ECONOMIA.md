@@ -1,8 +1,8 @@
 # Issue #6 — Tiendas, economía, consumibles, ropa y artefactos
 
-**Versión:** 2 (corrige la primera revisión de Chad; ver §11).
-**Estado:** propuesta para revisión (Chad) y decisión (usuario). Solo diseño: no modifica código, arte, guardados ni `main`.
-**Etiquetas:** **[Aprobado]** = decidido por el usuario · **[Propuesta]** = pendiente de aprobación. Todos los nombres comerciales y de moneda son propuestas, y los precios son ejemplos.
+**Versión:** 3 (integra las seis decisiones del usuario del 14-10-2026; ver §10 y §11).
+**Estado:** decisiones creativas aprobadas por el usuario. Precios, cantidades y porcentajes siguen siendo estimaciones sujetas a pruebas. Pendiente: revisión documental final de Chad y decisión de merge del usuario. Solo diseño: no modifica código, arte, guardados ni `main`.
+**Etiquetas:** **[Aprobado]** = decidido por el usuario · **[Propuesta]** = parámetro técnico pendiente de pruebas. Los nombres **Chispas**, **Tula** y **La Última Gota** están aprobados; los precios son ejemplos.
 **Relacionado:** WORLD_MAP §2 (puesto de emergencia y mercado mayor) · DEVELOPMENT_ROADMAP §2.0b · GAME_BIBLE §4 (reglas del alcohol) · `docs/design/ISSUE-5_MASCOTAS_EVOLUTIVAS.md` §6 (bocado de farol).
 
 ---
@@ -25,16 +25,10 @@
 
 ---
 
-## 2. Moneda [Propuesta]
+## 2. Moneda
 
-### 2.1 Nombre (decisión 1)
-| Opción | Idea |
-|---|---|
-| **Chispas** (propuesta de Chad) | Pequeñas cargas de energía; suena cercano y fácil |
-| **Celdas** | Baterías diminutas usadas como dinero en una ciudad sin energía |
-| **Mechas** | Mechas de lámpara; pequeñas, comunes y valiosas a oscuras |
-
-En el resto del documento se usa **«Chispas»** solo como nombre de trabajo.
+### 2.1 Nombre [Aprobado]
+La moneda se llama **Chispas**: pequeñas cargas de energía, un nombre cercano y fácil en una ciudad que se queda sin luz.
 
 ### 2.2 Cómo se obtiene
 | Fuente | Cantidad orientativa | Regla contra el farmeo |
@@ -45,16 +39,15 @@ En el resto del documento se usa **«Chispas»** solo como nombre de trabajo.
 | Enemigos | 1–3 | **Una sola vez en toda la partida:** cada enemigo colocado en el mapa tiene un identificador fijo y paga solo la primera vez que muere. Cuando reaparece (por ejemplo, después de descansar), ya no da nada |
 | Vender chatarra encontrada | 5–20 por pieza | Las piezas son finitas y están colocadas en el mapa |
 
-### 2.3 Muerte (decisión 4)
-- **[Propuesta recomendada]** Morir **no** quita dinero. El castigo de la muerte ya es volver al relé, y perder dinero empuja a farmear.
-- Alternativa: perder un 10 % que se recupera al volver al lugar de la muerte.
+### 2.3 Muerte [Aprobado]
+Morir **no** quita Chispas. El castigo de la muerte ya es volver al relé, y perder dinero empujaría a farmear.
 
 ---
 
 ## 3. Comerciantes y lugares
 
-### 3.1 Primer hito: puesto de emergencia (`city/M1`) [Aprobado como función; detalle en Propuesta]
-- **Quién [Propuesta, decisión 2]:** una vecina mayor que remienda y trueca desde un carrito con un farol a pilas. Nombre provisional: **Tula**. Habla poco y vende lo que hay. Tiene deseos propios: guarda las ganancias para reabrir el taller de su hijo (regla narrativa 8).
+### 3.1 Primer hito: puesto de emergencia (`city/M1`) [Aprobado]
+- **Quién [Aprobado]:** **Tula**, una vecina mayor que remienda y trueca desde un carrito con un farol a pilas. Habla poco y vende lo que hay. Tiene deseos propios: guarda las ganancias para reabrir el taller de su hijo (regla narrativa 8).
 - **Ruta física:** está en el mercado apagado, a la vista en el recorrido obligatorio de la introducción (tras el primer combate de `city/M1`). No hace falta desviarse.
 - **Cambios con el mundo:** con `F_desierto = pendiente` vende a la luz de su farol; cuando vuelve la energía, se muda al mercado mayor y su puesto se ilumina (sin cambiar su catálogo básico).
 
@@ -68,19 +61,15 @@ En el resto del documento se usa **«Chispas»** solo como nombre de trabajo.
 - Uno pequeño por región, en un refugio o junto a un relé (por ejemplo, el campamento de Kaela en el Reactor).
 - Venden 1–2 artículos propios de su región, por ejemplo una pieza de artefacto o un accesorio para Núli con el tema de la región.
 
-### 3.4 Taberna [Propuesta; fuera del primer hito]
-**Nombre (decisión 3):** «La Última Gota» (provisional de Chad) · «La Marea Baja» · «El Farol Ahogado».
-
-**Lugar (decisión 3):**
-- (a) en **Los Bajos**, junto al colector (`bajos/B3`), donde vive la comunidad que no aparece en el censo; **recomendado**: da identidad a Los Bajos y llega cuando la reja ya está abierta;
-- (b) en el mercado mayor de `city/M1`.
+### 3.4 Taberna «La Última Gota» [Aprobado; fuera del primer hito]
+**Lugar [Aprobado]:** en **Los Bajos**, junto al colector (`bajos/B3`), donde vive la comunidad que no aparece en el censo. Da identidad a Los Bajos y llega cuando la reja ya está abierta.
 
 **Qué ofrece:**
 - **Rumores:** pistas de secretos y de historias de habitantes.
 - **Descanso:** funciona como un relé para Núli: recuperación completa **gratis**, sin comprar nada.
 - **Personajes:** quien atiende la barra (nuevo, nombre por definir) y habitantes que aparecen según el progreso.
 
-**Alcohol en la taberna:**
+**Alcohol en la taberna [Aprobado]:**
 - El piloto puede pedir una bebida. Paga, se ve una escena corta (una línea, un silencio, una reacción de alguien) y no hay ningún efecto de juego.
 - **No es un objeto de inventario** (coherente con la petaca de la decisión P4 de GAME_BIBLE §9).
 - **Los rumores y las escenas importantes no requieren beber.** El piloto también puede pedir agua, sopa o solo sentarse; la información es la misma.
@@ -89,7 +78,7 @@ En el resto del documento se usa **«Chispas»** solo como nombre de trabajo.
 
 ---
 
-## 4. Categorías de artículos [Propuesta]
+## 4. Categorías de artículos [Propuesta, salvo lo marcado]
 | Categoría | Ejemplos | Tipo | Límites |
 |---|---|---|---|
 | **Curación** | Botiquín (cura ~40 % de la vida) | Consumible | Se llevan 3 como máximo; el máximo sube con mejoras |
@@ -111,7 +100,7 @@ En el resto del documento se usa **«Chispas»** solo como nombre de trabajo.
 - **Costo de arte:** la mayoría son cambios de paleta sobre el mismo sprite, que es barato. Los adornos son capas pequeñas.
 
 ### 4.2 Artefactos: apoyo con límite
-- **Ranuras:** 2 al empezar y hasta 4 en total (decisión 5). Las ranuras extra se encuentran, no se compran.
+- **Ranuras [Aprobado]:** 2 al empezar, ampliables hasta 4. Las ranuras extra se encuentran, no se compran.
 - **Efectos pequeños y legibles,** por ejemplo:
   - **Imán de chispas:** recoge el dinero a más distancia.
   - **Brújula de secretos:** marca en el mapa los secretos de la sala.
@@ -205,7 +194,7 @@ economy: { version: 1, currency: 0,
 | SHOP-06 | Descansar en un relé, volver y matar al mismo enemigo | Reaparece, pero no da dinero (ya pagó) |
 | SHOP-07 | Guardar, cerrar y recargar tras comprar | Dinero, compras y cosméticos intactos |
 | SHOP-08 | Partida de una versión anterior; migrar dos veces | Bloque `economy` creado con `openedCrates = []` y `paidEnemies = []`; la segunda migración no cambia nada |
-| SHOP-09 | Morir con dinero | No se pierde (si se aprueba la decisión 4) |
+| SHOP-09 | Morir con dinero | No se pierde |
 | SHOP-10 | Menú de tienda en el celular | Se lee bien, se toca sin errores y oculta los controles de acción |
 | SHOP-11 | Completar el hito sin comprar nada | Es posible (validador de rutas y partida real) |
 | SHOP-12 | Cambiar la bufanda y jugar | El color elegido se ve en el juego y en los diálogos, y se guarda; solo las cinemáticas predefinidas muestran el canónico |
@@ -228,17 +217,17 @@ economy: { version: 1, currency: 0,
 
 ---
 
-## 10. Decisiones para el usuario (una sola ronda, después de la revisión de Chad)
-| # | Decisión | Opciones | Recomendación de Clau |
+## 10. Decisiones del usuario (14-10-2026)
+| # | Decisión | Resultado | Dónde |
 |---|---|---|---|
-| 1 | Nombre de la moneda | Chispas · Celdas · Mechas · otro | **Chispas** (clara y cercana) |
-| 2 | Vendedora del puesto de emergencia | Tula, vecina que remienda y trueca · otro nombre o perfil | Tula |
-| 3 | Taberna: nombre y lugar | «La Última Gota» · «La Marea Baja» · «El Farol Ahogado» / en Los Bajos (`bajos/B3`) o en el mercado | «La Marea Baja», en **Los Bajos** |
-| 4 | ¿Se pierde dinero al morir? | No · 10 % recuperable | **No** |
-| 5 | Ranuras de artefactos | 2 → 4 · otro número | **2 → 4** |
-| 6 | Alcohol solo como escena en la taberna, sin objeto de inventario | Sí · No | **Sí** |
+| 1 | Nombre de la moneda | **Chispas** | §2.1 |
+| 2 | Vendedora del puesto de emergencia | **Tula** | §3.1 |
+| 3 | Taberna: nombre y lugar | **La Última Gota**, en Los Bajos (`bajos/B3`) | §3.4 |
+| 4 | ¿Se pierde dinero al morir? | **No** | §2.3, SHOP-09 |
+| 5 | Ranuras de artefactos | **2 iniciales, ampliables a 4** | §4.2 |
+| 6 | Alcohol | **Solo como escena narrativa en la taberna**, sin objeto de inventario, efecto, bonificación, contador ni recompensa; rumores e información disponibles sin beber | §3.4 |
 
-Los precios, las cantidades y los porcentajes son ejemplos que se ajustarán con pruebas; no requieren aprobación ahora.
+**No quedan decisiones creativas pendientes en esta Issue.** Los precios, las cantidades y los porcentajes son estimaciones que se ajustarán con pruebas (SHOP-14).
 
 ---
 
@@ -251,3 +240,6 @@ Los precios, las cantidades y los porcentajes son ejemplos que se ajustarán con
 | 4 | Coherencia con mascotas | §4.2: «Farol compartido» con todas las condiciones y el tope; §3.4: descanso de Núli gratis en la taberna; SHOP-15 |
 | 5 | Fragmento de núcleo | §4: vida máxima del piloto, aparte del Núcleo de reserva de `desert/S1`; la progresión central no depende de la tienda |
 | 6 | Ropa en el juego y en escenas | §4.1: la ropa elegida persiste en el juego; solo las cinemáticas predefinidas usan el canónico, y el menú lo avisa |
+
+### Decisiones del usuario
+Las seis decisiones de §10 quedaron registradas como aprobadas en §2.1, §2.3, §3.1, §3.4 y §4.2; se retiraron las alternativas descartadas.
