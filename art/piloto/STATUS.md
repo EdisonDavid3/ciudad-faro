@@ -1,11 +1,13 @@
 # Estado de producción artística — 14 octubre 2026
 
-## Aprobación del usuario
-- **Idle (respiración)**: 8 fotogramas aprobados visualmente. PNG individuales, atlas y JSON generados localmente en `ciudad_faro_idle_aprobado_v1.zip`; **binarios aún NO subidos a GitHub**.
-- **Walk (caminar)**: 8 fotogramas aprobados visualmente en la lámina más reciente; **separación, limpieza y exportación pendientes de verificación**. No declarar el atlas de caminar terminado.
-- **Fall / death**: bloqueados, diseños anteriores rechazados.
+**INSTRUCCIÓN DEL USUARIO: CLAU PAUSADO**. No iniciar tareas nuevas de Claude Code, no fusionar PR #13, no modificar `main` mientras se termina el atlas del piloto. Un comentario no detiene automáticamente procesos ya activos; la pausa requiere que el usuario la aplique en la sesión de Claude Code.
 
-## Pendiente técnico
-Subir a esta rama los PNG reales de Idle y Walk y el JPG canónico original, conservando el canal alfa, una vez verificados. El conector de escritura textual no permite enviar directamente los archivos binarios del entorno local; no afirmar que están en GitHub hasta verificar los archivos allí.
+## Respaldos existentes
+- **Idle (respiración)**: 8 fotogramas aprobados; exportados como PNG RGBA individuales + atlas PNG + JSON, conservados en ZIP local `ciudad_faro_idle_aprobado_v1.zip`.
+- **Walk (caminar)**: 8 fotogramas aprobados visualmente; **ahora separados en 8 PNG candidatos** dentro del ZIP local `ciudad_faro_piloto_respaldo_idle_walk.zip`. Los candidatos **no son todavía aptos para motor**: hay residuos rojos de fondo, y partes de bufanda cerca de límites de celda; requieren limpieza y validación.
+- **Fall y Death**: bloqueadas hasta reconstrucción de poses y aprobación.
+- **GitHub**: esta rama contiene documentación/estado, pero **NO contiene todavía los archivos binarios de los ZIP**. No afirmar que los PNG están versionados en GitHub.
+- **Juego**: no se ha sustituido `assets/atlas/piloto.webp`.
 
-No sustituir assets actuales del juego. No fusionar sin permiso explícito del usuario.
+## Regla de seguridad
+No mezclar candidatos con aprobados; no regenerar una lámina completa al corregir un frame. Prioridad: terminar limpieza de caminar y establecer mecanismo de subida real de binarios. No fusionar sin autorización expresa.
