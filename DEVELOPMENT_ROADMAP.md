@@ -87,6 +87,19 @@ Salas `city/T0` → `T1` → `M1` → `BA1` → `P1` → muelles, más la Cister
 - Tramo de Los Bajos `bajos/B1`–`B3` para cerrar `loop-west` (válvula de `desert/C3` + reja de `bajos/B1`).
 - Regreso a la ciudad con cambios según `F_desierto` y `F_paneles`, y cameo de Silas en el primer regreso.
 
+### 2.0b Sistemas nuevos en versión mínima (decisión del usuario, 14-10-2026)
+Se incluyen en «La primera luz» **solo en versión mínima**, después de los fundamentos de la Fase 1. Los sistemas completos se diseñan en sus Issues, en este orden: #7 (carácter) → #5 (mascotas) → #6 (tiendas).
+
+| Sistema | En el primer hito | Después (fuera del hito) |
+|---|---|---|
+| **Mascota** (Issue #5) | Una mascota base de diseño propio (nombre provisional «Núli»): acompaña, ataca sola, gasta energía, se cansa, se retira y descansa; IA básica robusta, animaciones legibles, guardado, celular y 60 FPS | Evoluciones, colección, selección entre varias mascotas, habilidades de exploración |
+| **Tienda** (Issue #6) | Puesto de emergencia en `city/M1`, accesible desde la introducción en cualquier orden: 3–4 artículos (botiquín, mejora sencilla equilibrada, artículo para mascota, accesorio cosmético) | Mercado mayor, varias tiendas, moneda definitiva, inventario avanzado, taberna |
+| **Personalidad del piloto** (Issue #7) | Humor seco, sarcasmo y relación problemática con el alcohol, moderados, en diálogos, descansos y ambientación. Sin mecánica de beber | Taberna, alcohol como objeto del mundo, escenas opcionales completas |
+
+**Reglas que no cambian:** beber no da ventajas, nunca es obligatorio y la dependencia no se romantiza (público adulto). Los añadidos son pequeños y no crean misiones obligatorias largas. Los nombres de especies, moneda y taberna no están aprobados.
+
+**Prioridad y plan de contingencia:** primero control, combate, cámara, rendimiento, guardado, mapa y Heliostato. Si la mascota base compromete la estabilidad del hito, se activa en un hito inmediatamente posterior (sin posponer el sistema indefinidamente), se registra el motivo y el ajuste se somete al usuario.
+
 ### 2.1 Arte necesario (lo genera el usuario con textos estándar)
 | Recurso | Cantidad | Prioridad |
 |---|---|---|
@@ -98,6 +111,8 @@ Salas `city/T0` → `T1` → `M1` → `BA1` → `P1` → muelles, más la Cister
 | Sable (retrato + sprite básico) | 1 hoja | Media |
 | Robot farolero (NPC de las cámaras) | 1 hoja corta | Media |
 | Lila, Nox, Dante y Silas (sprites de NPC; Lila según la descripción aprobada en GAME_BIBLE §4) | 4 hojas cortas | Media |
+| Mascota base (seguir, atacar, cansarse, dormir, reactivarse) | 1 hoja | Alta |
+| Puesto de emergencia y sus 3–4 artículos (iconos) | 1 hoja corta | Media |
 | Retratos de diálogo (Piloto, Lila, Nox, Dante, Silas, Sable, Heliostato) | 7–10 | Media |
 | Objetos (cápsulas, núcleo, fragmento, espejos, puertas) | 1 hoja | Media |
 
@@ -128,9 +143,12 @@ Enviar toda la energía a Ciudad Faro de inmediato, o mantener el suministro del
 
 **Criterios de aceptación de la Fase 2:**
 - El hito se juega de principio a fin sin bloqueos: **validador de rutas ejecutado** y una partida completa registrada.
-- Ruta principal medida en una partida real; meta 35–45 minutos (50–65 con exploración). Si no se cumple, se informa la cifra real, no la meta.
+- Ruta principal medida en una partida real (incluidos los sistemas mínimos); meta 35–45 minutos (50–65 con exploración). Si no se cumple, se informa la cifra real, no la meta.
 - Casos de prueba CP-01 a CP-07 superados (encuentro con Lila, portón, válvula, reja, regreso por Los Bajos en variantes pendiente y resuelta, persistencia de banderas).
 - `loop-west` funciona en ambos sentidos.
+- El puesto de emergencia es accesible desde la introducción y vende sus 3–4 artículos aunque `F_desierto = pendiente`; las compras se guardan.
+- La mascota base ataca, se cansa, descansa y recupera su estado tras recargar la partida, sin tapar la visión ni los controles táctiles, y sin bajar de 60 FPS en el celular de referencia (o se aplica el plan de contingencia de §2.0b).
+- La personalidad del piloto aparece en diálogos y descansos sin ninguna mecánica de beber.
 - Los 5 enemigos y Heliostato usan arte ilustrado del mismo estilo que el piloto.
 - Hay al menos 4 secretos con contenido.
 - Puntos de control cada 3–5 minutos de juego.

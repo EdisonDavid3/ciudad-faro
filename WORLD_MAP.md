@@ -73,13 +73,15 @@ Estos IDs son estables: el código, los datos de salas y el validador usarán lo
 |---|---|---|
 | `city/T0` · Taller sellado | Despertar del piloto en el taller abandonado de la ingeniera | Correr, saltar |
 | `city/T1` · Conductos del faro | Subida vertical; se ve el ascensor del faro sin energía | Pared |
-| `city/M1` · Mercado apagado | Primer combate; aparece **Nox** | Disparo, disparo cargado |
+| `city/M1` · Mercado apagado | Primer combate; aparece **Nox**; abre el **puesto de emergencia** | Disparo, disparo cargado |
 | `city/BA1` · Barrio Apagado | **Se conoce a Lila en persona** (`F_lila`) | Dash |
 | `city/P1` · Plaza del Faro | Lila explica la situación; relé `relay/plaza`; se abre el portón al mercado (`F_porton`); `F_intro` | — |
 | `city/O1` · Muelle Oeste | Barcaza al Desierto Solar (recomendado por Lila) | — |
 | `city/E1` · Muelle Este | Barcaza a la Fábrica | — |
 | `city/CI1` · Cisterna | Reja cerrada hacia Los Bajos; se abre desde abajo (`F_reja`) | — |
 | `city/F1` · Base del faro | Ascensor a la Estación Orbital (final) | — |
+
+**Comercio temprano:** el puesto de emergencia garantiza suministros básicos aunque el jugador vaya primero a la Fábrica o posponga a Heliostato. El mercado mayor nunca es la única fuente de consumibles. La economía completa (moneda, catálogo, taberna) se diseña en la Issue #6; los nombres comerciales y de moneda no están aprobados.
 
 **Encuentro obligatorio con Lila:** la ruta es lineal `city/M1` → `city/BA1` → `city/P1`. El portón M1 ↔ P1 está encadenado y solo se abre desde la plaza, así que `F_intro` implica `F_lila`. Después, la exploración entre esas salas es libre.
 
@@ -89,7 +91,8 @@ Estos IDs son estables: el código, los datos de salas y el validador usarán lo
 | Taller de Lila | Mejoras, conversaciones, mapa | Tras la introducción (ubicación exacta por definir) |
 | Plaza del Faro (`city/P1`) | Centro social; cambia según la energía recuperada | Desde la introducción |
 | Barrio Apagado (`city/BA1`) | Familia de Lila; se ilumina (o no) según tus decisiones | Desde la introducción, a oscuras |
-| Mercado (`city/M1`) | Tienda y misiones de habitantes | Existe desde la introducción; **abre** cuando el desierto vuelve a dar energía |
+| Puesto de emergencia (`city/M1`) | Tienda pequeña: 3–4 artículos básicos (botiquín, mejora sencilla, artículo para la mascota, accesorio cosmético) | **Desde la introducción**, en cualquier orden de estaciones, aunque `F_desierto = pendiente` |
+| Mercado mayor (`city/M1`) | Más comerciantes, artículos y misiones de habitantes | Se abre o amplía con la energía recuperada de la **primera estación compatible** (Desierto o Fábrica) |
 | Cisterna (`city/CI1`) | Paso a Los Bajos | Al abrir la reja desde `bajos/B1` |
 | Base del faro (`city/F1`) | Ascensor a la Estación Orbital | Final (`A_estab` y `K_llave`) |
 
@@ -97,8 +100,9 @@ Estos IDs son estables: el código, los datos de salas y el validador usarán lo
 | Estado | Cambio |
 |---|---|
 | `F_desierto = pendiente` | La plaza sigue a oscuras; Lila lo comenta. Nada finge que el desierto esté resuelto |
-| `F_desierto = ciudad` | Se encienden los faroles de la plaza, abre el mercado, el Barrio Apagado recupera luz; la radio anuncia un corte en un asentamiento "fuera de los registros" |
+| `F_desierto = ciudad` | Se encienden los faroles de la plaza, se amplía el mercado, el Barrio Apagado recupera luz; la radio anuncia un corte en un asentamiento "fuera de los registros" |
 | `F_desierto = refugio` | Faroles de la plaza encendidos; el barrio sigue a medias; Dante aparece en el mercado |
+| `F_fabrica` | Talleres activos; el mercado mayor también se abre si la Fábrica fue la primera estación |
 | `F_paneles` (0–4) | Modula la intensidad de las luces en cualquiera de las dos opciones |
 | `F_reja` | Los vecinos usan el pasaje; un habitante nuevo cuenta historias de Los Bajos |
 | Primer regreso | Cameo de **Silas** en la plaza |
@@ -295,9 +299,9 @@ flowchart TB
 | Progresión ascendente por pares de regiones | Topología interconectada con la ciudad en el centro |
 | Sin región conectora; "pasadizos bajo los pontones" | Los Bajos, seis salas (ver §3) |
 | Muelle de llegada con barcazas, teleférico y ascensor | Muelle Oeste, Muelle Este y ascensor del faro (el teleférico queda fuera del diseño actual) |
-| Mercado disponible "tras la Estación 1" | El mercado existe desde la introducción y abre cuando vuelve la energía |
+| Mercado disponible "tras la Estación 1" | Puesto de emergencia desde la introducción; mercado mayor con la energía de la primera estación compatible (Desierto o Fábrica) |
 | Anclajes magnéticos en el taller tras 4 estaciones | Anclajes en el Reactor Helado |
-| Seis habilidades centrales | Siete habilidades más la Llave del faro |
+| Seis habilidades centrales | Kit base (dash, pared, disparo cargado) + seis mejoras `A_*` (`A_botas`, `A_doble`, `A_sub`, `A_ancla`, `A_linterna`, `A_estab`) + el objeto `K_llave` |
 | Ruta del fondo de C3 al Reactor con Lanza de Escarcha | C3 conecta con Los Bajos (válvula) y con el Invernadero (`A_sub`) |
 | Desierto de 25–40 minutos | Desierto de 20–26 min de ruta crítica; hito de 35–45 / 50–65 min |
 | «Lira» | **Lila** |
