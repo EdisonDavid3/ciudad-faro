@@ -1,7 +1,7 @@
 # Issue #1 — Topología del mundo interconectado
 
-**Versión:** 2 (corrige la revisión de ChatGPT en la PR #3; el detalle está en la sección 11).
-**Estado:** propuesta para revisión (ChatGPT) y aprobación (usuario).
+**Versión:** 3 (incluye las dos revisiones de ChatGPT y las decisiones del usuario; ver secciones 11 y 12).
+**Estado:** dirección de diseño aprobada por el usuario el 14-10-2026; pendiente la revisión final del documento. No es una orden de implementar ni una aprobación de merge.
 **Alcance:** solo diseño. No modifica `index.html`, sistemas jugables ni guardados.
 **Inspiración:** principios de exploración de los Metroidvania (mundo continuo, atajos que se abren desde el otro lado, regreso con habilidades nuevas, lugares vistos antes de poder alcanzarlos). No se copian mapas, personajes, arte ni contenido de ningún juego.
 
@@ -138,8 +138,9 @@ Las calles de la ciudad vieja, hundidas bajo Ciudad Faro. Faroles apagados bajo 
 flowchart LR
     T0["city/T0 · Taller sellado"] --> T1["city/T1 · Conductos del faro"]
     T1 --> M1["city/M1 · Mercado apagado"]
-    M1 --> BA1["city/BA1 · Barrio Apagado"]
-    M1 --> P1["city/P1 · Plaza del Faro"]
+    M1 --> BA1["city/BA1 · Barrio Apagado (Lila)"]
+    BA1 --> P1["city/P1 · Plaza del Faro"]
+    P1 -. "portón (abre desde P1)" .-> M1
     P1 --> O1["city/O1 · Muelle Oeste"]
     P1 --> E1["city/E1 · Muelle Este"]
     P1 -.-> CI1["city/CI1 · Cisterna (reja cerrada)"]
@@ -150,25 +151,27 @@ flowchart LR
 |---|---|---|---|
 | `city/T0` · Taller sellado | El piloto despierta en el taller abandonado de la ingeniera, bajo el faro. La armadura se activa por primera vez durante un apagón. | Correr, saltar | Grabación de la ingeniera cortada a la mitad |
 | `city/T1` · Conductos del faro | Salida vertical. Se ve a lo lejos el ascensor del faro sin energía (`city/F1`). | Pared, impulso de pared | "Algún día ese ascensor tendrá que funcionar" |
-| `city/M1` · Mercado apagado | Un dron de mantenimiento infectado ataca puestos vacíos. | Disparar, disparo cargado | Aparece el **Decodificador** (personaje en validación, sección 9) |
-| `city/BA1` · Barrio Apagado | La familia de Lira vive a oscuras. **Aquí se conoce a Lira en persona**; hasta ese momento solo se la oyó por radio. | Dash (hueco corto) | «No, no estoy llorando. Es el humo del generador.» |
-| `city/P1` · Plaza del Faro | El faro parpadea. Lira explica la situación de las estaciones y recomienda el desierto, sin bloquear la fábrica. | — | `relay/plaza`. Se activa `F_intro` |
+| `city/M1` · Mercado apagado | Un dron de mantenimiento infectado ataca puestos vacíos. El portón hacia la plaza está encadenado desde el otro lado. | Disparar, disparo cargado | Aparece **Nox** (Decodificador) |
+| `city/BA1` · Barrio Apagado | La familia de Lila vive a oscuras. **Aquí se conoce a Lila en persona** (`F_lila`); hasta ese momento solo se la oyó por radio. El único camino a la plaza es el callejón del barrio. | Dash (hueco corto) | «No, no estoy llorando. Es el humo del generador.» |
+| `city/P1` · Plaza del Faro | El faro parpadea. Lila explica la situación de las estaciones y recomienda el desierto, sin bloquear la fábrica. El jugador quita la cadena del portón al mercado (atajo permanente `F_porton`). | — | `relay/plaza`. Se activa `F_intro` |
 | `city/O1` · Muelle Oeste | Barcaza al Desierto Solar | — | Recomendado ("la más cercana y la menos rara") |
 | `city/E1` · Muelle Este | Barcaza a la Fábrica | — | Disponible, con aviso de mayor peligro |
 | `city/CI1` · Cisterna | Reja oxidada; se oye agua y se ve una luz cian del otro lado | — | Se abre desde `bajos/B1` |
 
-Para no saturar la introducción, solo aparecen Lira y el Decodificador. Los demás personajes nuevos llegan después.
+**Encuentro obligatorio con Lila:** la ruta de la introducción es lineal entre `city/M1`, `city/BA1` y `city/P1`, de modo que es imposible llegar a la plaza (y a los muelles) sin pasar por el barrio y conocer a Lila. La libertad vuelve en cuanto se abre el portón: desde ahí se puede ir y volver entre mercado, barrio y plaza en cualquier orden. Por eso `F_intro` implica siempre `F_lila`, sin depender de una comprobación adicional.
+
+Para no saturar la introducción, solo aparecen Lila y Nox. Los demás personajes nuevos llegan después de forma gradual.
 
 ### 3.2 Cambios visibles al regresar (por estado)
 | Estado | Cambio en la ciudad |
 |---|---|
-| `F_desierto = pendiente` (se salió del desierto sin vencer a Heliostato) | La plaza sigue a oscuras. Lira lo comenta («¿Turismo? Bonito momento para conocer las ruinas.»). Nada finge que el desierto esté resuelto |
+| `F_desierto = pendiente` (se salió del desierto sin vencer a Heliostato) | La plaza sigue a oscuras. Lila lo comenta («¿Turismo? Bonito momento para conocer las ruinas.»). Nada finge que el desierto esté resuelto |
 | `F_desierto = ciudad` | Faroles de la plaza encendidos, el mercado abre, el Barrio Apagado recupera luz. La radio anuncia que un asentamiento "fuera de los registros" perdió suministro |
-| `F_desierto = refugio` | Faroles de la plaza encendidos; el barrio sigue a medias. El defensor del refugio aparece en el mercado para cambiar piezas. Lira está molesta, pero entiende |
+| `F_desierto = refugio` | Faroles de la plaza encendidos; el barrio sigue a medias. Dante aparece en el mercado para cambiar piezas. Lila está molesta, pero entiende |
 | `F_paneles` (ver 5.5) | Modula la intensidad: con más paneles intactos, más luces se encienden en cualquiera de las dos opciones |
 | `F_fabrica` | Talleres activos; el ascensor de servicio del mercado funciona (atajo interno) |
 | `F_reja` | Los vecinos usan el pasaje; un habitante nuevo cuenta historias de Los Bajos |
-| Archivista | Primer cameo en la plaza en el **primer regreso** (no en la introducción) |
+| Silas (Archivista) | Primer cameo en la plaza en el **primer regreso** (no en la introducción) |
 
 ---
 
@@ -177,9 +180,11 @@ Para no saturar la introducción, solo aparecen Lira y el Decodificador. Los dem
 ### 4.1 Banderas de mundo
 | Bandera | Se activa en | Valores |
 |---|---|---|
-| `F_intro` | Fin de la introducción (`city/P1`) | sí / no |
-| `F_valvula` | Palanca en `desert/C3` | sí / no |
-| `F_reja` | Palanca en `bajos/B1` | sí / no |
+| `F_lila` | Conocer a Lila en `city/BA1` | sí / no |
+| `F_intro` | Fin de la introducción (`city/P1`); implica `F_lila` | sí / no |
+| `F_porton` | Quitar la cadena del portón en `city/P1` (atajo plaza ↔ mercado) | sí / no |
+| `F_valvula` | Palanca en `desert/C3` | sí / no (permanente) |
+| `F_reja` | Palanca en `bajos/B1`; se guarda al instante | sí / no (permanente) |
 | `F_ascensor_d3` | Palanca en `desert/D3` (ascensor a `desert/A1`) | sí / no |
 | `F_desierto` | Al vencer a Heliostato y decidir | `pendiente` / `ciudad` / `refugio` |
 | `F_paneles` | Al terminar la pelea con Heliostato | 0–4 paneles intactos |
@@ -193,8 +198,9 @@ Para no saturar la introducción, solo aparecen Lira y el Decodificador. Los dem
 |---|---|---|
 | `city/T0` | `city/T1` | — |
 | `city/T1` | `city/M1`; vista de `city/F1` | Pared |
-| `city/M1` | `city/BA1`, `city/P1` | — |
-| `city/P1` | `city/O1`, `city/E1`, `city/CI1`, `city/F1` | `F_intro` para los muelles |
+| `city/M1` | `city/BA1`; `city/P1` por el portón | `F_porton` para el portón (abre-desde: `city/P1`) |
+| `city/BA1` | `city/M1`, `city/P1` (callejón) | — · activa `F_lila` |
+| `city/P1` | `city/BA1`, `city/M1`, `city/O1`, `city/E1`, `city/CI1`, `city/F1` | `F_intro` para los muelles |
 | `city/CI1` | `bajos/B1` | `F_reja` |
 | `city/F1` | `orbital/O1` | `A_estab` y `K_llave` |
 
@@ -210,7 +216,7 @@ Para no saturar la introducción, solo aparecen Lira y el Decodificador. Los dem
 | `desert/B3` | `desert/C1`, `storm/T1` | (`A_doble` y `A_botas`) o `A_ancla` para `storm` | Dunas cristalizadas |
 | `desert/C1` | `desert/C2` | — | Acceso a reservas |
 | `desert/C2` | `desert/C3`, `desert/C4` | — | Galería de baterías |
-| `desert/C3` | `bajos/B2`, `greenhouse/G4` | `F_valvula`; `A_sub` | Refugio civil, robot farolero, defensor del refugio |
+| `desert/C3` | `bajos/B2`, `greenhouse/G4` | `F_valvula`; `A_sub` | Refugio civil, robot farolero, Dante (defensor del refugio) |
 | `desert/C4` | `desert/D1` | — | **Cápsula: `A_botas`** |
 | `desert/D1` | `desert/D2` | `A_botas` | Sala de espejos |
 | `desert/D2` | `desert/D3` | — | Encuentro con Sable |
@@ -260,6 +266,11 @@ Las banderas de acceso (`F_valvula`, `F_fabrica`) se obtienen solo con el kit ba
 3. D5 → D3 → ascensor → A1 → M-W → `city` (cambios visibles), **o** D3 → … → C3 → L1 → `bajos/B2` → B3 → B4 → `platform/P1` → P2 (`A_sub`).
 4. **Regreso desde la Plataforma:** P2 → P1 → `bajos/B4` → B3 → B1 (abre `F_reja`) → `city/CI1` → `city/P1`.
 
+**Recorrido 1b · Regreso del hito por el atajo de Los Bajos** (alternativa al ascensor de D3; en el hito Los Bajos solo tiene B1–B3, ver §8)
+- **Variante pendiente** (antes de Heliostato): `desert/C3` (abre `F_valvula`) → L1 → `bajos/B2` → B3 → B1 (abre `F_reja`) → `city/CI1` → `city/P1`. `F_desierto = pendiente`.
+- **Variante resuelta** (después de Heliostato): `desert/D5` → D3 → D2 → D1 → C4 → C2 → C3 → L1 → `bajos/B2` → B3 → B1 → `city/CI1` → `city/P1`. `F_desierto = ciudad` o `refugio`.
+- En ambas, `F_valvula` y `F_reja` quedan abiertas para siempre y se guardan en cuanto se activan.
+
 **Recorrido 2 · Saltarse a Heliostato (intencional, ver 5.6)**
 `desert/C3` (`F_valvula`) → `bajos` → `platform/P2` (`A_sub`) → `platform/P1` → L6 → `greenhouse` (`A_linterna`). `F_desierto` sigue en `pendiente`.
 
@@ -273,6 +284,19 @@ Las banderas de acceso (`F_valvula`, `F_fabrica`) se obtienen solo con el kit ba
 4. Las arenas de jefe tienen salida después de la pelea.
 5. Guardado automático al obtener una habilidad o activar una bandera de acceso.
 6. **Validador de rutas** (Fase 1): recorre el grafo de esta sección para cada conjunto de habilidades y banderas, y comprueba que toda sala obligatoria sea alcanzable y tenga regreso a un relé.
+
+### 4.7 Casos de prueba de la introducción y del atajo
+Especificación verificable para la implementación (manual con el depurador, y automática con el validador cuando exista). Las conexiones internas de cada región son de ida y vuelta salvo que la tabla diga "abre-desde".
+
+| ID | Estado inicial | Pasos | Resultado esperado |
+|---|---|---|---|
+| CP-01 · Lila obligatoria | Partida nueva | Intentar llegar a `city/P1` desde `city/M1` sin pasar por `city/BA1` | Imposible: el portón está encadenado. Al llegar a P1, `F_lila = sí` siempre |
+| CP-02 · Portón | CP-01 completado | En `city/P1`, quitar la cadena; ir de P1 a M1 y volver | `F_porton = sí`; M1 ↔ P1 en ambos sentidos; persiste tras recargar |
+| CP-03 · Atajo con desierto pendiente | `F_intro = sí`, `F_valvula = no`, `F_reja = no`, `F_desierto = pendiente` | Recorrido 1b, variante pendiente; recargar la partida en `city/P1` | `F_valvula = sí`, `F_reja = sí`, `F_desierto = pendiente`; la plaza sigue a oscuras y Lila dice su línea de "pendiente"; Heliostato sigue disponible |
+| CP-04 · Regreso inverso | CP-03 completado | `city/P1` → CI1 → `bajos/B1` → B3 → B2 → `desert/C3` | Se llega a C3 sin barcaza; ninguna puerta se cerró |
+| CP-05 · Atajo con desierto resuelto | `F_desierto = ciudad` (repetir con `refugio`), `F_paneles` = 4 y 0 | Recorrido 1b, variante resuelta; recargar en `city/P1` | `F_reja = sí`; la ciudad muestra los cambios de la tabla 3.2 y de la matriz 5.5 para esa combinación |
+| CP-06 · Reja ya abierta | `F_reja = sí` antes de vencer a Heliostato | Vencer a Heliostato y volver por el atajo | No se repite la escena de la reja; solo cambia la ciudad según `F_desierto` |
+| CP-07 · Persistencia | Cualquiera | Cerrar el juego justo después de cada palanca (válvula, reja, portón) y volver a abrirlo | La bandera sigue activa; no hay que repetir nada |
 
 ---
 
@@ -338,7 +362,7 @@ El objetivo pasa a ser **35–45 minutos de ruta crítica** y **50–65 minutos 
 **Cómo se avisa al jugador, antes y durante la pelea:**
 1. En `desert/D3`, una placa de mantenimiento legible dice que los paneles de la arena alimentan la reserva.
 2. Al empezar la fase 2, un medidor visible indica **"Reserva recuperable: 100 %"** y baja un 25 % por cada panel destruido.
-3. Al romper el primer panel, Lira por radio: «Cada panel que rompes es luz que no vuelve. Lo digo para que lo sepas, no para que te mueras.»
+3. Al romper el primer panel, Lila por radio: «Cada panel que rompes es luz que no vuelve. Lo digo para que lo sepas, no para que te mueras.»
 
 **Efecto combinado (sin castigar a nadie):**
 | Paneles intactos | `F_desierto = ciudad` | `F_desierto = refugio` |
@@ -355,7 +379,7 @@ Ningún contenido obligatorio depende de los paneles. Solo cambia la intensidad 
 **Qué queda pendiente mientras `F_desierto = pendiente`:**
 - La arena de Heliostato, la revelación de `desert/D5` y la decisión siguen esperando.
 - La ciudad no cambia por el desierto (tabla 3.2).
-- El defensor del refugio se queda en `desert/C3`: su escena inicial ocurre, la final no.
+- Dante se queda en `desert/C3`: su escena inicial ocurre, la final no.
 - Los guardianes posteriores mencionan que el desierto sigue apagado (líneas variantes).
 - El hito «La primera luz» exige vencer a Heliostato para considerarse completo; el salto existe, pero no cuenta como final del hito.
 
@@ -386,7 +410,7 @@ Ningún contenido obligatorio depende de los paneles. Solo cambia la intensidad 
 
 Ambas regiones iniciales se completan con el kit base, y cada una tiene zonas opcionales que piden la habilidad de la otra.
 
-**Orden A — Desierto primero (orientación suave de Lira)**
+**Orden A — Desierto primero (orientación suave de Lila)**
 - Mecánica: el desierto es abierto y horizontal, ideal para aprender. Las Botas facilitan los pozos de la Fábrica.
 - Narrativa: Heliostato plantea la pregunta central (energía para unos o para otros). Horologio después la profundiza con el duelo.
 
@@ -394,7 +418,7 @@ Ambas regiones iniciales se completan con el kit base, y cada una tiene zonas op
 - Mecánica: la Fábrica es vertical y exigente; quien la elige busca desafío. El Doble impulso abre de inmediato el mirador del altiplano.
 - Narrativa: primero la tragedia más humana (Horologio); al llegar al desierto, la decisión del refugio pesa más.
 
-Lira **recomienda** el desierto, pero no bloquea la Fábrica. Sus líneas cambian según el orden. Sable se adapta con los estados de la sección 6.
+Lila **recomienda** el desierto, pero no bloquea la Fábrica. Sus líneas cambian según el orden. Sable se adapta con los estados de la sección 6.
 
 ---
 
@@ -404,7 +428,7 @@ Lira **recomienda** el desierto, pero no bloquea la Fábrica. Sus líneas cambia
 
 | Elemento | Hito | Diseño final |
 |---|---|---|
-| Muelle Este | "Barcaza en reparación" (cierre temporal) | Abierto tras la introducción |
+| Muelle Este | "Barcaza en reparación" (cierre temporal, **aprobado solo para la demo**) | Abierto tras la introducción; el cierre nunca pasa al diseño final |
 | Los Bajos | Solo `bajos/B1`–B3 y la válvula | Región completa (B1–B6) |
 | Regiones | `city` introductoria + `desert` completo | Las diez regiones |
 
@@ -415,21 +439,24 @@ Lira **recomienda** el desierto, pero no bloquea la Fábrica. Sus líneas cambia
 - `loop-west` funciona en ambos sentidos.
 - Al menos 4 secretos con contenido narrativo o mejora.
 - `F_desierto` y `F_paneles` se guardan y cambian la ciudad de forma visible.
-- Ruta crítica de 35–45 minutos medida en una partida real.
+- Ruta crítica de 35–45 minutos (meta aprobada; 50–65 con exploración) medida en una partida real.
+- Casos de prueba CP-01 a CP-07 (§4.7) superados.
 - Arte de escenarios, enemigos y Heliostato en el estilo del piloto (sin arte provisional en la versión final del hito).
 
 ---
 
-## 9. Personajes nuevos (en validación)
+## 9. Personajes nuevos (aprobados por el usuario)
 
-El usuario compartió una imagen con cuatro personajes y pidió encontrarles un lugar en la historia. **Los roles de esta tabla son una propuesta de Claude; ni los roles ni los nombres están aprobados.**
+El usuario compartió una imagen con cuatro personajes y pidió encontrarles un lugar en la historia. Claude propuso los roles; el usuario **aprobó roles y nombres** el 14-10-2026. El diseño visual definitivo sigue en manos del usuario. Aparecen de forma gradual: en la introducción solo está Nox.
 
-| Personaje (por aspecto) | Rol propuesto | Primera aparición propuesta |
-|---|---|---|
-| Sudadera, lentes, mochila (morado) | **El Decodificador:** escucha las transmisiones del Eco y recibe el mapa de los relés | `city/M1` (introducción) |
-| Abrigo de piel (azul) | **Líder del campamento del frío:** su familia está en las cámaras criogénicas de Boreal | `reactor` y la ferrovía |
-| Gorro rosado (rojo) | **Defensor del refugio oculto:** pone cara a la decisión del desierto | `desert/C3` |
-| Parche y tirantes (verde) | **El Archivista:** custodio de los registros borrados del Consejo; ambiguo | Primer regreso a `city/P1` |
+| Nombre | Personaje (por aspecto) | Rol | Primera aparición |
+|---|---|---|---|
+| **Nox** | Sudadera, lentes, mochila (morado) | Decodificador: escucha las transmisiones del Eco y recibe el mapa de los relés | `city/M1` (introducción) |
+| **Kaela** | Abrigo de piel (azul) | Líder del campamento del frío: su familia está en las cámaras criogénicas de Boreal | `reactor` y la ferrovía |
+| **Dante** | Gorro rosado (rojo) | Defensor del refugio oculto: pone cara a la decisión del desierto | `desert/C3` |
+| **Silas** | Parche y tirantes (verde) | Archivista: custodio de los registros borrados del Consejo; ambiguo | Primer regreso a `city/P1` |
+
+**Lila (antes «Lira»):** el usuario decidió renombrar a la técnica. Mantiene personalidad y función. Su diseño ilustrado se inspirará en una referencia fotográfica del usuario, adaptada al estilo retrofuturista, sin copiar la foto ni la ropa literalmente. **La imagen personal no se sube al repositorio** sin autorización expresa.
 
 ---
 
@@ -446,7 +473,10 @@ El usuario compartió una imagen con cuatro personajes y pidió encontrarles un 
 | 7 | WORLD_MAP §3 | Seis habilidades centrales | Agregar `A_linterna` (modo de la mochila-faro) y `K_llave` |
 | 8 | Juego actual (`index.html`) | Menú de selección de 8 estaciones | Viaje físico entre regiones (implementación futura) |
 | 9 | Juego actual (`index.html`) | Cápsula de las Botas junto a la puerta del jefe | Moverla a `desert/C4` (implementación futura) |
-| 10 | GAME_BIBLE §4 | No incluye a los cuatro personajes nuevos | Agregarlos solo tras aprobación |
+| 10 | GAME_BIBLE §4 | No incluye a los cuatro personajes nuevos | Agregar a Nox, Kaela, Dante y Silas (aprobados) |
+| 11 | GAME_BIBLE, WORLD_MAP, DEVELOPMENT_ROADMAP | La técnica se llama «Lira» | Renombrar a **Lila** en todos los documentos (aprobado por el usuario) |
+
+Las contradicciones 1–7, 10 y 11 se aplicarán a los documentos raíz en una PR propia después de esta, para no mezclar la topología con la actualización de la biblia. Las 8 y 9 son cambios de código y esperan la orden de implementar.
 
 ---
 
@@ -462,3 +492,24 @@ El usuario compartió una imagen con cuatro personajes y pidió encontrarles un 
 | 6 | Media | Paneles con aviso previo y dos variables | Sección 5.5: tres avisos, medidor visible, matriz 3×2 sin contenido obligatorio en juego |
 | 7 | Baja | IDs únicos, frase de Lira, linterna, NPC | Convenciones 0.1; Lira en persona en `city/BA1`; `A_linterna` como modo de la mochila-faro; sección 9 reescrita; solo dos personajes en la introducción |
 | 8 | Baja | Verificar Mermaid y tablas sin diagrama | Los tres diagramas se renderizaron con `mermaid-cli` 11.4.2 sin errores; tablas de adyacencia en 1.3, 2.2 y 4.2 |
+
+### Segunda revisión de ChatGPT (v2)
+| # | Pedido | Cambio en la versión 3 |
+|---|---|---|
+| 1 | Asegurar el encuentro con Lila en la introducción | §3.1: ruta lineal M1 → BA1 → P1; portón M1 ↔ P1 que se abre desde la plaza (`F_porton`); `F_intro` implica `F_lila`; caso CP-01 |
+| 2 | Especificar el regreso por el atajo y su guardado | §4.5 recorrido 1b (variantes pendiente y resuelta); §4.1 banderas permanentes; §4.7 casos CP-03 a CP-07 |
+
+---
+
+## 12. Decisiones aprobadas por el usuario (14-10-2026)
+
+| # | Decisión | Estado | Dónde |
+|---|---|---|---|
+| 1 | Los Bajos como región interconectada con identidad propia, salas y secretos; no un pasillo de viaje rápido | Aprobada | §2, §1.5 |
+| 2 | Se puede posponer a Heliostato; `F_desierto = pendiente` hasta resolverlo, con sus consecuencias | Aprobada | §5.6, §3.2 |
+| 3 | Muelle Este cerrado solo en la demo / primer hito | Aprobada | §8 |
+| 4 | Roles y nombres de Nox, Kaela, Dante y Silas; aparición gradual | Aprobada | §9 |
+| 5 | Meta de 35–45 min de ruta principal y 50–65 con exploración, sujeta a medición real | Aprobada | §5.3, §8 |
+| 6 | La técnica se llama Lila (antes Lira) | Aprobada | §9, §10 #11 |
+
+No queda ninguna de estas decisiones pendiente. Siguen pendientes: la revisión final del documento, la orden de implementar y el merge, que decide el usuario.

@@ -3,9 +3,10 @@
 **Estado:** coordinación preparada, esperando revisión del usuario. **No se ha modificado el código jugable.**
 
 ## Equipo y límites
+Nombres de trabajo asignados por el usuario (14-10-2026): **Clau** = Claude Code, **Chad** = ChatGPT.
 - **Usuario:** director y responsable final. Aprueba historia, alcance y cambios importantes; decide cuándo hacer merge.
-- **Claude Code:** implementador y diseñador técnico. Lee el repositorio, propone diseños y cambios de código en ramas propias. No modifica main directamente.
-- **ChatGPT:** asesor creativo y revisor de arquitectura, experiencia de juego, coherencia narrativa, bugs y Pull Requests. No sustituye las pruebas reales.
+- **Claude Code («Clau»):** implementador y diseñador técnico. Lee el repositorio, propone diseños y cambios de código en ramas propias. No modifica main directamente.
+- **ChatGPT («Chad»):** asesor creativo y revisor de arquitectura, experiencia de juego, coherencia narrativa, bugs y Pull Requests. No sustituye las pruebas reales.
 - **Codex:** excluido expresamente del flujo.
 
 ## Visión aprobada
@@ -101,6 +102,33 @@ Preguntas para el usuario:
 4. ¿Apruebas los roles propuestos para los 4 personajes y sus nombres?
 5. ¿Apruebas la nueva meta de tiempos (35–45 críticos / 50–65 con exploración)?
 Próxima acción: nueva revisión de ChatGPT y decisión del usuario. Sin merge por parte de Claude.
+
+### 2026-10-14 — Clau (Claude Code) / Issue #1 / PR #3 (revisión 3)
+Estado: listo para revisión
+Objetivo: aplicar la segunda revisión de Chad y registrar las decisiones aprobadas por el usuario. Solo documentación.
+Archivos:
+- `docs/design/ISSUE-1_TOPOLOGIA_DEL_MUNDO.md` (v3)
+- `docs/AI_HANDOFF.md` (nombres de trabajo y esta entrada)
+Decisiones tomadas:
+- Aprobadas por el usuario (§12 del documento): Los Bajos; posponer a Heliostato con `F_desierto = pendiente`; Muelle Este cerrado solo en la demo; Nox, Kaela, Dante y Silas con sus roles; meta 35–45 / 50–65 min; la técnica se llama **Lila** (antes Lira).
+- Introducción: ruta lineal `city/M1` → `city/BA1` → `city/P1`, con portón M1 ↔ P1 que se abre desde la plaza (`F_porton`). Es imposible salir de la ciudad sin conocer a Lila (`F_intro` implica `F_lila`).
+- Atajo de Los Bajos: recorrido 1b en variantes "pendiente" y "resuelta"; `F_valvula` y `F_reja` permanentes y guardadas al instante.
+- Casos de prueba CP-01 a CP-07 (§4.7) como especificación verificable para la implementación.
+- Propuesta: aplicar el renombre a Lila y los cambios a GAME_BIBLE, WORLD_MAP y DEVELOPMENT_ROADMAP en una PR propia después de esta, para no mezclar alcances.
+- La foto de referencia de Lila **no** se sube al repositorio.
+Pruebas realizadas y resultados:
+- Diagramas Mermaid renderizados con `mermaid-cli` 11.4.2: 3/3 sin errores (incluye el diagrama de la ciudad modificado).
+- Revisión manual: con las tablas de §4.2 no existe camino de `city/M1` a `city/P1` sin pasar por `city/BA1` antes de `F_porton`.
+- Recorrido 1b trazado contra las adyacencias de `desert`, `bajos` y `city`.
+- `git diff --stat`: solo `docs/`; `index.html`, guardados y `main` sin tocar.
+No verificado:
+- Sin validador automático de rutas; los casos CP-01 a CP-07 se ejecutarán cuando exista la implementación.
+- Los tiempos siguen siendo metas, no mediciones.
+Bloqueos y riesgos:
+- Hasta la PR de actualización de la biblia, GAME_BIBLE, WORLD_MAP y DEVELOPMENT_ROADMAP siguen diciendo «Lira».
+Preguntas para el usuario:
+1. ¿Hago la PR de actualización de la biblia (Lila, Los Bajos, NPC, tiempos) después de cerrar esta?
+Próxima acción: revisión final de Chad; merge solo por decisión del usuario.
 
 ## Reglas de seguridad
 - Nunca subir API keys, tokens, secretos ni archivos .env.
