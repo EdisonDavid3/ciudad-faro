@@ -979,7 +979,7 @@ function drawPlayer(){
   let name;
   if (p.hurt > 0) name = 'crouch';
   else if (p.wall) name = 'crouch';
-  else if (p.dash > 0) name = 'fall';
+  else if (p.dash > 0) name = p.air ? 'leap' : 'run3';
   else if (!p.ground) name = p.vy < 0 ? 'jump' : 'leap';
   else if (p.land > 0) name = 'crouch';
   else if (p.vx !== 0) name = 'run' + ((p.anim >> 2) % 8);
@@ -995,6 +995,10 @@ function drawPlayer(){
   ctx.imageSmoothingEnabled = true;
   ctx.translate(cx, by);
   if (face < 0) ctx.scale(-1, 1);
+  if (p.dash > 0){
+    for (let g = 3; g >= 1; g--){ ctx.globalAlpha = .12 * (4 - g); ctx.drawImage(atlasImg, sx, sy, sw, sh, -ax / k - g * 7, -dh, dw, dh); }
+    ctx.globalAlpha = 1;
+  }
   ctx.drawImage(atlasImg, sx, sy, sw, sh, -ax / k, -dh, dw, dh);
   if (flash){ ctx.globalAlpha = .75; ctx.drawImage(atlasWhite, sx, sy, sw, sh, -ax / k, -dh, dw, dh); }
   ctx.restore();
