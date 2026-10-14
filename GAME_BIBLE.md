@@ -57,6 +57,39 @@ Madre Faro no quiere exterminar a la humanidad: quiere **quitarle el control**. 
 - **Secreto (revelación tardía):** de niño sobrevivió a un accidente gracias a un sistema médico que dejó una clave de identificación en su organismo. La ingeniera reutilizó esa clave en la armadura. Esa clave pertenece a Madre Faro: la IA que parece perseguirlo le salvó la vida. Sigue siendo humano y libre de decidir.
 - **Diseño canónico:** ver Dirección artística.
 
+#### Ficha ampliada (Issue #7 — público adulto)
+**Quién es.** Un adulto perspicaz, cansado y desconfiado, que se gana la vida haciendo trabajos que nadie más quiere hacer. Ve rápido lo que los demás esconden y lo dice antes de pensar si conviene. Bebe más de lo que debería. No es un borracho de chiste ni un genio atormentado: es alguien que encontró una forma mala de soportar el miedo y que sigue usándola porque todavía funciona, más o menos.
+
+**Voz.** Frases cortas, humor seco, ironía dirigida sobre todo contra sí mismo y contra el poder (el Consejo, los protocolos, las máquinas que "saben lo que conviene"). Se burla de las situaciones, rara vez de las personas que sufren. Cuando algo le importa, habla menos.
+
+**Motivaciones.**
+- Al principio: sobrevivir y cobrar.
+- Después: que la gente que conoce (Lila, su familia, los del refugio) no pague por decisiones ajenas.
+- Por debajo: demostrar que todavía decide él, también sobre sí mismo. Es la versión pequeña de la pregunta central del juego: ¿la seguridad vale el precio de la libertad?
+
+**Defectos.** Desconfía hasta de quien lo ayuda; esquiva las conversaciones serias con un chiste; bebe para no sentir el miedo y lo niega con humor; promete poco para no decepcionar.
+
+**Contraste entre broma y vulnerabilidad.**
+- Bromea cuando tiene miedo (rasgo fijo). Cuanto peor es la situación, más rápido es el chiste.
+- **Ante una pérdida real, se calla** (regla del tono). Ese silencio pesa porque el resto del tiempo nunca se calla.
+- Las grietas se ven en detalles, no en discursos: una mano que tiembla en un descanso, una petaca que guarda sin abrir, una broma que no termina.
+
+**Relaciones.**
+- **Lila:** ella esconde verdades para mantener la calma; él esconde la botella. Se reconocen en eso sin decirlo. Lila lo nota desde el primer encuentro, no lo sermonea y tampoco finge no verlo.
+- **Sable:** usa el hábito del piloto como golpe bajo una vez, para desacreditarlo. El piloto contesta con humor, pero la frase le queda.
+- **Madre Faro:** recuerda nombres y cuida decidiendo por los demás. Frente a ella, el derecho del piloto a equivocarse consigo mismo se vuelve un espejo del conflicto principal (ver propuesta P2).
+- **Nox, Dante, Silas, Kaela:** lo tratan como a una persona, no como a un caso. Nadie lo convierte en su misión.
+
+**Inspiración y diferencia.** Se toma del arquetipo del profesional sarcástico y brillante con un hábito autodestructivo (como el médico de la serie *House*) solo la idea de que el ingenio puede ser una defensa. **No** se copian diálogos, escenas, profesión ni personalidad. A diferencia de ese arquetipo, el piloto no es cruel por diversión ni se cree superior: es un sobreviviente asustado que se ríe para no derrumbarse y que, en el fondo, se preocupa más de lo que admite.
+
+#### Alcohol: reglas de representación (obligatorias)
+- **Clasificación:** juego para público adulto (decisión del usuario). Se trata la dependencia con realismo y consecuencias humanas sutiles.
+- **Sin mecánica:** beber no recupera vida, no da bonificaciones ni penalizaciones, no es necesario para avanzar, no desbloquea finales y no es recompensa por combate. **En el primer hito no existe ninguna acción de beber.**
+- **Sin glorificar ni ridiculizar:** nada de tambaleos cómicos, pantalla distorsionada como chiste ni escenas que vendan el alcohol como algo atractivo. Tampoco se convierte en moraleja que domine la historia.
+- **Presencia moderada:** aparece en diálogos breves, descansos y ambientación; nunca en una misión obligatoria larga ni como giro dramático central.
+- **Objetos y taberna:** el alcohol como artículo del mundo y la taberna pertenecen a la Issue #6, no a esta ficha.
+- Escenas de referencia: §9.
+
 ### Lila
 - Técnica brillante, agotada y sarcástica. Guía por radio.
 - **Deseo:** devolver la luz a su familia, que vive en un barrio sin energía.
@@ -168,3 +201,62 @@ La música chiptune actual es provisional.
 4. El humor nunca se usa para restarle peso a una muerte o a una pérdida.
 5. Los habitantes de la ciudad tienen historias propias que avanzan entre estaciones.
 6. La narrativa funciona en tres niveles: historia principal, historias de habitantes y narrativa ambiental (lo que se ve en los escenarios).
+7. El hábito del piloto se muestra con gestos y frases cortas, nunca como chiste recurrente ni como sermón. Ver las reglas de representación en §4.
+
+---
+
+## 9. Escenas de referencia del piloto (Issue #7)
+
+Escenas cortas y originales que fijan la voz del piloto. Sirven de modelo para escribir el resto. Las salas usan los IDs de `WORLD_MAP.md`. Ninguna altera la trama, da efectos de juego ni alarga la ruta principal; todas caben en el primer hito «La primera luz», salvo la 4, que depende del orden de estaciones.
+
+### Escena 1 — «Primera impresión» (`city/BA1`, parte del encuentro obligatorio con Lila, ~30 s)
+> **Lila:** Así que tú eres la voz de la radio. Te imaginaba más alto.
+> **Piloto:** Y yo te imaginaba sin una llave inglesa en la mano.
+> *(Lila se acerca. Arruga la nariz.)*
+> **Lila:** Hueles a destilería.
+> **Piloto:** Es perfume. Edición "noche larga".
+> **Lila:** Mientras dispares derecho, me da igual a qué huelas.
+> *(Pausa.)*
+> **Lila:** …No. No me da igual. Pero hoy no tengo tiempo.
+
+### Escena 2 — «Racionamiento» (primer descanso en un relé del desierto, opcional)
+> *(El piloto se sienta junto al relé. Saca una petaca abollada y la agita: casi vacía.)*
+> **Piloto:** Racionamiento. Como todo en este mundo.
+> *(Bebe un sorbo. Al guardarla, la mano le tiembla un poco. Nadie lo comenta.)*
+> **Lila (radio):** ¿Sigues vivo?
+> **Piloto:** Define "vivo".
+> **Lila:** Respirando y quejándote.
+> **Piloto:** Entonces, la mitad.
+
+*Sin efecto de juego: la petaca no cambia vida, energía ni ningún otro valor.*
+
+### Escena 3 — «La luz volvió dos veces» (`desert/C3`, tercera visita al robot farolero, opcional)
+> **Robot farolero:** Ella dijo que volvería cuando volviera la luz. La luz volvió dos veces.
+> **Piloto:** Bueno, a lo mejor la tercera es la—
+> *(No termina la frase. Silencio largo.)*
+> **Piloto:** …Lo siento.
+> *(Saca la petaca. La mira. La guarda sin abrirla.)*
+
+*Escena de pérdida real: no hay remate, ni música de chiste, ni comentario de Lila.*
+
+### Escena 4 — «Resaca» (antesala de Sable, variante de reconocimiento, una sola vez)
+> **Sable:** ¿Vas a decidir el destino de una ciudad con resaca?
+> **Piloto:** Así se han decidido todas las cosas importantes en esta ciudad.
+> **Sable:** Por eso se está hundiendo.
+> *(El piloto no contesta. Después del duelo, en la radio, tampoco hace chistes durante un rato.)*
+
+### Escena 5 — «Es sopa» (primer regreso a `city/BA1` tras resolver el desierto)
+> **Lila:** Mi mamá pregunta si te quedas a cenar. Hay sopa. No hay alcohol.
+> **Piloto:** ¿Eso es una invitación o una intervención?
+> **Lila:** Es sopa.
+> *(Él duda. Se queda.)*
+
+*Funciona igual con `F_desierto = ciudad` o `refugio`; solo cambia la luz del barrio de fondo.*
+
+### Propuestas pendientes (NO canónicas; requieren revisión de Chad y aprobación del usuario)
+| ID | Propuesta | Por qué |
+|---|---|---|
+| P1 | El hábito empezó como forma de callar la culpa del sobreviviente: de niño fue el único que salió vivo del accidente | Da raíz al rasgo usando el secreto que ya existe, sin crear un giro nuevo |
+| P2 | El módulo médico de la armadura (con la clave de Madre Faro) registra su alcohol en sangre. Al final, Madre Faro lo menciona con calma, como prueba de que "sabe lo que le conviene"; el piloto defiende su derecho a equivocarse consigo mismo | Refleja la pregunta central (cuidar frente a decidir por otro) sin moralizar |
+| P3 | Sin "cura" ni castigo: el hábito cambia poco a lo largo del juego y el final lo deja abierto, con un gesto pequeño (por ejemplo, regalar la petaca vacía) que el jugador puede leer como quiera | Evita tanto la glorificación como la moraleja fácil |
+| P4 | La petaca abollada es un objeto visual del personaje (animación de descanso), no un artículo de inventario | Mantiene el rasgo visible sin crear mecánica |

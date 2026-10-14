@@ -94,7 +94,7 @@ Se incluyen en «La primera luz» **solo en versión mínima**, después de los 
 |---|---|---|
 | **Mascota** (Issue #5) | Una mascota base de diseño propio (nombre provisional «Núli»): acompaña, ataca sola, gasta energía, se cansa, se retira y descansa; IA básica robusta, animaciones legibles, guardado, celular y 60 FPS | Evoluciones, colección, selección entre varias mascotas, habilidades de exploración |
 | **Tienda** (Issue #6) | Puesto de emergencia en `city/M1`, accesible desde la introducción en cualquier orden: 3–4 artículos (botiquín, mejora sencilla equilibrada, artículo para mascota, accesorio cosmético) | Mercado mayor, varias tiendas, moneda definitiva, inventario avanzado, taberna |
-| **Personalidad del piloto** (Issue #7) | Humor seco, sarcasmo y relación problemática con el alcohol, moderados, en diálogos, descansos y ambientación. Sin mecánica de beber | Taberna, alcohol como objeto del mundo, escenas opcionales completas |
+| **Personalidad del piloto** (Issue #7) | Humor seco, sarcasmo y relación problemática con el alcohol, moderados, en diálogos, descansos y ambientación, según GAME_BIBLE §4 (ficha y reglas) y §9 (escenas 1, 2, 3 y 5). Sin mecánica de beber | Taberna, alcohol como objeto del mundo, escenas opcionales completas |
 
 **Reglas que no cambian:** beber no da ventajas, nunca es obligatorio y la dependencia no se romantiza (público adulto). Los añadidos son pequeños y no crean misiones obligatorias largas. Los nombres de especies, moneda y taberna no están aprobados.
 

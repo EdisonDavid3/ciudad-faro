@@ -1,6 +1,6 @@
 # AI_HANDOFF — Ciudad Faro: El Último Eco
 
-**Estado:** PR #3 (topología) integrada. PR #8 (Issue #4, sincronización documental) en revisión. **No se ha modificado el código jugable.**
+**Estado:** PR #3 y PR #8 integradas. Issue #7 (personalidad del piloto) en revisión. **No se ha modificado el código jugable.**
 
 ## Equipo y límites
 Nombres de trabajo asignados por el usuario (14-10-2026): **Clau** = Claude Code, **Chad** = ChatGPT.
@@ -13,8 +13,9 @@ Nombres de trabajo asignados por el usuario (14-10-2026): **Clau** = Claude Code
 Metroidvania 2D HD ilustrado; exploración densa e interconectada al estilo de diseño de Hollow Knight, sin reproducir propiedad intelectual ajena; combate ágil con identidad propia; melancolía, sarcasmo humano y decisiones morales. Ciudad Faro es una base física dentro del mundo, no solo un menú.
 
 ## Próximo trabajo
-- **Issue #4** (en revisión, PR #8): sincronizar GAME_BIBLE, WORLD_MAP y DEVELOPMENT_ROADMAP con el diseño aprobado.
-- **En cola** (objetivos creativos aprobados, diseño documental pendiente, una rama y PR por Issue): #5 mascotas evolutivas, #6 tiendas y economía, #7 dependencia del alcohol del piloto.
+- **Issue #7** (en revisión): personalidad del piloto adulto, sarcasmo y alcohol como rasgo narrativo.
+- **En cola**, en este orden y en PR separadas: #5 mascotas, #6 tiendas y economía.
+- Primer hito con sistemas mínimos (mascota base, puesto de emergencia, personalidad del piloto): aprobado, ver DEVELOPMENT_ROADMAP §2.0b.
 - Ninguna implementación de código empieza sin aprobación específica del usuario.
 
 ## Protocolo de intercambio
@@ -175,6 +176,30 @@ No verificado: sin validador ni partidas medidas; los tiempos con los sistemas m
 Bloqueos y riesgos: la mascota y la tienda añaden trabajo de arte y de pruebas al hito (mitigado con el plan de contingencia).
 Preguntas para el usuario: ninguna nueva.
 Próxima acción: revisión final de Chad y aprobación del usuario. Después del merge, empezar la Issue #7 en una rama propia.
+
+### 2026-10-14 — Clau (Claude Code) / Issue #7 / PR #9
+Estado: listo para revisión
+Objetivo: definir la personalidad del piloto adulto (humor seco, sarcasmo, dependencia del alcohol como forma de afrontar) sin alterar la trama ni añadir mecánicas. Solo documentación. Parte de `main` con la PR #8 integrada.
+Archivos:
+- `GAME_BIBLE.md`: ficha ampliada del piloto y reglas de representación del alcohol (§4), regla narrativa 7 (§8), nueva §9 con cinco escenas de referencia y propuestas pendientes P1–P4.
+- `DEVELOPMENT_ROADMAP.md`: la fila de personalidad de §2.0b remite a GAME_BIBLE §4 y §9.
+- `docs/AI_HANDOFF.md`: estado, próximo trabajo y esta entrada.
+Decisiones tomadas:
+- Aplicadas (aprobadas): público adulto; el rasgo está presente desde el primer hito; beber no da ventajas, no es obligatorio, no se romantiza; nada de mecánica de beber en la demo; taberna y alcohol como objeto, en la Issue #6.
+- Diferencia explícita con el arquetipo de *House*: solo se toma la idea del ingenio como defensa; nada de diálogos, escenas, profesión ni personalidad copiados.
+- Escenas 1, 2, 3 y 5 caben en el primer hito; la 4 (Sable) depende del orden de estaciones.
+- **Pendientes, no canónicas:** P1 (origen del hábito en la culpa del sobreviviente), P2 (el módulo médico de la armadura registra el alcohol y Madre Faro lo usa como argumento), P3 (sin cura ni castigo; final abierto), P4 (petaca solo como objeto visual).
+Pruebas realizadas y resultados (documentales):
+- Contraste con GAME_BIBLE: la personalidad fija (ingenioso, desconfiado, bromea cuando tiene miedo), el arco, el secreto y las reglas del tono y de la narrativa (2 líneas por intervención en acción, silencio ante pérdidas) se respetan.
+- Contraste con WORLD_MAP y el documento de la Issue #1: salas existentes (`city/BA1`, `desert/C3`, antesala de Sable, relés); las escenas no crean salas ni banderas nuevas y no alargan la ruta principal.
+- Búsqueda de beneficios o penalizaciones jugables ligados al alcohol: ninguno.
+- `git diff --stat main`: solo documentación.
+No verificado:
+- Ninguna escena se ha probado en juego; la duración de la escena 1 (~30 s) es estimada.
+Bloqueos y riesgos:
+- Tema sensible: el tono depende de la ejecución (actuación de texto, ritmo, arte). Conviene revisar las escenas implementadas antes de publicarlas.
+Preguntas para el usuario: aprobar o ajustar P1–P4 después de la revisión de Chad.
+Próxima acción: revisión de Chad; merge solo por decisión del usuario. Luego, Issue #5 en rama propia.
 
 ## Reglas de seguridad
 - Nunca subir API keys, tokens, secretos ni archivos .env.
