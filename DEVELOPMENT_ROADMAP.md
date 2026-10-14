@@ -94,7 +94,7 @@ Se incluyen en «La primera luz» **solo en versión mínima**, después de los 
 |---|---|---|
 | **Mascota** (Issue #5) | Una mascota base de diseño propio (nombre provisional «Núli»): acompaña, ataca sola, gasta energía, se cansa, se retira y descansa; IA básica robusta, animaciones legibles, guardado, celular y 60 FPS | Evoluciones, colección, selección entre varias mascotas, habilidades de exploración |
 | **Tienda** (Issue #6) | Puesto de emergencia en `city/M1`, accesible desde la introducción en cualquier orden: 3–4 artículos (botiquín, mejora sencilla equilibrada, artículo para mascota, accesorio cosmético) | Mercado mayor, varias tiendas, moneda definitiva, inventario avanzado, taberna |
-| **Personalidad del piloto** (Issue #7) | Humor seco, sarcasmo y relación problemática con el alcohol, moderados, en diálogos, descansos y ambientación. Sin mecánica de beber | Taberna, alcohol como objeto del mundo, escenas opcionales completas |
+| **Personalidad del piloto** (Issue #7) | Humor seco, sarcasmo y relación problemática con el alcohol, moderados, en diálogos, descansos y ambientación, según GAME_BIBLE §4 (ficha y reglas) y §9 (escenas 1, 2, 3 y 5). Sin comando ni mecánica jugable de consumo; la petaca es solo un detalle visual | Taberna, alcohol como objeto del mundo, escenas opcionales completas |
 
 **Reglas que no cambian:** beber no da ventajas, nunca es obligatorio y la dependencia no se romantiza (público adulto). Los añadidos son pequeños y no crean misiones obligatorias largas. Los nombres de especies, moneda y taberna no están aprobados.
 
@@ -148,7 +148,7 @@ Enviar toda la energía a Ciudad Faro de inmediato, o mantener el suministro del
 - `loop-west` funciona en ambos sentidos.
 - El puesto de emergencia es accesible desde la introducción y vende sus 3–4 artículos aunque `F_desierto = pendiente`; las compras se guardan.
 - La mascota base ataca, se cansa, descansa y recupera su estado tras recargar la partida, sin tapar la visión ni los controles táctiles, y sin bajar de 60 FPS en el celular de referencia (o se aplica el plan de contingencia de §2.0b).
-- La personalidad del piloto aparece en diálogos y descansos sin ninguna mecánica de beber.
+- La personalidad del piloto aparece en diálogos y descansos sin comando ni mecánica jugable de consumo; las escenas opcionales no alteran estadísticas, salud, progreso ni finales.
 - Los 5 enemigos y Heliostato usan arte ilustrado del mismo estilo que el piloto.
 - Hay al menos 4 secretos con contenido.
 - Puntos de control cada 3–5 minutos de juego.
