@@ -1,0 +1,26 @@
+# Orden de ensamblado de index.html (tools/build.py). Una entrada por línea.
+# Las rutas son relativas a src/. Las entradas con @ generan una línea a partir de un archivo de assets/ (ruta relativa a la raíz).
+shell/head.html
+styles/main.css
+shell/body.html
+engine/setup.js
+@atlas-meta assets/atlas/piloto.json
+@atlas-src assets/atlas/piloto.webp
+engine/state_physics.js
+game/save.js
+game/level_desierto.js
+engine/audio_sfx.js
+engine/music.js
+game/dialog_particles.js
+game/player.js
+game/items.js
+game/bullets.js
+game/enemies.js
+game/boss_heliostato.js
+engine/update.js
+engine/render.js
+ui/touch.js
+ui/editor.js
+engine/loop.js
+ui/screens_input.js
+shell/end.html

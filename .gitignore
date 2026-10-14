@@ -1,0 +1,4 @@
+# Dependencias y resultados de las pruebas (se regeneran)
+tools/tests/node_modules/
+tools/tests/out/
+__pycache__/
