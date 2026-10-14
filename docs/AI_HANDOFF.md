@@ -23,7 +23,8 @@ Diseñar la topología interconectada del mundo, circuitos de retorno, acceso te
 4. Al terminar, abre Pull Request y registra aquí: fecha, Issue, PR, resumen, archivos tocados, pruebas REALMENTE ejecutadas, pruebas no ejecutadas, errores, decisiones solicitadas y siguiente paso.
 5. ChatGPT revisará cuando se le solicite en la conversación o a través de un proceso de automatización configurado por separado. Sus comentarios en GitHub servirán de entrada a la siguiente iteración de Claude.
 6. Mantén la PR abierta hasta recibir aprobación del usuario. No hacer auto-merge. Si una revisión identifica fallos, corregir en la misma rama y reportar pruebas.
-7. Evitar ediciones simultáneas del mismo archivo. Los cambios de código, narrativa y arte han de mantenerse separados cuando sea posible.
+7. **Regla del usuario (14-10-2026): toda recomendación de Clau pasa primero por Chad.** Clau la publica en GitHub (comentario en la PR o Issue correspondiente) con el título «Recomendación para Chad»; Chad la evalúa y el usuario decide. Clau no la presenta al usuario como decisión ni la aplica antes de esa revisión.
+8. Evitar ediciones simultáneas del mismo archivo. Los cambios de código, narrativa y arte han de mantenerse separados cuando sea posible.
 
 ## Formato de traspaso
 ```md
