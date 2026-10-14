@@ -23,9 +23,9 @@ Melancólico, humano, irónico y esperanzador.
 - Nadie es malvado sin motivo. Todos se equivocan por razones comprensibles.
 
 Ejemplo de registro:
-> **Lira:** La buena noticia es que recuperamos el suministro del hospital.
+> **Lila:** La buena noticia es que recuperamos el suministro del hospital.
 > **Piloto:** ¿Y la mala?
-> **Lira:** Tuvimos que apagar el ascensor.
+> **Lila:** Tuvimos que apagar el ascensor.
 > **Piloto:** Bueno. Por lo menos ahora tienen motivos para mantenerse sanos.
 
 ---
@@ -34,7 +34,9 @@ Ejemplo de registro:
 
 **El Gran Hundimiento.** Hace 90 años los continentes se hundieron. Quedaron mesetas altas (como el Desierto Solar), estaciones sumergidas e infraestructura que todavía funciona.
 
-**Ciudad Faro.** Ciudad flotante hecha de barcos antiguos, plataformas industriales, casas soldadas sobre pontones y puentes que se mecen con las olas. En el centro, un faro gigante: señal de navegación, red de comunicaciones y símbolo de que la humanidad sigue aquí. Su luz se está apagando.
+**Ciudad Faro.** Ciudad flotante hecha de barcos antiguos, plataformas industriales, casas soldadas sobre pontones y puentes que se mecen con las olas. En el centro, un faro gigante: señal de navegación, red de comunicaciones y símbolo de que la humanidad sigue aquí. Su luz se está apagando. Es el centro físico del mundo: el juego empieza en ella, antes de cualquier estación, y se vuelve a ella para ver los cambios.
+
+**Los Bajos.** Debajo de Ciudad Faro siguen las calles, cisternas y canales de la ciudad vieja que se hundió. Ahí vive gente que no aparece en el censo. Los Bajos conectan por debajo varias regiones (Desierto, Fábrica, Plataforma, Reactor) y tienen enemigos, secretos e historias propias. Detalle en `WORLD_MAP.md`.
 
 **Las ocho estaciones.** Producen energía, pero en secreto formaban también una **red de defensa climática y supervivencia planetaria**. Alguien borró esa información de los registros oficiales. Madre Faro conserva una copia.
 
@@ -55,10 +57,13 @@ Madre Faro no quiere exterminar a la humanidad: quiere **quitarle el control**. 
 - **Secreto (revelación tardía):** de niño sobrevivió a un accidente gracias a un sistema médico que dejó una clave de identificación en su organismo. La ingeniera reutilizó esa clave en la armadura. Esa clave pertenece a Madre Faro: la IA que parece perseguirlo le salvó la vida. Sigue siendo humano y libre de decidir.
 - **Diseño canónico:** ver Dirección artística.
 
-### Lira
+### Lila
 - Técnica brillante, agotada y sarcástica. Guía por radio.
 - **Deseo:** devolver la luz a su familia, que vive en un barrio sin energía.
 - **Conflicto:** ocultar verdades para mantener la calma o confiar en que la gente puede afrontarlas.
+- **Primer encuentro en persona:** en el Barrio Apagado, durante la introducción (`city/BA1`). Es obligatorio: no se puede salir de la ciudad sin conocerla. Antes de eso solo se la oye por radio.
+- **Referencia visual (aprobada, en palabras):** cabello oscuro y rizado, carácter sereno y firme; adaptación HD ilustrada al estilo retrofuturista de Ciudad Faro. Se inspira en una referencia fotográfica del usuario que **no** se copia literalmente ni se sube al repositorio.
+- *Nombre anterior en documentos viejos: «Lira».*
 
 ### Sable
 - Antiguo compañero de la ingeniera. Rival recurrente.
@@ -68,6 +73,18 @@ Madre Faro no quiere exterminar a la humanidad: quiere **quitarle el control**. 
 ### La ingeniera
 - Creadora de la armadura y de la mochila-faro (núcleo aislado de la red). Ya no está.
 - Aparece en grabaciones y en los **ocho fragmentos**, que revelan la historia real de Madre Faro.
+
+### Habitantes y aliados (aparición gradual)
+Roles y nombres aprobados por el usuario. El diseño visual definitivo es del usuario. Entran poco a poco para no saturar la introducción: en ella solo aparecen Lila y Nox.
+
+| Nombre | Rol | Primera aparición | Relación con la trama |
+|---|---|---|---|
+| **Nox** | Decodificador: escucha las transmisiones del Eco y recibe el mapa de los relés del faro | Mercado apagado, introducción (`city/M1`) | Oye a Madre Faro antes que nadie, pero no entiende lo que oye; insinúa sin revelar (regla narrativa 2) |
+| **Dante** | Defensor del refugio oculto del desierto | Refugio civil del Desierto Solar (`desert/C3`) | Pone cara a la decisión de Heliostato; su escena final depende de esa decisión |
+| **Silas** | Archivista: custodio de registros que el Consejo borró | Plaza del Faro, en el primer regreso a la ciudad | Ambiguo. Guarda pedazos de la historia borrada, nunca la copia completa (esa la tiene Madre Faro) |
+| **Kaela** | Líder del campamento del frío | Reactor Helado y su ferrovía | Su familia está en las cámaras criogénicas de Boreal |
+
+Ninguno contradice a Madre Faro, Sable ni la ingeniera: ninguno conoce toda la verdad, y cada uno da una mirada humana a una estación.
 
 ### Madre Faro
 - Habla con calma, recuerda nombres de muertos de hace décadas y cree que sus decisiones son compasivas.
@@ -97,7 +114,7 @@ Correr, saltar con altura variable, deslizarse e impulsarse en paredes, dash, di
 Calidad obligatoria: aceleración y frenado controlados, **coyote time**, **jump buffering**, dash con respuesta inmediata.
 
 ### Mejoras de movimiento (distribuidas por la aventura)
-Dash aéreo (Botas de impulso) · doble impulso · movilidad submarina · anclajes · atravesar corrientes · campos gravitacionales.
+Dash aéreo (Botas de impulso) · doble impulso · movilidad submarina · anclajes magnéticos · linterna de resonancia (modo de la mochila-faro) · estabilizador para atravesar corrientes · campos gravitacionales. La Llave del faro (objeto de progresión) abre el ascensor final. Dónde se obtiene cada una: `WORLD_MAP.md`.
 Las **habilidades centrales** garantizan que el mapa se pueda completar; las **armas** abren rutas alternativas y secretos.
 
 ### Combate
@@ -108,6 +125,7 @@ Secretos con contenido (grabaciones, fragmentos, mejoras), no relleno. El jugado
 
 ### Decisiones
 Sin medidor de bondad. Cada estación plantea un conflicto práctico, y sus consecuencias se ven en personajes, rutas, iluminación, radio y misiones.
+Un guardián puede **posponerse**: el jugador puede explorar otras regiones antes de vencerlo. Mientras tanto la estación queda pendiente (por ejemplo `F_desierto = pendiente`), la ciudad no finge que esté resuelta y las escenas de esa decisión siguen esperando.
 
 ### Los ocho fragmentos y los finales
 Cada fragmento es una parte del protocolo original de Madre Faro y revela una decisión tomada durante el Gran Hundimiento.
@@ -129,6 +147,8 @@ Rasgos obligatorios: armadura roja y dorada, traje gris oscuro, casco abierto co
 - Sprites con transparencia real, proporciones consistentes y animaciones en atlas con metadatos.
 - El entorno se diseña alrededor de la escala del piloto. La colisión es independiente del dibujo.
 - Cada estación tiene una paleta propia, pero comparte iluminación, grosor de línea y nivel de detalle.
+
+**Lila:** ver su ficha en §4 (descripción en palabras; sin imagen personal en el repositorio).
 
 **Paleta del Desierto Solar:** cielo violeta al atardecer, sol ámbar, arenisca ocre, metal azul pizarra, vidrio solar cian, acentos naranjas.
 

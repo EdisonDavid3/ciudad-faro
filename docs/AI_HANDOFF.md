@@ -1,6 +1,6 @@
 # AI_HANDOFF — Ciudad Faro: El Último Eco
 
-**Estado:** coordinación preparada, esperando revisión del usuario. **No se ha modificado el código jugable.**
+**Estado:** PR #3 (topología) integrada. PR #8 (Issue #4, sincronización documental) en revisión. **No se ha modificado el código jugable.**
 
 ## Equipo y límites
 Nombres de trabajo asignados por el usuario (14-10-2026): **Clau** = Claude Code, **Chad** = ChatGPT.
@@ -13,8 +13,9 @@ Nombres de trabajo asignados por el usuario (14-10-2026): **Clau** = Claude Code
 Metroidvania 2D HD ilustrado; exploración densa e interconectada al estilo de diseño de Hollow Knight, sin reproducir propiedad intelectual ajena; combate ágil con identidad propia; melancolía, sarcasmo humano y decisiones morales. Ciudad Faro es una base física dentro del mundo, no solo un menú.
 
 ## Próximo trabajo
-**GitHub Issue #1:** https://github.com/EdisonDavid3/ciudad-faro/issues/1
-Diseñar la topología interconectada del mundo, circuitos de retorno, acceso temprano a una Ciudad Faro pequeña, múltiples rutas viables y progresión sin softlocks. PR de documentación primero. No iniciar implementación antes de la revisión del usuario.
+- **Issue #4** (en revisión, PR #8): sincronizar GAME_BIBLE, WORLD_MAP y DEVELOPMENT_ROADMAP con el diseño aprobado.
+- **En cola** (objetivos creativos aprobados, diseño documental pendiente, una rama y PR por Issue): #5 mascotas evolutivas, #6 tiendas y economía, #7 dependencia del alcohol del piloto.
+- Ninguna implementación de código empieza sin aprobación específica del usuario.
 
 ## Protocolo de intercambio
 1. Lee `GAME_BIBLE.md`, `WORLD_MAP.md`, `TECHNICAL_AUDIT.md` y `DEVELOPMENT_ROADMAP.md`.
@@ -130,6 +131,50 @@ Bloqueos y riesgos:
 Preguntas para el usuario:
 1. ¿Hago la PR de actualización de la biblia (Lila, Los Bajos, NPC, tiempos) después de cerrar esta?
 Próxima acción: revisión final de Chad; merge solo por decisión del usuario.
+
+### 2026-10-14 — Clau (Claude Code) / Issue #4 / PR #8
+Estado: listo para revisión
+Objetivo: sincronizar los documentos raíz con el diseño aprobado de la Issue #1 (PR #3, ya integrada). Solo documentación.
+Archivos:
+- `GAME_BIBLE.md`, `WORLD_MAP.md` (reescrito), `DEVELOPMENT_ROADMAP.md`
+- `docs/AI_HANDOFF.md` (estado, próximo trabajo y esta entrada)
+Decisiones tomadas:
+- Aplicadas (aprobadas por el usuario): Lila con referencia visual en palabras; Nox, Kaela, Dante y Silas; Los Bajos; posponer a Heliostato; Muelle Este cerrado solo en la demo; metas 35–45 / 50–65 min.
+- Aplicadas las contradicciones 1–7, 10 y 11 de la §10 del documento de la Issue #1; la 8 y la 9 son de código y esperan.
+- WORLD_MAP declara que, si no coincide con el documento de diseño, manda el documento de diseño.
+- Puntos nuevos **no aprobados**, señalados en la PR: teleférico fuera del diseño, ubicación del taller de Lila por definir, mercado que existe desde la introducción y abre con la energía, estabilizador = «atravesar corrientes».
+Pruebas realizadas y resultados:
+- Mermaid de WORLD_MAP renderizado con mermaid-cli 11.4.2: 2/2 sin errores.
+- Búsqueda de «Lira», «25–40» y «30 y 45»: solo quedan menciones intencionales (nombre anterior y tabla de cambios).
+- Revisión manual de IDs, requisitos y dependencias contra el documento de diseño.
+- `git diff --stat main`: solo los cuatro archivos de documentación.
+No verificado:
+- Sin validador automático; tiempos sin medir.
+Bloqueos y riesgos:
+- Datos repetidos entre WORLD_MAP y el documento de diseño (mitigado con la regla de prioridad).
+Preguntas para el usuario: los cuatro puntos nuevos de la PR, después de la revisión de Chad.
+Decisión del usuario (14-10-2026): **el juego es para público adulto.** Aplica a la Issue #7 (tratamiento del alcohol) y a la #6 (taberna). Sigue vigente: sin beneficios jugables por beber, nunca obligatorio y sin romantizar la dependencia.
+Próxima acción: revisión de Chad; merge solo por decisión del usuario. Después, enviar a Chad la recomendación sobre el orden de las Issues #5, #6 y #7.
+
+### 2026-10-14 — Clau (Claude Code) / Issue #4 / PR #8 (revisión 2)
+Estado: listo para revisión
+Objetivo: resolver la revisión de Chad en la PR #8 y reflejar la decisión del usuario sobre el alcance del primer hito.
+Archivos: `WORLD_MAP.md`, `DEVELOPMENT_ROADMAP.md`, `docs/AI_HANDOFF.md`.
+Decisiones tomadas:
+- **Aprobada por el usuario:** «La primera luz» incluye en versión mínima una mascota base, un puesto de emergencia con 3–4 artículos y la personalidad del piloto (sarcasmo y alcohol solo narrativos). Los sistemas completos van después, en el orden #7 → #5 → #6, en PR separadas. Plan de contingencia si la mascota compromete la estabilidad.
+- WORLD_MAP: puesto de emergencia en `city/M1` desde la introducción, en cualquier orden de estaciones; mercado mayor que se abre o amplía con la primera estación compatible (Desierto o Fábrica). *Lo de «primera estación compatible» sigue la sugerencia de Chad; el usuario aprobó la idea general (mercado mayor ligado a la energía recuperada).*
+- WORLD_MAP §9: recuento explícito (kit base + seis mejoras `A_*` + `K_llave`).
+- DEVELOPMENT_ROADMAP: nueva §2.0b con tabla hito mínimo / después, arte añadido (mascota, puesto) y criterios de aceptación de los sistemas mínimos.
+- No toqué GAME_BIBLE: la ficha del piloto (alcohol, humor) se escribirá en la Issue #7.
+Pruebas realizadas y resultados:
+- Búsqueda de «Siete habilidades» y de un mercado que dependa solo del desierto: no queda ninguna.
+- Revisión manual: el puesto de emergencia no depende de ninguna bandera de estación; el mercado mayor se abre con `F_desierto ≠ pendiente` o `F_fabrica`.
+- Mermaid de WORLD_MAP renderizado de nuevo: 2/2 sin errores.
+- `git diff --stat main`: solo documentación.
+No verificado: sin validador ni partidas medidas; los tiempos con los sistemas mínimos son metas.
+Bloqueos y riesgos: la mascota y la tienda añaden trabajo de arte y de pruebas al hito (mitigado con el plan de contingencia).
+Preguntas para el usuario: ninguna nueva.
+Próxima acción: revisión final de Chad y aprobación del usuario. Después del merge, empezar la Issue #7 en una rama propia.
 
 ## Reglas de seguridad
 - Nunca subir API keys, tokens, secretos ni archivos .env.
