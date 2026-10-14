@@ -13,7 +13,7 @@ Nombres de trabajo asignados por el usuario (14-10-2026): **Clau** = Claude Code
 Metroidvania 2D HD ilustrado; exploración densa e interconectada al estilo de diseño de Hollow Knight, sin reproducir propiedad intelectual ajena; combate ágil con identidad propia; melancolía, sarcasmo humano y decisiones morales. Ciudad Faro es una base física dentro del mundo, no solo un menú.
 
 ## Próximo trabajo
-- **Issue #5** (en revisión): mascotas evolutivas.
+- **Issue #5** (en revisión final, sin decisiones creativas pendientes): mascotas evolutivas.
 - **En cola:** #6 tiendas y economía, en PR aparte.
 - Primer hito con sistemas mínimos (mascota base, puesto de emergencia, personalidad del piloto): aprobado, ver DEVELOPMENT_ROADMAP §2.0b.
 - Ninguna implementación de código empieza sin aprobación específica del usuario.
@@ -288,6 +288,20 @@ No verificado: PET-01 a PET-17, rendimiento en celular, balance y fidelidad a la
 Bloqueos y riesgos: los sprites necesitan la lámina aprobada en el flujo de arte, con autorización del usuario.
 Preguntas para el usuario: ratificar el nombre del guardián (Espectro, Vitrion, Caleidos u otro).
 Próxima acción: revisión final de Chad; merge solo por decisión del usuario. Luego, la Issue #6.
+
+### 2026-10-14 — Clau (Claude Code) / Issue #5 / PR #10 (cierre documental)
+Estado: listo para revisión
+Objetivo: registrar la ratificación del usuario: **Espectro** es el nombre definitivo del guardián de la Mina de Cristal.
+Archivos: `GAME_BIBLE.md` (fila del guardián sin la marca de provisional), `docs/design/ISSUE-5_MASCOTAS_EVOLUTIVAS.md` (estado, §2.2, §9, §10), `docs/AI_HANDOFF.md`.
+Decisiones tomadas: **ya no quedan decisiones creativas pendientes en la Issue #5.** Las menciones a decisiones «pendientes» en las entradas anteriores de este registro son historia, no estado actual.
+Pruebas realizadas y resultados (documentales):
+- Búsqueda de «pendiente de ratificar», «nombre propuesto» y «Prisma» en los `.md` de la rama: «Prisma» solo nombra a la forma de Núli (más el historial de este traspaso); no quedan marcas de provisional.
+- Mermaid del documento de mascotas: 2/2 sin errores.
+- `git diff --stat main`: solo documentación.
+No verificado: PET-01 a PET-17, rendimiento en celular, balance y fidelidad a la lámina, que sigue fuera de GitHub.
+Bloqueos y riesgos: ninguno nuevo.
+Preguntas para el usuario: ninguna.
+Próxima acción: última revisión de Chad; merge solo por decisión del usuario. Después, la Issue #6.
 
 ## Reglas de seguridad
 - Nunca subir API keys, tokens, secretos ni archivos .env.

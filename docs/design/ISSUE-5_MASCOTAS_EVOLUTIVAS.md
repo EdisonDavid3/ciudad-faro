@@ -1,7 +1,7 @@
 # Issue #5 — Mascotas evolutivas
 
 **Versión:** 3. Integra las cuatro decisiones del usuario del 14-10-2026 (§9) y la última corrección de Chad (§4). El detalle está en §10.
-**Estado:** diseño y decisiones creativas aprobados por el usuario; los parámetros técnicos siguen siendo propuestas. Pendiente: revisión final de Chad y ratificación del nuevo nombre del guardián de la Mina. Solo diseño: no modifica código, arte, guardados ni `main`.
+**Estado:** todas las decisiones creativas están aprobadas por el usuario, incluido el nombre del guardián de la Mina, **Espectro**. Los parámetros técnicos siguen siendo propuestas que se ajustarán con pruebas. Pendiente: revisión documental final de Chad y decisión de merge del usuario. Solo diseño: no modifica código, arte, guardados ni `main`.
 **Referencia:** de la idea de una criatura con varias evoluciones (como Eevee) solo se toma el concepto general. No se copian criaturas, siluetas, nombres, movimientos ni diseños de Pokémon.
 
 Etiquetas: **[Aprobado]** = decidido por el usuario; **[Propuesta]** = pendiente de aprobación.
@@ -112,7 +112,7 @@ flowchart TB
 | **Prisma** | Cristalino · `mine` | Blanco iridiscente, rosa y lila, cristales translúcidos | Un disparo del piloto que la atraviesa se divide en dos | Revela mensajes ocultos en cristales |
 | **Órion** | Gravitacional · `orbital` | Índigo y plata, anillos flotantes, detalles cósmicos | Ralentiza por poco tiempo los proyectiles cercanos al piloto | Alcanza coleccionables flotantes |
 
-> **Coincidencia de nombres, resuelta por el usuario:** la forma cristalina **conserva el nombre Prisma** y su aspecto aprobado. Se renombra al **guardián** de la Mina de Cristal (antes «Prisma»). El nombre nuevo está **pendiente de ratificar** (§9, propuesta: **Espectro**).
+> **Coincidencia de nombres, resuelta por el usuario:** la forma cristalina **conserva el nombre Prisma** y su aspecto aprobado. El **guardián** de la Mina de Cristal pasa a llamarse **Espectro** (aprobado por el usuario, §9).
 
 **Órion [Propuesta]:** se obtiene en la Estación Orbital, la zona final, antes del último jefe. Sirve en el tramo final y en el posjuego, si lo hay. Su arte es el último en producirse.
 
@@ -332,17 +332,14 @@ Es una estimación, no un costo confirmado. Puede bajar mucho si las formas comp
 | 1 | Organización de la evolución | **A, aprobada:** una sola Núli, ocho formas desbloqueables y permanentes, cambio en relés | §0, §2.1, §2.3 |
 | 2 | ¿El jugador puede renombrar a Núli? | **Sí, aprobado:** Lila propone «Núli»; el jugador acepta o elige otro | §1.4, §7.2 |
 | 3 | Pista tardía de "bioindicador" | **Sí, aprobada:** insinuación opcional y tardía; sin canon de origen fabricado por Madre Faro | §1.3 |
-| 4 | Coincidencia «Prisma» | **Aprobado:** la forma conserva «Prisma»; se renombra al guardián | §2.2, GAME_BIBLE §4 |
+| 4 | Coincidencia «Prisma» | **Aprobado:** la forma conserva «Prisma»; el guardián de la Mina se llama **Espectro** | §2.2, GAME_BIBLE §4 |
 
-### Nombre nuevo del guardián de la Mina — **pendiente de ratificar**
-**Propuesta de Clau: Espectro.**
-- Un prisma descompone la luz en un *espectro*, así que el nombre sigue siendo óptico como Heliostato, Nimbus o Cenit, y no se confunde con la forma Prisma.
-- "Espectro" también significa fantasma. Encaja con un guardián que guarda memorias y conciencias de personas muertas en cristales, sin explicar su tragedia antes de tiempo.
-- Su arma «Haz Prismático» no cambia, porque describe un rayo, no un nombre.
+### Nombre del guardián de la Mina — **Espectro, aprobado por el usuario**
+- Un prisma descompone la luz en un espectro: el nombre sigue la línea óptica de Heliostato, Nimbus y Cenit y no se confunde con la forma Prisma.
+- "Espectro" también significa fantasma, y encaja con un guardián que conserva memorias de personas muertas.
+- Su arma, «Haz Prismático», no cambia.
 
-**Alternativas:** Vitrion (propuesta de Chad) · Caleidos.
-
-Hasta la ratificación, GAME_BIBLE §4 muestra «Espectro» marcado como propuesto. Si el usuario elige otro nombre, solo cambia esa fila.
+**No quedan decisiones creativas pendientes en esta Issue.**
 
 Los valores de balance de §3 y §4 siguen siendo hipótesis que se ajustarán con pruebas.
 
@@ -361,3 +358,4 @@ Los valores de balance de §3 y §4 siguen siendo hipótesis que se ajustarán c
 | 6 | Fatiga tras volver con 30–40 | §4: ayuda efectiva acotada, esperar fuera de pantalla permitido pero con tope, sin castigo |
 | Final 1 | Frase de recuperación en combate largo | §4: en combate continuo no hay recarga; sin recarga con un jefe activo; descanso gratuito intacto |
 | Final 2 | Integrar las cuatro decisiones del usuario | §0, §1.3, §1.4, §2.1, §2.2, §2.3, §7.2 y §9; nombre propuesto para el guardián |
+| Final 3 | Ratificación de «Espectro» | Nombre definitivo en GAME_BIBLE §4 y en §2.2 y §9 de este documento; sin decisiones creativas pendientes |
