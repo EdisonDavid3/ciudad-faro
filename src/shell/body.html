@@ -1,0 +1,120 @@
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <p class="eyebrow">Ocho estaciones · una armadura inmune</p>
+      <h1>Ciudad Faro</h1>
+    </div>
+    <div class="tools">
+      <button id="btn-sound" type="button" aria-pressed="true">Sonido: sí</button>
+      <button id="btn-pause" type="button" aria-pressed="false">Pausa</button>
+    </div>
+  </header>
+
+  <div id="play">
+    <div class="screen" id="screen"><canvas id="game" role="img" aria-label="Pantalla del juego Ciudad Faro"></canvas></div>
+    <div class="touch" id="touch" hidden></div>
+
+    <form class="overlay" id="ov-title">
+      <p class="kicker">Ciudad Faro</p>
+      <h2>Ponle nombre a tu piloto</h2>
+      <div class="field">
+        <label for="hero-name">Nombre</label>
+        <input id="hero-name" maxlength="10" autocomplete="off" spellcheck="false" value="Nova">
+      </div>
+      <button type="submit" class="primary">Comenzar</button>
+    </form>
+
+    <div class="overlay" id="ov-select" hidden>
+      <p class="kicker">Elige una estación</p>
+      <h2>Ocho guardianes, una ciudad a oscuras</h2>
+      <div class="stations" id="stations"></div>
+      <p id="sel-equip"></p>
+      <button id="sel-exit" class="ghost" type="button">Salir de pantalla completa</button>
+    </div>
+
+    <div class="overlay" id="ov-pause" hidden>
+      <h2>Pausa</h2>
+      <p id="pz-equip"></p>
+      <div class="menu">
+        <button id="pz-resume" class="primary" type="button">Seguir</button>
+        <button id="pz-edit" class="ghost" type="button">Editar controles</button>
+        <button id="pz-sound" class="ghost" type="button">Sonido: sí</button>
+        <button id="pz-exit" class="ghost" type="button">Salir a estaciones</button>
+      </div>
+    </div>
+
+    <div class="overlay" id="ov-over" hidden>
+      <p class="kicker">Sin vidas</p>
+      <h2>El desierto ganó esta vez</h2>
+      <div class="row">
+        <button id="btn-retry" class="primary" type="button">Reintentar</button>
+        <button id="btn-over-sel" class="ghost" type="button">Elegir estación</button>
+      </div>
+    </div>
+
+    <div class="overlay" id="ov-win" hidden>
+      <p class="kicker">Estación 1 de 8 restaurada</p>
+      <h2 id="win-title">Arma obtenida: Rayo Solar</h2>
+      <p id="win-desc"></p>
+      <p>Tiempo <b id="win-time">0:00</b> · Caídas <b id="win-deaths">0</b></p>
+      <div class="row">
+        <button id="btn-win-sel" class="primary" type="button">Elegir estación</button>
+        <button id="btn-again" class="ghost" type="button">Jugar de nuevo</button>
+      </div>
+    </div>
+
+    <div class="editor" id="editor" hidden>
+      <div class="ed-head">
+        <strong>Editar controles</strong>
+        <span class="ed-hint">Arrastra cualquier control para moverlo. Toca uno para cambiar su tamaño.</span>
+        <button id="ed-min" class="ghost" type="button">Plegar</button>
+        <button id="ed-done" class="primary" type="button">Listo</button>
+      </div>
+      <div class="ed-body">
+        <div class="seg" role="group" aria-label="Esquema base">
+          <button type="button" data-preset="A" aria-pressed="false">A · Clásica</button>
+          <button type="button" data-preset="B" aria-pressed="false">B · Stick flotante</button>
+          <button type="button" data-preset="C" aria-pressed="false">C · Bolsillo</button>
+        </div>
+        <label class="ed-row" for="ed-move">Movimiento
+          <select id="ed-move"><option value="dpad">Cruceta</option><option value="stick">Stick fijo</option><option value="float">Stick flotante</option></select>
+        </label>
+        <label class="ed-row" for="ed-screen">Pantalla
+          <select id="ed-screen"><option value="auto">Automática</option><option value="overlay">Sobre el juego</option><option value="pocket">Bolsillo (abajo)</option></select>
+        </label>
+        <label class="ed-row" for="ed-size">Tamaño general <input id="ed-size" type="range" min="70" max="140" step="5"></label>
+        <label class="ed-row" for="ed-op">Transparencia <input id="ed-op" type="range" min="25" max="100" step="5"></label>
+        <label class="ed-row" for="ed-one"><span id="ed-one-label">Toca un control</span> <input id="ed-one" type="range" min="60" max="160" step="5" disabled></label>
+        <label class="ed-row" for="ed-vibe">Vibración al tocar <input id="ed-vibe" type="checkbox"></label>
+        <div class="ed-actions"><button id="ed-reset" class="ghost" type="button">Restablecer posiciones</button></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="info">
+    <article>
+      <h3>La historia</h3>
+      <p>Hace 90 años el mar se tragó los continentes. Ciudad Faro flota gracias a ocho estaciones de energía, cada una cuidada por un guardián robot.</p>
+      <p>Una señal desconocida, el Eco, apagó la obediencia de los guardianes. Tú llevas la armadura que dejó la antigua ingeniera de la ciudad. Su núcleo, la linterna que cargas en la espalda, es lo único que el Eco no puede tocar.</p>
+      <p>Cada guardián que vences le entrega su energía a la linterna de tu armadura: así ganas armas nuevas. La ingeniera también escondió mejoras para ti en las estaciones.</p>
+    </article>
+    <article>
+      <h3>Controles</h3>
+      <dl>
+        <div><dt>Moverse</dt><dd><kbd>←</kbd><kbd>→</kbd> o <kbd>A</kbd><kbd>D</kbd></dd></div>
+        <div><dt>Saltar</dt><dd><kbd>Z</kbd> <kbd>Espacio</kbd> <kbd>K</kbd></dd></div>
+        <div><dt>Disparar (mantén para cargar)</dt><dd><kbd>X</kbd> <kbd>J</kbd></dd></div>
+        <div><dt>Dash</dt><dd><kbd>C</kbd> <kbd>L</kbd> <kbd>Shift</kbd></dd></div>
+        <div><dt>Cambiar arma</dt><dd><kbd>Q</kbd> <kbd>E</kbd></dd></div>
+        <div><dt>Pausa</dt><dd><kbd>P</kbd></dd></div>
+      </dl>
+      <p class="tip">En el celular el juego se abre en pantalla completa. Desde Pausa › Editar controles puedes elegir el esquema, mover cada botón y combinar cruceta o stick con el modo horizontal o de bolsillo.</p>
+    </article>
+  </section>
+</div>
+
+<script>

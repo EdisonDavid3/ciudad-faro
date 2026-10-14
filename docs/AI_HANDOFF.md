@@ -1,6 +1,6 @@
 # AI_HANDOFF — Ciudad Faro: El Último Eco
 
-**Estado:** PR #3, #8, #9 y #10 integradas. Issue #6 (tiendas y economía) en revisión. **No se ha modificado el código jugable.**
+**Estado:** diseños integrados (PR #3, #8, #9, #10 y #11). Fase 1A (estructura y pruebas, Issue #12) en revisión. El comportamiento del juego no ha cambiado: `index.html` sigue idéntico byte a byte.
 
 ## Equipo y límites
 Nombres de trabajo asignados por el usuario (14-10-2026): **Clau** = Claude Code, **Chad** = ChatGPT.
@@ -13,10 +13,10 @@ Nombres de trabajo asignados por el usuario (14-10-2026): **Clau** = Claude Code
 Metroidvania 2D HD ilustrado; exploración densa e interconectada al estilo de diseño de Hollow Knight, sin reproducir propiedad intelectual ajena; combate ágil con identidad propia; melancolía, sarcasmo humano y decisiones morales. Ciudad Faro es una base física dentro del mundo, no solo un menú.
 
 ## Próximo trabajo
-- **Issue #6** (en revisión): tiendas, economía, consumibles, ropa, artefactos y taberna.
-- Con la #6 se completa la serie de diseños documentales #7 → #5 → #6. La implementación no empieza sin aprobación específica del usuario.
+- **Fase 1A** (Issue #12, en revisión): código fuente en `src/` y `assets/`, `tools/build.py` y pruebas de humo. Ver `docs/BUILD.md`.
+- Después, y solo con aprobación: 1B (escala y control), 1C (datos de salas, banderas, guardado versionado y validador), 1D (depurador y sala de pruebas).
+- **Arte:** Chad y el usuario dirigen y aprueban; Clau programa, integra y prueba. Clau no crea arte definitivo; si falta un sprite usa placeholders marcados como tales.
 - Primer hito con sistemas mínimos (mascota base, puesto de emergencia, personalidad del piloto): aprobado, ver DEVELOPMENT_ROADMAP §2.0b.
-- Ninguna implementación de código empieza sin aprobación específica del usuario.
 
 ## Protocolo de intercambio
 1. Lee `GAME_BIBLE.md`, `WORLD_MAP.md`, `TECHNICAL_AUDIT.md` y `DEVELOPMENT_ROADMAP.md`.
@@ -360,6 +360,34 @@ Pruebas realizadas y resultados (documentales):
 No verificado: SHOP-01 a SHOP-15, ingresos reales, precios y balance.
 Preguntas para el usuario: ninguna.
 Próxima acción: revisión documental final de Chad; merge solo por decisión del usuario.
+
+### 2026-10-14 — Clau (Claude Code) / Issue #12 / PR #13 (Fase 1A)
+Estado: listo para revisión
+Objetivo: separar el archivo único en código fuente, con un ensamblador determinista y pruebas de humo, **sin cambiar el comportamiento**. Autorizado por el usuario tras la revisión de Chad del plan.
+Archivos:
+- `src/` (24 piezas en el orden de `src/manifest.txt`: shell, estilos, engine, game, ui)
+- `assets/atlas/piloto.webp` y `piloto.json` (el atlas que antes estaba en base64 dentro del HTML; mismos bytes)
+- `tools/build.py`, `tools/tests/` (`smoke.mjs`, `package.json`, `package-lock.json`), `.gitignore`, `docs/BUILD.md`
+- `index.html`: **sin cambios**; el build lo reproduce idéntico
+Decisiones tomadas:
+- Partición por secciones contiguas del archivo original: concatenarlas reproduce exactamente el mismo `index.html`. No se reescribió ninguna línea de código.
+- El atlas pasa a ser un `.webp` real; el build vuelve a codificarlo en base64 (comprobado idéntico).
+- Fuentes de Google bloqueadas en las pruebas para que sean deterministas; el juego publicado las sigue cargando igual.
+Pruebas realizadas y resultados:
+- `python3 tools/build.py --check`: OK. El `index.html` generado es idéntico byte a byte al de `main` (554 198 bytes, sha256 `e5e0a442…c468d`), y dos builds seguidos dan los mismos bytes.
+- `node tools/tests/smoke.mjs <main> <build>` en Chromium 141 (Playwright 1.56.1), escritorio 1280×900 y celular 844×390 táctil: 23 comprobaciones por versión correctas, 9 capturas idénticas y `localStorage` idéntico.
+- Determinismo: el mismo archivo contra sí mismo da capturas idénticas.
+- Sensibilidad: cambiar un solo tono del cielo (`#7A2E4A` → `#7A2E4B`) hace que las 9 capturas salgan distintas. Un cambio de color que no aparece en esos momentos (probado con `C.red`) no se detecta: es un límite conocido.
+No verificado:
+- Sonido y música (no se comparan).
+- Celular real: solo se probó la emulación de Chromium. Falta que el usuario juegue en su teléfono.
+- Safari y Firefox.
+- GitHub Pages tras el merge: como `index.html` no cambia, debería verse igual, pero no se comprobó en línea.
+Bloqueos y riesgos:
+- A partir de ahora `index.html` se genera; editarlo a mano provocaría que `--check` falle.
+- El repositorio publica también `src/`, `assets/` y `tools/` en GitHub Pages; no contienen secretos.
+Preguntas para el usuario: ninguna; solo la decisión de merge.
+Próxima acción: revisión de Chad; merge solo por decisión del usuario. Después, la PR 1B con autorización.
 
 ## Reglas de seguridad
 - Nunca subir API keys, tokens, secretos ni archivos .env.

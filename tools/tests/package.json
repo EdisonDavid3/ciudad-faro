@@ -1,0 +1,12 @@
+{
+  "name": "ciudad-faro-tests",
+  "private": true,
+  "description": "Pruebas de humo de Ciudad Faro (Playwright, Chromium del sistema)",
+  "type": "module",
+  "scripts": {
+    "smoke": "node smoke.mjs"
+  },
+  "devDependencies": {
+    "playwright-core": "1.56.1"
+  }
+}
