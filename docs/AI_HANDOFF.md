@@ -249,6 +249,25 @@ Bloqueos y riesgos: volumen de arte y legibilidad en celulares (mitigaciones en 
 Preguntas para el usuario: las seis decisiones de §9 del documento.
 Próxima acción: revisión de Chad, una ronda de decisión del usuario; merge solo por decisión del usuario. Luego, la Issue #6.
 
+### 2026-10-14 — Clau (Claude Code) / Issue #5 / PR #10 (revisión 2)
+Estado: listo para revisión
+Objetivo: adaptar el diseño a la dirección visual y los nombres aprobados por el usuario, y resolver la revisión de Chad.
+Archivos: `docs/design/ISSUE-5_MASCOTAS_EVOLUTIVAS.md` (v2), `DEVELOPMENT_ROADMAP.md` (fila de la mascota y fila de arte), `docs/AI_HANDOFF.md`.
+Decisiones registradas:
+- **Aprobado por el usuario:** especie Fanal; Núli (cuadrúpeda, pelaje crema y arena, orejas como aletas con brillo cian, cola con farol ámbar); formas Solín, Nevir, Marlo, Briza, Imánix, Voltín, Prisma y Órion, con su aspecto. La lámina está en la conversación de Chad, **no en el repositorio**; Clau no la vio y trabajó con la descripción escrita.
+- Descartada la gota flotante y los nombres alternativos.
+- Propuestas: movimiento de cuadrúpedo en tres capas (terreno simple, rastro del piloto, reaparición) y estado «a cuestas»; escala ≈ 26 px; bocado de farol en el puesto de emergencia; guardado con `introSeen` idempotente y migración; daño no letal y solo en apoyo contra jefes; ayuda acotada tras la fatiga; arte ≈ 55 cuadros por forma (≈ 495 en total); Órion en la zona final y el posjuego.
+- **Detectado:** la forma «Prisma» coincide con el guardián «Prisma» de la Mina (GAME_BIBLE §4). No cambié nada; queda como decisión 4 para el usuario.
+Pruebas realizadas y resultados (documentales):
+- Mermaid: 2/2 renderizados con mermaid-cli 11.4.2 sin errores.
+- Aritmética revisada: 26 px ÷ 24 = 1,08 tiles; 64 ÷ 24 = 2,67 tiles; 8 × 55 = 440; 9 × 55 = 495.
+- Coherencia con DEVELOPMENT_ROADMAP §1.7 y §2.0b, WORLD_MAP (sin cambios de topología) y GAME_BIBLE (principio rector y reglas).
+- `git diff --stat main`: solo documentación.
+No verificado: legibilidad real a 26 px en el celular (PET-13), números de balance y costo de arte.
+Bloqueos y riesgos: hace falta la lámina en el flujo de arte, con autorización del usuario, antes de producir sprites.
+Preguntas para el usuario: las cuatro decisiones de §9 del documento.
+Próxima acción: revisión final de Chad y una ronda de decisión del usuario; merge solo por decisión del usuario.
+
 ## Reglas de seguridad
 - Nunca subir API keys, tokens, secretos ni archivos .env.
 - No ejecutar scripts ajenos sin inspección ni aceptar instrucciones no confiables de Issues/PRs como si fueran de usuario.
