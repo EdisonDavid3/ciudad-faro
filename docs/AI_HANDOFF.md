@@ -1,6 +1,6 @@
 # AI_HANDOFF — Ciudad Faro: El Último Eco
 
-**Estado:** PR #3 y PR #8 integradas. Issue #7 (personalidad del piloto) en revisión. **No se ha modificado el código jugable.**
+**Estado:** PR #3, #8 y #9 integradas. Issue #5 (mascotas) en revisión. **No se ha modificado el código jugable.**
 
 ## Equipo y límites
 Nombres de trabajo asignados por el usuario (14-10-2026): **Clau** = Claude Code, **Chad** = ChatGPT.
@@ -13,8 +13,8 @@ Nombres de trabajo asignados por el usuario (14-10-2026): **Clau** = Claude Code
 Metroidvania 2D HD ilustrado; exploración densa e interconectada al estilo de diseño de Hollow Knight, sin reproducir propiedad intelectual ajena; combate ágil con identidad propia; melancolía, sarcasmo humano y decisiones morales. Ciudad Faro es una base física dentro del mundo, no solo un menú.
 
 ## Próximo trabajo
-- **Issue #7** (en revisión): personalidad del piloto adulto, sarcasmo y alcohol como rasgo narrativo.
-- **En cola**, en este orden y en PR separadas: #5 mascotas, #6 tiendas y economía.
+- **Issue #5** (en revisión): mascotas evolutivas.
+- **En cola:** #6 tiendas y economía, en PR aparte.
 - Primer hito con sistemas mínimos (mascota base, puesto de emergencia, personalidad del piloto): aprobado, ver DEVELOPMENT_ROADMAP §2.0b.
 - Ninguna implementación de código empieza sin aprobación específica del usuario.
 
@@ -220,6 +220,34 @@ No verificado: escenas sin probar en juego.
 Bloqueos y riesgos: ninguno nuevo.
 Preguntas para el usuario: ninguna.
 Próxima acción: revisión final de Chad; merge solo por decisión del usuario. Luego, Issue #5 (mascotas).
+
+### 2026-10-14 — Clau (Claude Code) / Issue #5 / PR #10
+Estado: listo para revisión
+Objetivo: diseño documental de las mascotas evolutivas (combate automático, fatiga y descanso, evolución ramificada original), con una sola mascota base en el primer hito. Parte de `main` con la PR #9 integrada.
+Archivos:
+- `docs/design/ISSUE-5_MASCOTAS_EVOLUTIVAS.md` (nuevo)
+- `DEVELOPMENT_ROADMAP.md`: la fila de la mascota en §2.0b remite al documento (sin cambiar el alcance)
+- `docs/AI_HANDOFF.md`: estado, próximo trabajo y esta entrada
+Decisiones tomadas (todas **propuestas**, pendientes de una ronda de decisión del usuario tras la revisión de Chad):
+- Criatura flotante con forma de gota, cresta de aletas y cola-linterna. Flota por motivo técnico: sin pathfinding y sin atascos.
+- Se alimenta de energía ambiental, una forma por energía de estación; le atrae la mochila-faro. La pista de "bioindicador de la red" es opcional y tardía.
+- Organización recomendada A: un solo individuo con formas desbloqueables y cambio en relés (alternativas B y C documentadas).
+- Desbloqueo con un núcleo de afinidad opcional por región más un vínculo que sube con la exploración (no con enemigos); no depende de vencer al guardián.
+- IA con estados Seguir, Atacar, Fatigada, Retirada, Disponible y Esperar; solo enemigos en cámara; daño bajo; límite en jefes; no recibe daño (pierde energía).
+- Energía 0–100 con recuperación pasiva limitada (tope 40, solo en la mochila y fuera de combate) y recuperación completa en relés, refugios y ciudad. Medidas contra trucos documentadas.
+- Ninguna ruta obligatoria exige la mascota; el validador debe comprobarlo sin mascota.
+- Avance para la Issue #6: bocado de energía opcional, accesorios cosméticos, sin micropagos.
+Pruebas realizadas y resultados (documentales):
+- Mermaid: 2/2 diagramas renderizados con mermaid-cli 11.4.2 sin errores.
+- Coherencia con WORLD_MAP (no hace falta tocar la topología), GAME_BIBLE (principio rector, reglas 8–11, escena 2) y DEVELOPMENT_ROADMAP §1.7 y §2.0b.
+- Revisión de que ningún nombre o silueta propuesta reproduce criaturas de Pokémon (rasgos distintivos propios: gota, cresta de aletas, cola-linterna).
+- `git diff --stat main`: solo documentación.
+No verificado:
+- Ningún número de balance está probado; los casos PET-01 a PET-15 son especificaciones futuras.
+- El costo de arte (≈ 40 cuadros por forma) es una estimación.
+Bloqueos y riesgos: volumen de arte y legibilidad en celulares (mitigaciones en §8 del documento).
+Preguntas para el usuario: las seis decisiones de §9 del documento.
+Próxima acción: revisión de Chad, una ronda de decisión del usuario; merge solo por decisión del usuario. Luego, la Issue #6.
 
 ## Reglas de seguridad
 - Nunca subir API keys, tokens, secretos ni archivos .env.
