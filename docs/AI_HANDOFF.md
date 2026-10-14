@@ -1,6 +1,6 @@
 # AI_HANDOFF — Ciudad Faro: El Último Eco
 
-**Estado:** PR #3, #8 y #9 integradas. Issue #5 (mascotas) en revisión. **No se ha modificado el código jugable.**
+**Estado:** PR #3, #8, #9 y #10 integradas. Issue #6 (tiendas y economía) en revisión. **No se ha modificado el código jugable.**
 
 ## Equipo y límites
 Nombres de trabajo asignados por el usuario (14-10-2026): **Clau** = Claude Code, **Chad** = ChatGPT.
@@ -13,8 +13,8 @@ Nombres de trabajo asignados por el usuario (14-10-2026): **Clau** = Claude Code
 Metroidvania 2D HD ilustrado; exploración densa e interconectada al estilo de diseño de Hollow Knight, sin reproducir propiedad intelectual ajena; combate ágil con identidad propia; melancolía, sarcasmo humano y decisiones morales. Ciudad Faro es una base física dentro del mundo, no solo un menú.
 
 ## Próximo trabajo
-- **Issue #5** (en revisión final, sin decisiones creativas pendientes): mascotas evolutivas.
-- **En cola:** #6 tiendas y economía, en PR aparte.
+- **Issue #6** (en revisión): tiendas, economía, consumibles, ropa, artefactos y taberna.
+- Con la #6 se completa la serie de diseños documentales #7 → #5 → #6. La implementación no empieza sin aprobación específica del usuario.
 - Primer hito con sistemas mínimos (mascota base, puesto de emergencia, personalidad del piloto): aprobado, ver DEVELOPMENT_ROADMAP §2.0b.
 - Ninguna implementación de código empieza sin aprobación específica del usuario.
 
@@ -302,6 +302,64 @@ No verificado: PET-01 a PET-17, rendimiento en celular, balance y fidelidad a la
 Bloqueos y riesgos: ninguno nuevo.
 Preguntas para el usuario: ninguna.
 Próxima acción: última revisión de Chad; merge solo por decisión del usuario. Después, la Issue #6.
+
+### 2026-10-14 — Clau (Claude Code) / Issue #6 / PR #11
+Estado: listo para revisión
+Objetivo: diseño documental de tiendas y economía. Parte de `main` con la PR #10 integrada.
+Archivos:
+- `docs/design/ISSUE-6_TIENDAS_ECONOMIA.md` (nuevo)
+- `DEVELOPMENT_ROADMAP.md`: la fila de la tienda en §2.0b remite al documento
+- `docs/AI_HANDOFF.md`
+Decisiones tomadas (todas **propuestas**, salvo lo ya aprobado y listado en §0 del documento):
+- Principios: nada obligatorio se compra; explorar paga más que repetir; sin dinero real.
+- Moneda de trabajo «Chispas» (alternativas: Celdas, Mechas). Fuentes con reglas contra el farmeo: cajas y secretos una sola vez; enemigos solo la primera muerte por ciclo de descanso.
+- Puesto de emergencia con Tula (provisional) y 4 artículos en el primer hito; mercado mayor y comerciantes regionales después.
+- Taberna después del primer hito, en Los Bajos (recomendado). Alcohol solo como escena pagada, sin objeto, efecto ni contador; los rumores también se obtienen pidiendo agua.
+- Ropa cosmética que respeta la silueta canónica; artefactos con 2 → 4 ranuras que se encuentran.
+- Precios de ejemplo y comprobación de ingresos del hito (≈ 600 frente a 300 del catálogo completo).
+- Menú único táctil, guardado `economy` versionado con migración; casos SHOP-01 a SHOP-13.
+Pruebas realizadas y resultados (documentales):
+- Aritmética de §5 revisada (20 × 10 + 6 × 40 + 2 × 50 + 60 = 600; 120 + 60 + 30 + 90 = 300).
+- Coherencia con WORLD_MAP §2, DEVELOPMENT_ROADMAP §2.0b, GAME_BIBLE §4 y §9 (reglas del alcohol, petaca) y el documento de mascotas §6.
+- `git diff --stat main`: solo documentación.
+No verificado: ningún precio ni ingreso se ha medido jugando; los casos SHOP son especificaciones futuras.
+Bloqueos y riesgos: ninguno nuevo.
+Preguntas para el usuario: las seis decisiones de §10 del documento.
+Próxima acción: revisión de Chad y una ronda de decisión del usuario; merge solo por decisión del usuario.
+
+### 2026-10-14 — Clau (Claude Code) / Issue #6 / PR #11 (revisión 2)
+Estado: listo para revisión
+Objetivo: corregir los seis puntos de la primera revisión de Chad.
+Archivos: `docs/design/ISSUE-6_TIENDAS_ECONOMIA.md` (v2), `docs/AI_HANDOFF.md`.
+Decisiones tomadas (propuestas):
+- Cada enemigo paga una sola vez en toda la partida (ID fijo): todas las fuentes de dinero son finitas.
+- Presupuesto del hito por momento: ≈ 35 en la primera visita, ≈ 280 en la ruta crítica sin secretos, ≈ 620 con el recorrido extendido, frente a 300 del catálogo. Es un objetivo de ajuste, no un resultado (SHOP-14).
+- Guardado con `openedCrates` y `paidEnemies` por ID; migración con listas vacías, porque el juego actual no tiene cajas ni moneda; idempotente.
+- «Farol compartido» solo acelera la recuperación pasiva (+1,2/s) con las mismas condiciones y el mismo tope; sin recarga con un jefe activo (SHOP-15). La taberna recupera a Núli gratis.
+- El fragmento de núcleo da vida máxima al piloto y es aparte del Núcleo de reserva de `desert/S1`.
+- La ropa elegida se ve en el juego; solo las cinemáticas predefinidas usan el canónico.
+Pruebas realizadas y resultados (documentales):
+- Aritmética: 3 × 10 + 2 × 2 = 34 ≈ 35; 50 + 100 + 80 + 50 = 280; 280 + 240 + 50 + 50 = 620; catálogo 300.
+- Ya no queda `dropCycle`, ni la frase «se puede comprar todo sin farmear», ni «cajas de salas visitadas cerradas».
+- Coherencia con el documento de mascotas §4 (condiciones de recuperación y tope).
+- `git diff --stat main`: solo documentación.
+No verificado: ingresos reales, precios y casos SHOP.
+Preguntas para el usuario: las seis decisiones de §10 (sin cambios).
+Próxima acción: segunda revisión de Chad.
+
+### 2026-10-14 — Clau (Claude Code) / Issue #6 / PR #11 (cierre documental)
+Estado: listo para revisión
+Objetivo: registrar las seis decisiones del usuario sobre tiendas y economía.
+Archivos: `docs/design/ISSUE-6_TIENDAS_ECONOMIA.md` (v3), `docs/AI_HANDOFF.md`.
+Decisiones **aprobadas** por el usuario: moneda **Chispas**; vendedora **Tula**; taberna **La Última Gota** en Los Bajos (`bajos/B3`); morir no quita dinero; artefactos con 2 ranuras ampliables a 4; alcohol solo como escena narrativa en la taberna, sin objeto ni efecto, con los rumores disponibles sin beber.
+**Ya no quedan decisiones creativas pendientes en la Issue #6.** Las menciones de «propuesta» en las entradas anteriores de este registro son historia.
+El alcance del primer hito no cambia: puesto de emergencia con 4 artículos; taberna, mercado mayor y economía avanzada, después.
+Pruebas realizadas y resultados (documentales):
+- Búsqueda en los `.md` de la rama: «La Marea Baja», «El Farol Ahogado», «Celdas» y «Mechas» no aparecen como nombres actuales (solo en el historial de este registro); «Chispas», «Tula» y «La Última Gota» son consistentes.
+- `git diff --stat main`: solo documentación.
+No verificado: SHOP-01 a SHOP-15, ingresos reales, precios y balance.
+Preguntas para el usuario: ninguna.
+Próxima acción: revisión documental final de Chad; merge solo por decisión del usuario.
 
 ## Reglas de seguridad
 - Nunca subir API keys, tokens, secretos ni archivos .env.
