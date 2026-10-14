@@ -40,7 +40,7 @@ Próxima acción:
 
 ## Registro
 
-### 2026-10-14 — Claude Code / Issue #1 / PR (ver enlace en la Issue)
+### 2026-10-14 — Claude Code / Issue #1 / PR #3
 Estado: listo para revisión
 Objetivo: proponer la topología Metroidvania interconectada (solo documentación).
 Archivos:
