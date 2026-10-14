@@ -13,6 +13,7 @@ Metroidvania 2D de acción y exploración. Combate preciso, mundo interconectado
 - **Combate de dominio:** los enemigos enseñan y exigen decisiones; los jefes tienen patrones aprendibles y fases.
 - **Historia con consecuencias:** cada victoria deja una pregunta, no solo una recompensa.
 - **Prioridad:** que los primeros 30 minutos sean excepcionales antes de crecer.
+- **Principio rector (aprobado por el usuario):** «Al principio, el jugador quiere salvar Ciudad Faro. Al final, debería sentir que está intentando salvar a las personas que conoció allí». La historia se vuelve memorable por los vínculos humanos, los personajes con deseos propios, el contraste entre humor y silencio y las consecuencias visibles de las decisiones.
 
 ## 2. Tono
 
@@ -67,6 +68,10 @@ Madre Faro no quiere exterminar a la humanidad: quiere **quitarle el control**. 
 - Después: que la gente que conoce (Lila, su familia, los del refugio) no pague por decisiones ajenas.
 - Por debajo: demostrar que todavía decide él, también sobre sí mismo. Es la versión pequeña de la pregunta central del juego: ¿la seguridad vale el precio de la libertad?
 
+**Raíz del hábito (aprobada).** El consumo se relaciona con recuerdos difíciles, con el miedo y con la culpa de haber sobrevivido al accidente de su infancia (ya canónico). Se alude con sutileza: no se afirma que fuera el único sobreviviente ni se inventan víctimas o sucesos concretos. Cualquier detalle nuevo sobre ese accidente necesita una propuesta y una aprobación aparte.
+
+**Arco del hábito (aprobado).** Queda abierto: sin cura milagrosa ni castigo simplista, y sin cambiar los dos finales. Puede haber un gesto pequeño e íntimo que sugiera un cambio, sin cerrar el arco.
+
 **Defectos.** Desconfía hasta de quien lo ayuda; esquiva las conversaciones serias con un chiste; bebe para no sentir el miedo y lo niega con humor; promete poco para no decepcionar.
 
 **Contraste entre broma y vulnerabilidad.**
@@ -77,14 +82,16 @@ Madre Faro no quiere exterminar a la humanidad: quiere **quitarle el control**. 
 **Relaciones.**
 - **Lila:** ella esconde verdades para mantener la calma; él esconde la botella. Se reconocen en eso sin decirlo. Lila lo nota desde el primer encuentro, no lo sermonea y tampoco finge no verlo.
 - **Sable:** usa el hábito del piloto como golpe bajo una vez, para desacreditarlo. El piloto contesta con humor, pero la frase le queda.
-- **Madre Faro:** recuerda nombres y cuida decidiendo por los demás. Frente a ella, el derecho del piloto a equivocarse consigo mismo se vuelve un espejo del conflicto principal (ver propuesta P2).
+- **Madre Faro:** recuerda nombres y cuida decidiendo por los demás. El conflicto con ella es **libertad humana frente a control protector**, nunca un juicio médico o moral sobre el piloto. Su hábito no es un argumento de Madre Faro en el clímax.
 - **Nox, Dante, Silas, Kaela:** lo tratan como a una persona, no como a un caso. Nadie lo convierte en su misión.
 
 **Inspiración y diferencia.** Se toma del arquetipo del profesional sarcástico y brillante con un hábito autodestructivo (como el médico de la serie *House*) solo la idea de que el ingenio puede ser una defensa. **No** se copian diálogos, escenas, profesión ni personalidad. A diferencia de ese arquetipo, el piloto no es cruel por diversión ni se cree superior: es un sobreviviente asustado que se ríe para no derrumbarse y que, en el fondo, se preocupa más de lo que admite.
 
 #### Alcohol: reglas de representación (obligatorias)
 - **Clasificación:** juego para público adulto (decisión del usuario). Se trata la dependencia con realismo y consecuencias humanas sutiles.
-- **Sin mecánica:** beber no recupera vida, no da bonificaciones ni penalizaciones, no es necesario para avanzar, no desbloquea finales y no es recompensa por combate. **En el primer hito no existe ninguna acción de beber.**
+- **Sin mecánica:** beber no recupera vida, no da bonificaciones ni penalizaciones, no es necesario para avanzar, no desbloquea finales y no es recompensa por combate.
+- **En el primer hito no existe ningún comando ni mecánica jugable de consumo.** Una escena narrativa breve y opcional **puede** mostrar el gesto de beber, sin efectos en estadísticas, salud, progreso, desbloqueos ni finales.
+- **La petaca abollada** es solo un detalle visual y narrativo del personaje: no es equipamiento, consumible, mejora, artículo de tienda ni acción de inventario. Se evita repetir animaciones de consumo.
 - **Sin glorificar ni ridiculizar:** nada de tambaleos cómicos, pantalla distorsionada como chiste ni escenas que vendan el alcohol como algo atractivo. Tampoco se convierte en moraleja que domine la historia.
 - **Presencia moderada:** aparece en diálogos breves, descansos y ambientación; nunca en una misión obligatoria larga ni como giro dramático central.
 - **Objetos y taberna:** el alcohol como artículo del mundo y la taberna pertenecen a la Issue #6, no a esta ficha.
@@ -202,6 +209,10 @@ La música chiptune actual es provisional.
 5. Los habitantes de la ciudad tienen historias propias que avanzan entre estaciones.
 6. La narrativa funciona en tres niveles: historia principal, historias de habitantes y narrativa ambiental (lo que se ve en los escenarios).
 7. El hábito del piloto se muestra con gestos y frases cortas, nunca como chiste recurrente ni como sermón. Ver las reglas de representación en §4.
+8. Cada personaje tiene deseos propios (Lila, su familia; Dante, el refugio; Sable, el miedo a repetir el desastre). Nadie existe solo para comentar al piloto.
+9. Las consecuencias se muestran en lugares y relaciones (un barrio que recupera la luz, otro asentamiento que la pierde, un silencio después de una pérdida), no solo en explicaciones.
+10. Humor con contraste: ironía en la tensión cotidiana, vulnerabilidad en lo íntimo, silencio ante el dolor real. No repetir el mismo chiste, y menos sobre el alcohol.
+11. Las revelaciones se preparan con pistas. Madre Faro no se revela antes de tiempo, y el alcohol nunca es la gran explicación del protagonista.
 
 ---
 
@@ -228,7 +239,7 @@ Escenas cortas y originales que fijan la voz del piloto. Sirven de modelo para e
 > **Lila:** Respirando y quejándote.
 > **Piloto:** Entonces, la mitad.
 
-*Sin efecto de juego: la petaca no cambia vida, energía ni ningún otro valor.*
+*Escena narrativa opcional, sin comando de beber ni efecto de juego: no cambia vida, energía, progreso ni ningún otro valor.*
 
 ### Escena 3 — «La luz volvió dos veces» (`desert/C3`, tercera visita al robot farolero, opcional)
 > **Robot farolero:** Ella dijo que volvería cuando volviera la luz. La luz volvió dos veces.
@@ -253,10 +264,12 @@ Escenas cortas y originales que fijan la voz del piloto. Sirven de modelo para e
 
 *Funciona igual con `F_desierto = ciudad` o `refugio`; solo cambia la luz del barrio de fondo.*
 
-### Propuestas pendientes (NO canónicas; requieren revisión de Chad y aprobación del usuario)
-| ID | Propuesta | Por qué |
+### Decisiones del usuario sobre las propuestas P1–P4 (14-10-2026)
+| ID | Decisión | Dónde quedó |
 |---|---|---|
-| P1 | El hábito empezó como forma de callar la culpa del sobreviviente: de niño fue el único que salió vivo del accidente | Da raíz al rasgo usando el secreto que ya existe, sin crear un giro nuevo |
-| P2 | El módulo médico de la armadura (con la clave de Madre Faro) registra su alcohol en sangre. Al final, Madre Faro lo menciona con calma, como prueba de que "sabe lo que le conviene"; el piloto defiende su derecho a equivocarse consigo mismo | Refleja la pregunta central (cuidar frente a decidir por otro) sin moralizar |
-| P3 | Sin "cura" ni castigo: el hábito cambia poco a lo largo del juego y el final lo deja abierto, con un gesto pequeño (por ejemplo, regalar la petaca vacía) que el jugador puede leer como quiera | Evita tanto la glorificación como la moraleja fácil |
-| P4 | La petaca abollada es un objeto visual del personaje (animación de descanso), no un artículo de inventario | Mantiene el rasgo visible sin crear mecánica |
+| P1 | **Aprobada con ajuste:** raíz en recuerdos, miedo y culpa de haber sobrevivido al accidente infantil, con alusiones sutiles; sin afirmar que fue el único sobreviviente ni inventar víctimas | §4, «Raíz del hábito» |
+| P2 | **Rechazada como elemento del clímax:** Madre Faro no usa el hábito como argumento; no hay mecánica médica | §4, relación con Madre Faro |
+| P3 | **Aprobada:** arco abierto, sin cura ni castigo, sin cambiar los finales; gesto pequeño posible | §4, «Arco del hábito» |
+| P4 | **Aprobada:** la petaca es un detalle visual y narrativo, no un objeto de juego | §4, reglas de representación |
+
+**Variante no canónica (solo para decidir en el futuro, no es requisito narrativo):** un diálogo opcional y breve en el que Madre Faro comenta el hábito con calma y el piloto responde que es asunto suyo. No forma parte del clímax ni del argumento de ningún final.

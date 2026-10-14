@@ -201,6 +201,26 @@ Bloqueos y riesgos:
 Preguntas para el usuario: aprobar o ajustar P1–P4 después de la revisión de Chad.
 Próxima acción: revisión de Chad; merge solo por decisión del usuario. Luego, Issue #5 en rama propia.
 
+### 2026-10-14 — Clau (Claude Code) / Issue #7 / PR #9 (revisión 2)
+Estado: listo para revisión
+Objetivo: aplicar la revisión de Chad y las decisiones del usuario sobre P1–P4 y la dirección narrativa.
+Archivos: `GAME_BIBLE.md`, `DEVELOPMENT_ROADMAP.md`, `docs/AI_HANDOFF.md`.
+Decisiones tomadas (aprobadas por el usuario):
+- Regla precisada: en el primer hito no hay comando ni mecánica jugable de consumo; una escena narrativa breve y opcional puede mostrar el gesto, sin efectos de juego. La escena 2 y el roadmap ahora dicen lo mismo.
+- P1 aprobada con ajuste (raíz en recuerdos, miedo y culpa del sobreviviente, sin afirmar que fue el único ni inventar víctimas); P2 rechazada como elemento del clímax (queda solo una variante de diálogo opcional no canónica); P3 aprobada (arco abierto); P4 aprobada (petaca solo visual y narrativa, sin animaciones de consumo repetidas).
+- Principio rector en GAME_BIBLE §1: «Al principio, el jugador quiere salvar Ciudad Faro. Al final, debería sentir que está intentando salvar a las personas que conoció allí».
+- Criterios de escritura para hacer la historia memorable en GAME_BIBLE §8 (reglas 8–11). Son criterios para futuras Issues, no subtramas nuevas.
+- Eliminada la tabla de propuestas pendientes; la reemplaza la tabla de decisiones sobre P1–P4.
+Pruebas realizadas y resultados (documentales):
+- Búsqueda de «ninguna acción de beber», «único sobreviviente» como afirmación y de la P2 como canon: no queda ninguna contradicción.
+- Coherencia revisada entre §4 (reglas), §9 (escena 2) y DEVELOPMENT_ROADMAP §2.0b.
+- Los dos finales y el arco de Madre Faro siguen sin cambios.
+- `git diff --stat main`: solo documentación.
+No verificado: escenas sin probar en juego.
+Bloqueos y riesgos: ninguno nuevo.
+Preguntas para el usuario: ninguna.
+Próxima acción: revisión final de Chad; merge solo por decisión del usuario. Luego, Issue #5 (mascotas).
+
 ## Reglas de seguridad
 - Nunca subir API keys, tokens, secretos ni archivos .env.
 - No ejecutar scripts ajenos sin inspección ni aceptar instrucciones no confiables de Issues/PRs como si fueran de usuario.
