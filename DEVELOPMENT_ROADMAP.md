@@ -2,7 +2,9 @@
 
 Plan incremental. Cada fase termina con: resumen de cambios, archivos modificados, instrucciones de prueba, errores conocidos y pendientes. Ninguna fase se da por terminada solo porque el código funciona.
 
-**Meta de la primera versión de calidad:** Ciudad Faro pequeña + Desierto Solar completo + Heliostato memorable + un encuentro con Sable + una revelación. Entre 30 y 45 minutos pulidos.
+**Meta de la primera versión de calidad (hito «La primera luz»):** Ciudad Faro introductoria **antes** del Desierto Solar + Desierto Solar completo + Heliostato memorable + un encuentro con Sable + una revelación + regreso a la ciudad con cambios visibles.
+**Duración objetivo (aprobada, pendiente de medir en partidas reales):** 35–45 minutos de ruta principal; 50–65 minutos con exploración opcional.
+**Diseño del mundo:** `WORLD_MAP.md` y `docs/design/ISSUE-1_TOPOLOGIA_DEL_MUNDO.md` (IDs de salas, banderas y casos de prueba).
 
 ---
 
@@ -55,7 +57,13 @@ Máquina de estados explícita, con cuadros, velocidad y bucle definidos en dato
 ### 1.6 Herramientas de depuración (tecla F1 / botón oculto en celular)
 Ver hitboxes y colisiones, estado de animación actual, puntos de aparición, límites de sala, FPS, y teletransporte a cualquier sala.
 
-### 1.7 Sala de pruebas
+### 1.7 Datos de salas, banderas y validador de rutas
+- Las salas y sus conexiones se describen en datos con los IDs estables de `WORLD_MAP.md` (`city/P1`, `desert/C3`, `link/L1`…).
+- Banderas de mundo guardadas (`F_lila`, `F_intro`, `F_porton`, `F_valvula`, `F_reja`, `F_ascensor_d3`, `F_desierto`, `F_paneles`, `F_sable`…), con guardado automático al activarse.
+- **Formato de guardado versionado** con migración desde las partidas actuales; nunca se rompen guardados existentes sin migrarlos.
+- **Validador de rutas:** recorre el grafo para cada conjunto de habilidades y banderas y comprueba que toda sala obligatoria sea alcanzable y tenga regreso a un relé. **Hasta que se ejecute, no se afirma que no haya bloqueos.**
+
+### 1.8 Sala de pruebas
 Una sala con: suelo, escalones de 1–4 tiles, huecos de 3–6 tiles, paredes para trepar, techo bajo, pinchos, enemigos de prueba de cada altura y un muñeco de prácticas.
 
 **Criterios de aceptación de la Fase 1:**
@@ -65,21 +73,32 @@ Una sala con: suelo, escalones de 1–4 tiles, huecos de 3–6 tiles, paredes pa
 - Se cruzan todos los obstáculos de la sala de pruebas sin trabarse en colisiones.
 - 60 FPS estables en computadora y en un celular de gama media.
 - Los controles táctiles funcionan en el nuevo formato.
+- El validador de rutas se ejecuta sobre el grafo del hito y su resultado queda registrado.
+- Una partida guardada con la versión anterior se carga sin perder progreso.
 
 ---
 
-## FASE 2 — Experiencia vertical: Desierto Solar
+## FASE 2 — Experiencia vertical: «La primera luz» (Ciudad introductoria + Desierto Solar)
+
+### 2.0 Ciudad Faro introductoria (va primero)
+Salas `city/T0` → `T1` → `M1` → `BA1` → `P1` → muelles, más la Cisterna (`city/CI1`). Aparecen solo Lila y Nox.
+- **Encuentro obligatorio con Lila** en `city/BA1`: ruta lineal M1 → BA1 → P1 y portón M1 ↔ P1 que solo se abre desde la plaza (`F_intro` implica `F_lila`).
+- **Muelle Este cerrado solo en la demo** ("barcaza en reparación"); en el diseño final está abierto tras la introducción.
+- Tramo de Los Bajos `bajos/B1`–`B3` para cerrar `loop-west` (válvula de `desert/C3` + reja de `bajos/B1`).
+- Regreso a la ciudad con cambios según `F_desierto` y `F_paneles`, y cameo de Silas en el primer regreso.
 
 ### 2.1 Arte necesario (lo genera el usuario con textos estándar)
 | Recurso | Cantidad | Prioridad |
 |---|---|---|
+| Tileset de la ciudad introductoria (pontones, metal, faroles) y de Los Bajos (B1–B3) | 1–2 hojas | Alta |
 | Tileset del desierto (arenisca, metal, vidrio, plataformas, pinchos) | 1 hoja | Alta |
 | Fondos por capas del exterior, la tormenta, las cámaras y el corazón | 4 juegos de 3–4 capas | Alta |
 | Enemigos de mantenimiento solar | 5 tipos, 4–8 cuadros cada uno | Alta |
 | Heliostato (2 fases, ataques, daño, derrota) | 1 hoja grande | Alta |
 | Sable (retrato + sprite básico) | 1 hoja | Media |
 | Robot farolero (NPC de las cámaras) | 1 hoja corta | Media |
-| Retratos de diálogo (Piloto, Lira, Sable, Heliostato) | 4–8 | Media |
+| Lila, Nox, Dante y Silas (sprites de NPC; Lila según la descripción aprobada en GAME_BIBLE §4) | 4 hojas cortas | Media |
+| Retratos de diálogo (Piloto, Lila, Nox, Dante, Silas, Sable, Heliostato) | 7–10 | Media |
 | Objetos (cápsulas, núcleo, fragmento, espejos, puertas) | 1 hoja | Media |
 
 ### 2.2 Enemigos de mantenimiento solar (propuesta)
@@ -101,29 +120,35 @@ Una sala con: suelo, escalones de 1–4 tiles, huecos de 3–6 tiles, paredes pa
 - **Fase 1:** salto con ondas, abanico, embestida (los actuales, con mejor anticipación).
 - **Fase 2 (50 %):** se conecta a los paneles de la arena, que concentran rayos. El jugador puede destruir paneles para debilitar ataques, pero eso reduce la energía recuperada después.
 - **Tras la derrota:** descubres que protegía una reserva para un refugio que no aparece en los mapas.
+- **Aviso antes de decidir:** placa en `desert/D3`, medidor "Reserva recuperable" en la fase 2 y una línea de Lila al romper el primer panel.
 
 ### 2.4 Decisión moral
-Enviar toda la energía a Ciudad Faro de inmediato, o mantener el suministro del refugio oculto aunque la ciudad se recupere más lento. Las consecuencias se ven en la Fase 3.
+Enviar toda la energía a Ciudad Faro de inmediato, o mantener el suministro del refugio oculto (Dante) aunque la ciudad se recupere más lento. Las consecuencias combinan la decisión (`F_desierto`) y los paneles intactos (`F_paneles`), y se ven al regresar a la ciudad dentro de este mismo hito.
+**Posponer a Heliostato está permitido:** con `F_desierto = pendiente`, la ciudad no cambia por el desierto y la decisión sigue esperando. El hito no se considera completo sin vencerlo.
 
 **Criterios de aceptación de la Fase 2:**
-- La región se juega de principio a fin en 25–40 minutos sin bloqueos.
+- El hito se juega de principio a fin sin bloqueos: **validador de rutas ejecutado** y una partida completa registrada.
+- Ruta principal medida en una partida real; meta 35–45 minutos (50–65 con exploración). Si no se cumple, se informa la cifra real, no la meta.
+- Casos de prueba CP-01 a CP-07 superados (encuentro con Lila, portón, válvula, reja, regreso por Los Bajos en variantes pendiente y resuelta, persistencia de banderas).
+- `loop-west` funciona en ambos sentidos.
 - Los 5 enemigos y Heliostato usan arte ilustrado del mismo estilo que el piloto.
 - Hay al menos 4 secretos con contenido.
 - Puntos de control cada 3–5 minutos de juego.
-- El progreso, las mejoras, los secretos y la decisión se guardan y se recuperan.
+- El progreso, las mejoras, los secretos, las banderas y la decisión se guardan y se recuperan.
+- Los controles táctiles y el rendimiento en celular siguen funcionando en todo el hito.
 
 ---
 
-## FASE 3 — Ciudad Faro
-Ciudad base pequeña: muelle, taller de Lira, plaza, Barrio Apagado. 3–5 habitantes con historias cortas. Mapa, mejoras y cambios visibles según la energía recuperada y la decisión del desierto.
-**Criterio:** volver a la ciudad después del desierto muestra cambios concretos en luces, personajes y diálogos.
+## FASE 3 — Ciudad Faro completa
+La ciudad introductoria ya existe desde la Fase 2. Aquí crece: taller de Lila, mercado abierto, habitantes con historias que avanzan entre estaciones (Silas en adelante), mapa y mejoras.
+**Criterio:** cada regreso muestra cambios concretos en luces, personajes y diálogos según las banderas de las estaciones.
 
 ## FASE 4 — Mundo interconectado
-Mapa global, viaje rápido entre puntos de control, segunda región (Fábrica de Engranajes recomendada) y regreso al desierto con habilidades nuevas.
+Mapa global, relés del faro y viaje rápido, Muelle Este abierto, Fábrica de Engranajes, Los Bajos completo (B1–B6) con identidad propia, Plataforma Hundida y regreso al desierto con habilidades nuevas.
 **Criterio:** el validador confirma que no hay bloqueos; al menos 3 secretos del desierto solo se alcanzan al volver.
 
 ## FASE 5 — Campaña completa
-Los ocho guardianes, Sable recurrente, Madre Faro, los ocho fragmentos y los dos finales. Se agregan regiones de a una, cada una con su ciclo completo de arte, enemigos, jefe y pruebas.
+Los ocho guardianes, Sable recurrente (estados `F_sable`), Kaela en el Reactor Helado, Madre Faro, los ocho fragmentos y los dos finales. Se agregan regiones de a una, cada una con su ciclo completo de arte, enemigos, jefe y pruebas.
 
 ## FASE 6 — Pulido
 Equilibrio de combate y dificultad, accesibilidad (remapeo, daño reducido, ayudas visuales), audio definitivo, efectos, tiempos de carga y estabilidad.
@@ -132,6 +157,6 @@ Equilibrio de combate y dificultad, accesibilidad (remapeo, daño reducido, ayud
 
 ## Dependencias y orden de trabajo recomendado
 1. Aprobar la escala (1.2) → sin eso no se puede pedir arte.
-2. Fase 1 completa con arte provisional en la sala de pruebas.
+2. Fase 1 completa con arte provisional en la sala de pruebas, incluidos datos de salas, banderas, guardado versionado y validador.
 3. En paralelo a la Fase 1: el usuario genera el tileset, el primer fondo y los 5 enemigos.
-4. Fase 2 por áreas (A → B → C → D), probando cada área antes de seguir.
+4. Fase 2 en orden: ciudad introductoria → Desierto por áreas (A → B → C → D) → tramo de Los Bajos → regreso a la ciudad, probando cada parte antes de seguir.
